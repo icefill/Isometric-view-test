@@ -1,0 +1,3047 @@
+{
+modelArray: [
+	{
+		zz: 1
+		type: C
+		id: 0
+	}
+	{
+		type: S
+		id: 1
+	}
+	{
+		yy: 1
+		type: S
+		id: 2
+	}
+	{
+		yy: 1
+		zz: 1
+		type: S
+		id: 3
+	}
+	{
+		yy: 1
+		zz: 2
+		type: S
+		id: 4
+	}
+	{
+		yy: 2
+		type: S
+		id: 5
+	}
+	{
+		yy: 2
+		zz: 1
+		type: S
+		id: 6
+	}
+	{
+		yy: 2
+		zz: 2
+		type: S
+		id: 7
+	}
+	{
+		yy: 3
+		type: S
+		id: 8
+	}
+	{
+		yy: 3
+		zz: 1
+		type: S
+		id: 9
+	}
+	{
+		yy: 4
+		type: S
+		id: 10
+	}
+	{
+		yy: 5
+		type: S
+		id: 11
+	}
+	{
+		yy: 5
+		zz: 1
+		type: P
+		id: 12
+	}
+	{
+		yy: 6
+		type: S
+		id: 13
+	}
+	{
+		yy: 6
+		zz: 1
+		type: S
+		id: 14
+	}
+	{
+		yy: 6
+		zz: 2
+		type: S
+		id: 15
+	}
+	{
+		yy: 6
+		zz: 3
+		type: S
+		id: 16
+	}
+	{
+		yy: 7
+		type: S
+		id: 17
+	}
+	{
+		yy: 7
+		zz: 1
+		type: S
+		id: 18
+	}
+	{
+		yy: 7
+		zz: 2
+		type: S
+		id: 19
+	}
+	{
+		xx: 1
+		type: S
+		id: 20
+	}
+	{
+		xx: 1
+		yy: 1
+		type: S
+		id: 21
+	}
+	{
+		xx: 1
+		yy: 1
+		zz: 1
+		type: S
+		id: 22
+	}
+	{
+		xx: 1
+		yy: 1
+		zz: 2
+		type: S
+		id: 23
+	}
+	{
+		xx: 1
+		yy: 2
+		type: S
+		id: 24
+	}
+	{
+		xx: 1
+		yy: 2
+		zz: 1
+		type: S
+		id: 25
+	}
+	{
+		xx: 1
+		yy: 2
+		zz: 2
+		type: S
+		id: 26
+	}
+	{
+		xx: 1
+		yy: 3
+		type: S
+		id: 27
+	}
+	{
+		xx: 1
+		yy: 3
+		zz: 1
+		type: S
+		id: 28
+	}
+	{
+		xx: 1
+		yy: 3
+		zz: 2
+		type: S
+		id: 29
+	}
+	{
+		xx: 1
+		yy: 4
+		type: S
+		id: 30
+	}
+	{
+		xx: 1
+		yy: 5
+		type: S
+		id: 31
+	}
+	{
+		xx: 1
+		yy: 6
+		type: S
+		id: 32
+	}
+	{
+		xx: 1
+		yy: 7
+		type: S
+		id: 33
+	}
+	{
+		xx: 1
+		yy: 7
+		zz: 1
+		type: S
+		id: 34
+	}
+	{
+		xx: 2
+		type: S
+		id: 35
+	}
+	{
+		xx: 2
+		yy: 1
+		type: S
+		id: 36
+	}
+	{
+		xx: 2
+		yy: 2
+		type: S
+		id: 37
+	}
+	{
+		xx: 2
+		yy: 3
+		type: S
+		id: 38
+	}
+	{
+		xx: 2
+		yy: 4
+		type: S
+		id: 39
+	}
+	{
+		xx: 2
+		yy: 4
+		zz: 1
+		type: S
+		id: 40
+	}
+	{
+		xx: 2
+		yy: 5
+		type: S
+		id: 41
+	}
+	{
+		xx: 2
+		yy: 6
+		type: S
+		id: 42
+	}
+	{
+		xx: 2
+		yy: 6
+		zz: 1
+		type: s
+		id: 43
+	}
+	{
+		xx: 2
+		yy: 7
+		type: S
+		id: 44
+	}
+	{
+		xx: 3
+		type: S
+		id: 45
+	}
+	{
+		xx: 3
+		yy: 1
+		type: S
+		id: 46
+	}
+	{
+		xx: 3
+		yy: 1
+		zz: 1
+		type: s
+		id: 47
+	}
+	{
+		xx: 3
+		yy: 2
+		type: S
+		id: 48
+	}
+	{
+		xx: 3
+		yy: 3
+		type: S
+		id: 49
+	}
+	{
+		xx: 3
+		yy: 4
+		type: S
+		id: 50
+	}
+	{
+		xx: 3
+		yy: 5
+		type: S
+		id: 51
+	}
+	{
+		xx: 3
+		yy: 6
+		type: S
+		id: 52
+	}
+	{
+		xx: 3
+		yy: 7
+		type: S
+		id: 53
+	}
+	{
+		xx: 3
+		yy: 8
+		type: S
+		id: 54
+	}
+	{
+		xx: 3
+		yy: 9
+		type: S
+		id: 55
+	}
+	{
+		xx: 3
+		yy: 10
+		type: m
+		id: 56
+	}
+	{
+		xx: 3
+		yy: 10
+		zz: 1
+		type: m
+		id: 57
+	}
+	{
+		xx: 3
+		yy: 10
+		zz: 2
+		type: m
+		id: 58
+	}
+	{
+		xx: 3
+		yy: 10
+		zz: 3
+		type: m
+		id: 59
+	}
+	{
+		xx: 3
+		yy: 10
+		zz: 4
+		type: m
+		id: 60
+	}
+	{
+		xx: 3
+		yy: 10
+		zz: 5
+		type: m
+		id: 61
+	}
+	{
+		xx: 3
+		yy: 10
+		zz: 6
+		type: m
+		id: 62
+	}
+	{
+		xx: 4
+		type: S
+		id: 63
+	}
+	{
+		xx: 4
+		yy: 1
+		type: S
+		id: 64
+	}
+	{
+		xx: 4
+		yy: 2
+		type: S
+		id: 65
+	}
+	{
+		xx: 4
+		yy: 3
+		type: S
+		id: 66
+	}
+	{
+		xx: 4
+		yy: 3
+		zz: 1
+		type: S
+		id: 67
+	}
+	{
+		xx: 4
+		yy: 3
+		zz: 2
+		type: S
+		id: 68
+	}
+	{
+		xx: 4
+		yy: 4
+		type: S
+		id: 69
+	}
+	{
+		xx: 4
+		yy: 4
+		zz: 1
+		type: S
+		id: 70
+	}
+	{
+		xx: 4
+		yy: 5
+		type: S
+		id: 71
+	}
+	{
+		xx: 4
+		yy: 6
+		type: S
+		id: 72
+	}
+	{
+		xx: 4
+		yy: 7
+		type: S
+		id: 73
+	}
+	{
+		xx: 4
+		yy: 9
+		type: S
+		id: 74
+	}
+	{
+		xx: 4
+		yy: 9
+		zz: 1
+		type: S
+		id: 75
+	}
+	{
+		xx: 4
+		yy: 9
+		zz: 2
+		type: S
+		id: 76
+	}
+	{
+		xx: 4
+		yy: 9
+		zz: 3
+		type: S
+		id: 77
+	}
+	{
+		xx: 4
+		yy: 9
+		zz: 4
+		type: E
+		id: 78
+	}
+	{
+		xx: 4
+		yy: 10
+		type: m
+		id: 79
+	}
+	{
+		xx: 4
+		yy: 10
+		zz: 1
+		type: m
+		id: 80
+	}
+	{
+		xx: 4
+		yy: 10
+		zz: 2
+		type: m
+		id: 81
+	}
+	{
+		xx: 4
+		yy: 10
+		zz: 3
+		type: m
+		id: 82
+	}
+	{
+		xx: 4
+		yy: 10
+		zz: 4
+		type: m
+		id: 83
+	}
+	{
+		xx: 4
+		yy: 10
+		zz: 5
+		type: m
+		id: 84
+	}
+	{
+		xx: 4
+		yy: 10
+		zz: 6
+		type: m
+		id: 85
+	}
+	{
+		xx: 5
+		type: S
+		id: 86
+	}
+	{
+		xx: 5
+		yy: 1
+		type: S
+		id: 87
+	}
+	{
+		xx: 5
+		yy: 1
+		zz: 1
+		type: S
+		id: 88
+	}
+	{
+		xx: 5
+		yy: 2
+		type: S
+		id: 89
+	}
+	{
+		xx: 5
+		yy: 3
+		type: S
+		id: 90
+	}
+	{
+		xx: 5
+		yy: 3
+		zz: 1
+		type: S
+		id: 91
+	}
+	{
+		xx: 5
+		yy: 3
+		zz: 2
+		type: S
+		id: 92
+	}
+	{
+		xx: 5
+		yy: 4
+		type: S
+		id: 93
+	}
+	{
+		xx: 5
+		yy: 4
+		zz: 1
+		type: S
+		id: 94
+	}
+	{
+		xx: 5
+		yy: 4
+		zz: 2
+		type: S
+		id: 95
+	}
+	{
+		xx: 5
+		yy: 4
+		zz: 3
+		type: S
+		id: 96
+	}
+	{
+		xx: 5
+		yy: 5
+		type: S
+		id: 97
+	}
+	{
+		xx: 5
+		yy: 5
+		zz: 1
+		type: S
+		id: 98
+	}
+	{
+		xx: 5
+		yy: 5
+		zz: 2
+		type: S
+		id: 99
+	}
+	{
+		xx: 5
+		yy: 5
+		zz: 3
+		type: S
+		id: 100
+	}
+	{
+		xx: 5
+		yy: 6
+		type: S
+		id: 101
+	}
+	{
+		xx: 5
+		yy: 7
+		type: S
+		id: 102
+	}
+	{
+		xx: 5
+		yy: 7
+		zz: 1
+		type: S
+		id: 103
+	}
+	{
+		xx: 5
+		yy: 8
+		type: S
+		id: 104
+	}
+	{
+		xx: 5
+		yy: 9
+		type: S
+		id: 105
+	}
+	{
+		xx: 5
+		yy: 10
+		type: m
+		id: 106
+	}
+	{
+		xx: 5
+		yy: 10
+		zz: 1
+		type: m
+		id: 107
+	}
+	{
+		xx: 5
+		yy: 10
+		zz: 2
+		type: m
+		id: 108
+	}
+	{
+		xx: 5
+		yy: 10
+		zz: 3
+		type: m
+		id: 109
+	}
+	{
+		xx: 5
+		yy: 10
+		zz: 4
+		type: m
+		id: 110
+	}
+	{
+		xx: 5
+		yy: 10
+		zz: 5
+		type: m
+		id: 111
+	}
+	{
+		xx: 5
+		yy: 10
+		zz: 6
+		type: m
+		id: 112
+	}
+	{
+		xx: 6
+		type: m
+		id: 113
+	}
+	{
+		xx: 6
+		zz: 1
+		type: m
+		id: 114
+	}
+	{
+		xx: 6
+		zz: 2
+		type: m
+		id: 115
+	}
+	{
+		xx: 6
+		zz: 3
+		type: m
+		id: 116
+	}
+	{
+		xx: 6
+		zz: 4
+		type: m
+		id: 117
+	}
+	{
+		xx: 6
+		zz: 5
+		type: m
+		id: 118
+	}
+	{
+		xx: 6
+		zz: 6
+		type: m
+		id: 119
+	}
+	{
+		xx: 6
+		yy: 1
+		type: m
+		id: 120
+	}
+	{
+		xx: 6
+		yy: 1
+		zz: 1
+		type: m
+		id: 121
+	}
+	{
+		xx: 6
+		yy: 1
+		zz: 2
+		type: m
+		id: 122
+	}
+	{
+		xx: 6
+		yy: 1
+		zz: 3
+		type: m
+		id: 123
+	}
+	{
+		xx: 6
+		yy: 1
+		zz: 4
+		type: m
+		id: 124
+	}
+	{
+		xx: 6
+		yy: 1
+		zz: 5
+		type: m
+		id: 125
+	}
+	{
+		xx: 6
+		yy: 1
+		zz: 6
+		type: m
+		id: 126
+	}
+	{
+		xx: 6
+		yy: 2
+		type: m
+		id: 127
+	}
+	{
+		xx: 6
+		yy: 2
+		zz: 1
+		type: m
+		id: 128
+	}
+	{
+		xx: 6
+		yy: 2
+		zz: 2
+		type: m
+		id: 129
+	}
+	{
+		xx: 6
+		yy: 2
+		zz: 3
+		type: m
+		id: 130
+	}
+	{
+		xx: 6
+		yy: 2
+		zz: 4
+		type: m
+		id: 131
+	}
+	{
+		xx: 6
+		yy: 2
+		zz: 5
+		type: m
+		id: 132
+	}
+	{
+		xx: 6
+		yy: 2
+		zz: 6
+		type: m
+		id: 133
+	}
+	{
+		xx: 6
+		yy: 3
+		type: m
+		id: 134
+	}
+	{
+		xx: 6
+		yy: 3
+		zz: 1
+		type: m
+		id: 135
+	}
+	{
+		xx: 6
+		yy: 3
+		zz: 2
+		type: m
+		id: 136
+	}
+	{
+		xx: 6
+		yy: 3
+		zz: 3
+		type: m
+		id: 137
+	}
+	{
+		xx: 6
+		yy: 3
+		zz: 4
+		type: m
+		id: 138
+	}
+	{
+		xx: 6
+		yy: 3
+		zz: 5
+		type: m
+		id: 139
+	}
+	{
+		xx: 6
+		yy: 3
+		zz: 6
+		type: m
+		id: 140
+	}
+	{
+		xx: 6
+		yy: 4
+		type: m
+		id: 141
+	}
+	{
+		xx: 6
+		yy: 4
+		zz: 1
+		type: m
+		id: 142
+	}
+	{
+		xx: 6
+		yy: 4
+		zz: 2
+		type: m
+		id: 143
+	}
+	{
+		xx: 6
+		yy: 4
+		zz: 3
+		type: m
+		id: 144
+	}
+	{
+		xx: 6
+		yy: 4
+		zz: 4
+		type: m
+		id: 145
+	}
+	{
+		xx: 6
+		yy: 4
+		zz: 5
+		type: m
+		id: 146
+	}
+	{
+		xx: 6
+		yy: 4
+		zz: 6
+		type: m
+		id: 147
+	}
+	{
+		xx: 6
+		yy: 5
+		type: m
+		id: 148
+	}
+	{
+		xx: 6
+		yy: 5
+		zz: 1
+		type: m
+		id: 149
+	}
+	{
+		xx: 6
+		yy: 5
+		zz: 2
+		type: m
+		id: 150
+	}
+	{
+		xx: 6
+		yy: 5
+		zz: 3
+		type: m
+		id: 151
+	}
+	{
+		xx: 6
+		yy: 5
+		zz: 4
+		type: m
+		id: 152
+	}
+	{
+		xx: 6
+		yy: 5
+		zz: 5
+		type: m
+		id: 153
+	}
+	{
+		xx: 6
+		yy: 5
+		zz: 6
+		type: m
+		id: 154
+	}
+	{
+		xx: 6
+		yy: 6
+		type: m
+		id: 155
+	}
+	{
+		xx: 6
+		yy: 6
+		zz: 1
+		type: m
+		id: 156
+	}
+	{
+		xx: 6
+		yy: 6
+		zz: 2
+		type: m
+		id: 157
+	}
+	{
+		xx: 6
+		yy: 6
+		zz: 3
+		type: m
+		id: 158
+	}
+	{
+		xx: 6
+		yy: 6
+		zz: 4
+		type: m
+		id: 159
+	}
+	{
+		xx: 6
+		yy: 6
+		zz: 5
+		type: m
+		id: 160
+	}
+	{
+		xx: 6
+		yy: 6
+		zz: 6
+		type: m
+		id: 161
+	}
+	{
+		xx: 6
+		yy: 7
+		type: m
+		id: 162
+	}
+	{
+		xx: 6
+		yy: 7
+		zz: 1
+		type: m
+		id: 163
+	}
+	{
+		xx: 6
+		yy: 7
+		zz: 2
+		type: m
+		id: 164
+	}
+	{
+		xx: 6
+		yy: 7
+		zz: 3
+		type: m
+		id: 165
+	}
+	{
+		xx: 6
+		yy: 7
+		zz: 4
+		type: m
+		id: 166
+	}
+	{
+		xx: 6
+		yy: 7
+		zz: 5
+		type: m
+		id: 167
+	}
+	{
+		xx: 6
+		yy: 7
+		zz: 6
+		type: m
+		id: 168
+	}
+	{
+		xx: 6
+		yy: 8
+		type: m
+		id: 169
+	}
+	{
+		xx: 6
+		yy: 8
+		zz: 1
+		type: m
+		id: 170
+	}
+	{
+		xx: 6
+		yy: 8
+		zz: 2
+		type: m
+		id: 171
+	}
+	{
+		xx: 6
+		yy: 8
+		zz: 3
+		type: m
+		id: 172
+	}
+	{
+		xx: 6
+		yy: 8
+		zz: 4
+		type: m
+		id: 173
+	}
+	{
+		xx: 6
+		yy: 8
+		zz: 5
+		type: m
+		id: 174
+	}
+	{
+		xx: 6
+		yy: 8
+		zz: 6
+		type: m
+		id: 175
+	}
+	{
+		xx: 6
+		yy: 9
+		type: m
+		id: 176
+	}
+	{
+		xx: 6
+		yy: 9
+		zz: 1
+		type: m
+		id: 177
+	}
+	{
+		xx: 6
+		yy: 9
+		zz: 2
+		type: m
+		id: 178
+	}
+	{
+		xx: 6
+		yy: 9
+		zz: 3
+		type: m
+		id: 179
+	}
+	{
+		xx: 6
+		yy: 9
+		zz: 4
+		type: m
+		id: 180
+	}
+	{
+		xx: 6
+		yy: 9
+		zz: 5
+		type: m
+		id: 181
+	}
+	{
+		xx: 6
+		yy: 9
+		zz: 6
+		type: m
+		id: 182
+	}
+	{
+		xx: 6
+		yy: 10
+		type: m
+		id: 183
+	}
+	{
+		xx: 6
+		yy: 10
+		zz: 1
+		type: m
+		id: 184
+	}
+	{
+		xx: 6
+		yy: 10
+		zz: 2
+		type: m
+		id: 185
+	}
+	{
+		xx: 6
+		yy: 10
+		zz: 3
+		type: m
+		id: 186
+	}
+	{
+		xx: 6
+		yy: 10
+		zz: 4
+		type: m
+		id: 187
+	}
+	{
+		xx: 6
+		yy: 10
+		zz: 5
+		type: m
+		id: 188
+	}
+	{
+		xx: 6
+		yy: 10
+		zz: 6
+		type: m
+		id: 189
+	}
+]
+cursorModel: {
+	yy: 1
+	zz: 3
+	type: C
+	id: 0
+}
+lastIndex: 190
+commandQueue: {
+	_currentIndex: 0
+	_queue: [
+		{
+			class: com.mygdx.game.command.WalkToMoveCommand
+			subCommandQueue: [
+				{
+					class: com.mygdx.game.command.ChangeDirSC
+					model: {
+						yy: 1
+						zz: 3
+						type: P
+						id: 12
+						dir: DR
+					}
+					dir: DR
+					dir_before: DL
+				}
+				{
+					class: com.mygdx.game.command.MoveSC
+					tileBefore: {
+						yy: 5
+						type: S
+						id: 11
+					}
+					tileToMove: {
+						yy: 4
+						type: S
+						id: 10
+					}
+					model: {
+						yy: 1
+						zz: 3
+						type: P
+						id: 12
+						dir: DR
+					}
+					from: {
+						yy: 5
+						zz: 1
+					}
+					to: {
+						yy: 4
+						zz: 1
+					}
+				}
+				{
+					class: com.mygdx.game.command.ChangeDirSC
+					model: {
+						yy: 1
+						zz: 3
+						type: P
+						id: 12
+						dir: DR
+					}
+					dir: DR
+					dir_before: DR
+				}
+				{
+					class: com.mygdx.game.command.MoveSC
+					tileBefore: {
+						yy: 4
+						type: S
+						id: 10
+					}
+					tileToMove: {
+						yy: 3
+						zz: 1
+						type: S
+						id: 9
+					}
+					model: {
+						yy: 1
+						zz: 3
+						type: P
+						id: 12
+						dir: DR
+					}
+					from: {
+						yy: 4
+						zz: 1
+					}
+					to: {
+						yy: 3
+						zz: 2
+					}
+				}
+				{
+					class: com.mygdx.game.command.ChangeDirSC
+					model: {
+						yy: 1
+						zz: 3
+						type: P
+						id: 12
+						dir: DR
+					}
+					dir: DR
+					dir_before: DR
+				}
+				{
+					class: com.mygdx.game.command.MoveSC
+					tileBefore: {
+						yy: 3
+						zz: 1
+						type: S
+						id: 9
+					}
+					tileToMove: {
+						yy: 2
+						zz: 2
+						type: S
+						id: 7
+					}
+					model: {
+						yy: 1
+						zz: 3
+						type: P
+						id: 12
+						dir: DR
+					}
+					from: {
+						yy: 3
+						zz: 2
+					}
+					to: {
+						yy: 2
+						zz: 3
+					}
+				}
+				{
+					class: com.mygdx.game.command.ChangeDirSC
+					model: {
+						yy: 1
+						zz: 3
+						type: P
+						id: 12
+						dir: DR
+					}
+					dir: DR
+					dir_before: DR
+				}
+				{
+					class: com.mygdx.game.command.MoveSC
+					tileBefore: {
+						yy: 2
+						zz: 2
+						type: S
+						id: 7
+					}
+					tileToMove: {
+						yy: 1
+						zz: 2
+						type: S
+						id: 4
+					}
+					model: {
+						yy: 1
+						zz: 3
+						type: P
+						id: 12
+						dir: DR
+					}
+					from: {
+						yy: 2
+						zz: 3
+					}
+					to: {
+						yy: 1
+						zz: 3
+					}
+				}
+				{
+					class: com.mygdx.game.command.EndSC
+					model: {
+						yy: 1
+						zz: 3
+						type: P
+						id: 12
+						dir: DR
+					}
+				}
+			]
+			_currentIndex: 48
+			initialNode: {
+				model: {
+					yy: 5
+					type: S
+					id: 11
+				}
+				parent: {
+					model: {
+						yy: 4
+						type: S
+						id: 10
+					}
+					parent: {
+						model: {
+							yy: 3
+							zz: 1
+							type: S
+							id: 9
+						}
+						parent: {
+							model: {
+								yy: 2
+								zz: 2
+								type: S
+								id: 7
+							}
+							parent: {
+								model: {
+									yy: 1
+									zz: 2
+									type: S
+									id: 4
+								}
+							}
+						}
+					}
+				}
+			}
+			initialModel: {
+				yy: 5
+				type: S
+				id: 11
+			}
+		}
+	]
+}
+modelMap: [
+	[
+		[
+			{
+				class: com.mygdx.game.model.Model
+				type: S
+				id: 1
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				yy: 1
+				type: S
+				id: 2
+			}
+			{
+				class: com.mygdx.game.model.Model
+				yy: 1
+				zz: 1
+				type: S
+				id: 3
+			}
+			{
+				class: com.mygdx.game.model.Model
+				yy: 1
+				zz: 2
+				type: S
+				id: 4
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				yy: 2
+				type: S
+				id: 5
+			}
+			{
+				class: com.mygdx.game.model.Model
+				yy: 2
+				zz: 1
+				type: S
+				id: 6
+			}
+			{
+				class: com.mygdx.game.model.Model
+				yy: 2
+				zz: 2
+				type: S
+				id: 7
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				yy: 3
+				type: S
+				id: 8
+			}
+			{
+				class: com.mygdx.game.model.Model
+				yy: 3
+				zz: 1
+				type: S
+				id: 9
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				yy: 4
+				type: S
+				id: 10
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				yy: 5
+				type: S
+				id: 11
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				yy: 6
+				type: S
+				id: 13
+			}
+			{
+				class: com.mygdx.game.model.Model
+				yy: 6
+				zz: 1
+				type: S
+				id: 14
+			}
+			{
+				class: com.mygdx.game.model.Model
+				yy: 6
+				zz: 2
+				type: S
+				id: 15
+			}
+			{
+				class: com.mygdx.game.model.Model
+				yy: 6
+				zz: 3
+				type: S
+				id: 16
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				yy: 7
+				type: S
+				id: 17
+			}
+			{
+				class: com.mygdx.game.model.Model
+				yy: 7
+				zz: 1
+				type: S
+				id: 18
+			}
+			{
+				class: com.mygdx.game.model.Model
+				yy: 7
+				zz: 2
+				type: S
+				id: 19
+			}
+		]
+	]
+	[
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 1
+				type: S
+				id: 20
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 1
+				yy: 1
+				type: S
+				id: 21
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 1
+				yy: 1
+				zz: 1
+				type: S
+				id: 22
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 1
+				yy: 1
+				zz: 2
+				type: S
+				id: 23
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 1
+				yy: 2
+				type: S
+				id: 24
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 1
+				yy: 2
+				zz: 1
+				type: S
+				id: 25
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 1
+				yy: 2
+				zz: 2
+				type: S
+				id: 26
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 1
+				yy: 3
+				type: S
+				id: 27
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 1
+				yy: 3
+				zz: 1
+				type: S
+				id: 28
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 1
+				yy: 3
+				zz: 2
+				type: S
+				id: 29
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 1
+				yy: 4
+				type: S
+				id: 30
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 1
+				yy: 5
+				type: S
+				id: 31
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 1
+				yy: 6
+				type: S
+				id: 32
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 1
+				yy: 7
+				type: S
+				id: 33
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 1
+				yy: 7
+				zz: 1
+				type: S
+				id: 34
+			}
+		]
+	]
+	[
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 2
+				type: S
+				id: 35
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 2
+				yy: 1
+				type: S
+				id: 36
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 2
+				yy: 2
+				type: S
+				id: 37
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 2
+				yy: 3
+				type: S
+				id: 38
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 2
+				yy: 4
+				type: S
+				id: 39
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 2
+				yy: 4
+				zz: 1
+				type: S
+				id: 40
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 2
+				yy: 5
+				type: S
+				id: 41
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 2
+				yy: 6
+				type: S
+				id: 42
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 2
+				yy: 7
+				type: S
+				id: 44
+			}
+		]
+	]
+	[
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 3
+				type: S
+				id: 45
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 3
+				yy: 1
+				type: S
+				id: 46
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 3
+				yy: 2
+				type: S
+				id: 48
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 3
+				yy: 3
+				type: S
+				id: 49
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 3
+				yy: 4
+				type: S
+				id: 50
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 3
+				yy: 5
+				type: S
+				id: 51
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 3
+				yy: 6
+				type: S
+				id: 52
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 3
+				yy: 7
+				type: S
+				id: 53
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 3
+				yy: 8
+				type: S
+				id: 54
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 3
+				yy: 9
+				type: S
+				id: 55
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 3
+				yy: 10
+				type: m
+				id: 56
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 3
+				yy: 10
+				zz: 1
+				type: m
+				id: 57
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 3
+				yy: 10
+				zz: 2
+				type: m
+				id: 58
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 3
+				yy: 10
+				zz: 3
+				type: m
+				id: 59
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 3
+				yy: 10
+				zz: 4
+				type: m
+				id: 60
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 3
+				yy: 10
+				zz: 5
+				type: m
+				id: 61
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 3
+				yy: 10
+				zz: 6
+				type: m
+				id: 62
+			}
+		]
+	]
+	[
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 4
+				type: S
+				id: 63
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 4
+				yy: 1
+				type: S
+				id: 64
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 4
+				yy: 2
+				type: S
+				id: 65
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 4
+				yy: 3
+				type: S
+				id: 66
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 4
+				yy: 3
+				zz: 1
+				type: S
+				id: 67
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 4
+				yy: 3
+				zz: 2
+				type: S
+				id: 68
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 4
+				yy: 4
+				type: S
+				id: 69
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 4
+				yy: 4
+				zz: 1
+				type: S
+				id: 70
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 4
+				yy: 5
+				type: S
+				id: 71
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 4
+				yy: 6
+				type: S
+				id: 72
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 4
+				yy: 7
+				type: S
+				id: 73
+			}
+		]
+		[]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 4
+				yy: 9
+				type: S
+				id: 74
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 4
+				yy: 9
+				zz: 1
+				type: S
+				id: 75
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 4
+				yy: 9
+				zz: 2
+				type: S
+				id: 76
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 4
+				yy: 9
+				zz: 3
+				type: S
+				id: 77
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 4
+				yy: 10
+				type: m
+				id: 79
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 4
+				yy: 10
+				zz: 1
+				type: m
+				id: 80
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 4
+				yy: 10
+				zz: 2
+				type: m
+				id: 81
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 4
+				yy: 10
+				zz: 3
+				type: m
+				id: 82
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 4
+				yy: 10
+				zz: 4
+				type: m
+				id: 83
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 4
+				yy: 10
+				zz: 5
+				type: m
+				id: 84
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 4
+				yy: 10
+				zz: 6
+				type: m
+				id: 85
+			}
+		]
+	]
+	[
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				type: S
+				id: 86
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 1
+				type: S
+				id: 87
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 1
+				zz: 1
+				type: S
+				id: 88
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 2
+				type: S
+				id: 89
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 3
+				type: S
+				id: 90
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 3
+				zz: 1
+				type: S
+				id: 91
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 3
+				zz: 2
+				type: S
+				id: 92
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 4
+				type: S
+				id: 93
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 4
+				zz: 1
+				type: S
+				id: 94
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 4
+				zz: 2
+				type: S
+				id: 95
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 4
+				zz: 3
+				type: S
+				id: 96
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 5
+				type: S
+				id: 97
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 5
+				zz: 1
+				type: S
+				id: 98
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 5
+				zz: 2
+				type: S
+				id: 99
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 5
+				zz: 3
+				type: S
+				id: 100
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 6
+				type: S
+				id: 101
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 7
+				type: S
+				id: 102
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 7
+				zz: 1
+				type: S
+				id: 103
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 8
+				type: S
+				id: 104
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 9
+				type: S
+				id: 105
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 10
+				type: m
+				id: 106
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 10
+				zz: 1
+				type: m
+				id: 107
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 10
+				zz: 2
+				type: m
+				id: 108
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 10
+				zz: 3
+				type: m
+				id: 109
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 10
+				zz: 4
+				type: m
+				id: 110
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 10
+				zz: 5
+				type: m
+				id: 111
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 5
+				yy: 10
+				zz: 6
+				type: m
+				id: 112
+			}
+		]
+	]
+	[
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				type: m
+				id: 113
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				zz: 1
+				type: m
+				id: 114
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				zz: 2
+				type: m
+				id: 115
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				zz: 3
+				type: m
+				id: 116
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				zz: 4
+				type: m
+				id: 117
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				zz: 5
+				type: m
+				id: 118
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				zz: 6
+				type: m
+				id: 119
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 1
+				type: m
+				id: 120
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 1
+				zz: 1
+				type: m
+				id: 121
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 1
+				zz: 2
+				type: m
+				id: 122
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 1
+				zz: 3
+				type: m
+				id: 123
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 1
+				zz: 4
+				type: m
+				id: 124
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 1
+				zz: 5
+				type: m
+				id: 125
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 1
+				zz: 6
+				type: m
+				id: 126
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 2
+				type: m
+				id: 127
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 2
+				zz: 1
+				type: m
+				id: 128
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 2
+				zz: 2
+				type: m
+				id: 129
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 2
+				zz: 3
+				type: m
+				id: 130
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 2
+				zz: 4
+				type: m
+				id: 131
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 2
+				zz: 5
+				type: m
+				id: 132
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 2
+				zz: 6
+				type: m
+				id: 133
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 3
+				type: m
+				id: 134
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 3
+				zz: 1
+				type: m
+				id: 135
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 3
+				zz: 2
+				type: m
+				id: 136
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 3
+				zz: 3
+				type: m
+				id: 137
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 3
+				zz: 4
+				type: m
+				id: 138
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 3
+				zz: 5
+				type: m
+				id: 139
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 3
+				zz: 6
+				type: m
+				id: 140
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 4
+				type: m
+				id: 141
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 4
+				zz: 1
+				type: m
+				id: 142
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 4
+				zz: 2
+				type: m
+				id: 143
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 4
+				zz: 3
+				type: m
+				id: 144
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 4
+				zz: 4
+				type: m
+				id: 145
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 4
+				zz: 5
+				type: m
+				id: 146
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 4
+				zz: 6
+				type: m
+				id: 147
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 5
+				type: m
+				id: 148
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 5
+				zz: 1
+				type: m
+				id: 149
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 5
+				zz: 2
+				type: m
+				id: 150
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 5
+				zz: 3
+				type: m
+				id: 151
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 5
+				zz: 4
+				type: m
+				id: 152
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 5
+				zz: 5
+				type: m
+				id: 153
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 5
+				zz: 6
+				type: m
+				id: 154
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 6
+				type: m
+				id: 155
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 6
+				zz: 1
+				type: m
+				id: 156
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 6
+				zz: 2
+				type: m
+				id: 157
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 6
+				zz: 3
+				type: m
+				id: 158
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 6
+				zz: 4
+				type: m
+				id: 159
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 6
+				zz: 5
+				type: m
+				id: 160
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 6
+				zz: 6
+				type: m
+				id: 161
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 7
+				type: m
+				id: 162
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 7
+				zz: 1
+				type: m
+				id: 163
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 7
+				zz: 2
+				type: m
+				id: 164
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 7
+				zz: 3
+				type: m
+				id: 165
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 7
+				zz: 4
+				type: m
+				id: 166
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 7
+				zz: 5
+				type: m
+				id: 167
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 7
+				zz: 6
+				type: m
+				id: 168
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 8
+				type: m
+				id: 169
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 8
+				zz: 1
+				type: m
+				id: 170
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 8
+				zz: 2
+				type: m
+				id: 171
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 8
+				zz: 3
+				type: m
+				id: 172
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 8
+				zz: 4
+				type: m
+				id: 173
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 8
+				zz: 5
+				type: m
+				id: 174
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 8
+				zz: 6
+				type: m
+				id: 175
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 9
+				type: m
+				id: 176
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 9
+				zz: 1
+				type: m
+				id: 177
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 9
+				zz: 2
+				type: m
+				id: 178
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 9
+				zz: 3
+				type: m
+				id: 179
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 9
+				zz: 4
+				type: m
+				id: 180
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 9
+				zz: 5
+				type: m
+				id: 181
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 9
+				zz: 6
+				type: m
+				id: 182
+			}
+		]
+		[
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 10
+				type: m
+				id: 183
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 10
+				zz: 1
+				type: m
+				id: 184
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 10
+				zz: 2
+				type: m
+				id: 185
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 10
+				zz: 3
+				type: m
+				id: 186
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 10
+				zz: 4
+				type: m
+				id: 187
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 10
+				zz: 5
+				type: m
+				id: 188
+			}
+			{
+				class: com.mygdx.game.model.Model
+				xx: 6
+				yy: 10
+				zz: 6
+				type: m
+				id: 189
+			}
+		]
+	]
+]
+player_array: [
+	[]
+	[]
+	[]
+	[]
+	[]
+	[]
+	[]
+]
+players: [
+	{
+		yy: 5
+		zz: 1
+		type: P
+		id: 12
+	}
+	{
+		xx: 2
+		yy: 6
+		zz: 1
+		type: s
+		id: 43
+	}
+	{
+		xx: 3
+		yy: 1
+		zz: 1
+		type: s
+		id: 47
+	}
+	{
+		xx: 4
+		yy: 9
+		zz: 4
+		type: E
+		id: 78
+	}
+]
+currentPlayer: {
+	yy: 1
+	zz: 3
+	type: P
+	id: 12
+	dir: DR
+}
+}
