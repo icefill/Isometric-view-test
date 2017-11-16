@@ -277,7 +277,7 @@ class ViewController constructor() {
             }
             Gdx.input.isKeyJustPressed(Input.Keys.L) -> return Input.Keys.L
             Gdx.input.isKeyJustPressed(Input.Keys.ENTER) -> {
-                showBigMessage("ATTCK")
+                showBigMessage("ATTACK")
                 return Input.Keys.ENTER
             }
         }
@@ -319,7 +319,7 @@ class ViewController constructor() {
         val animReserve=playerView.current_anim
         playerView.current_anim=playerView.anims[command.animName]
         playerView + (
-                delay(playerView?.current_anim?.get(playerView.dir.v ?:0)?.animationDuration ?:0f) WITH
+                delay(playerView?.current_anim?.get(playerView.dir.v ?:0)?.animationDuration ?:0f) then
                 execute{
                     if (command.restore) playerView.current_anim=animReserve
                     subCommandActing=false

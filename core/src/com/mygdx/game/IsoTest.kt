@@ -75,11 +75,13 @@ class IsoTest : ApplicationAdapter() {
         // model controller act
         if (!viewController.subCommandAct()) {
             val key=viewController.processInput()
-            if (key==Input.Keys.S) {saveState()}
-            else if (key== Input.Keys.L) {loadState()}
-            else {
-                modelController.receiveInput(key)
-                viewController.receiveCommand(modelController.act())
+            when (key) {
+                Input.Keys.S -> saveState()
+                Input.Keys.L -> loadState()
+                else -> {
+                    modelController.receiveInput(key)
+                    viewController.receiveCommand(modelController.act())
+                }
             }
         }
         viewController.receiveCursorCommand(modelController.cursorAct())
