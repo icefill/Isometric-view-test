@@ -6,7 +6,7 @@ import java.util.*
 abstract class Command() {
     // model controller execute all subcommand in the command object
     // return command object
-    // view controller receive command and act sequentially coresponding act.
+    // view controller receive command and act sequentially corresponding act.
     val subCommandQueue = LinkedList<SubCommand>()
     var _currentIndex=-1
     var undoing=false
