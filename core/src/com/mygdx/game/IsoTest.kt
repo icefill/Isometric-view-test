@@ -113,14 +113,25 @@ class IsoTest : ApplicationAdapter() {
         fun inform(dxx: Int,dyy: Int,dzz: Int)
     }
     fun saveState() {
-        saveAndLoader.saveGame(modelController)
+        try {
+            saveAndLoader.saveGame(modelController)
+        } catch(e:Exception) {
+            viewController.showBigMessage(("SAVE FAILED !!"))
+        } finally {
+            viewController.showBigMessage("STATE SAVED.")
+        }
         //val fileHandle =Gdx.files.local("save.json")
         //json.toJson(modelController,fileHandle)
     }
 
     fun loadState() {
-        saveAndLoader.loadGame(this)
-        viewController.showBigMessage("LOAD")
+        try {
+            saveAndLoader.loadGame(this)
+        } catch(e:Exception) {
+            viewController.showBigMessage("LOAD FAILED !!")
+        } finally {
+            viewController.showBigMessage("STATE LOADED.")
+        }
         //modelController=json.fromJson(ModelController::class.java, Gdx.files.local("save.json"))
         //viewController.modelController=modelController
         //viewController.constructViews(tile_textures_map)

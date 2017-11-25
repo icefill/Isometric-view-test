@@ -23,7 +23,6 @@ class Model()  {
     internal var command: Command?=null
     internal var subCommand: SubCommand?=null
     internal var dir= Dir.DL
-    //internal var view :Subject?=null
     internal var height=1
 
     constructor(xx: Int, yy: Int, zz: Int, type: Char):this(){

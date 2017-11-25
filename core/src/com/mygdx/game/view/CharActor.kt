@@ -18,7 +18,6 @@ import com.mygdx.game.IsoTest
 import com.mygdx.game.actions.*
 import com.mygdx.game.actions.ExtActions.*
 import com.mygdx.game.anim.JsonAnimLoader
-import ktx.actors.*
 
 open class CharActor : ViewActor ,IsoTest.Subject {
     internal var wave: Texture = Texture(Gdx.files.internal("wave.png"))
@@ -117,44 +116,44 @@ open class CharActor : ViewActor ,IsoTest.Subject {
         setYY()
         d=xx+yy
         val idle= arrayOf(
-                jsonAnimLoader.loadFile("idle_dl.json")
-                ,jsonAnimLoader.loadFile("idle_dr.json")
-                ,jsonAnimLoader.loadFile("idle_ur.json")
-                ,jsonAnimLoader.loadFile("idle_ul.json")
+                jsonAnimLoader.AnimFromJson("idle_dl.json")
+                ,jsonAnimLoader.AnimFromJson("idle_dr.json")
+                ,jsonAnimLoader.AnimFromJson("idle_ur.json")
+                ,jsonAnimLoader.AnimFromJson("idle_ul.json")
         )
         val walk= arrayOf(
-                jsonAnimLoader.loadFile("walk_dl.json")
-                ,jsonAnimLoader.loadFile("walk_dr.json")
-                ,jsonAnimLoader.loadFile("walk_ur.json")
-                ,jsonAnimLoader.loadFile("walk_ul.json")
+                jsonAnimLoader.AnimFromJson("walk_dl.json")
+                ,jsonAnimLoader.AnimFromJson("walk_dr.json")
+                ,jsonAnimLoader.AnimFromJson("walk_ur.json")
+                ,jsonAnimLoader.AnimFromJson("walk_ul.json")
         )
         val attack=arrayOf(
-                jsonAnimLoader.loadFile("slash_dl.json").apply{UNREPEAT=true}
-                ,jsonAnimLoader.loadFile("slash_dr.json").apply{UNREPEAT=true}
-                ,jsonAnimLoader.loadFile("slash_ur.json").apply{UNREPEAT=true}
-                ,jsonAnimLoader.loadFile("slash_ul.json").apply{UNREPEAT=true}
+                jsonAnimLoader.AnimFromJson("slash_dl.json").apply{UNREPEAT=true}
+                ,jsonAnimLoader.AnimFromJson("slash_dr.json").apply{UNREPEAT=true}
+                ,jsonAnimLoader.AnimFromJson("slash_ur.json").apply{UNREPEAT=true}
+                ,jsonAnimLoader.AnimFromJson("slash_ul.json").apply{UNREPEAT=true}
 
         )
         val poke=arrayOf(
-                jsonAnimLoader.loadFile("poke_dl.json")
-                ,jsonAnimLoader.loadFile("poke_dr.json")
-                ,jsonAnimLoader.loadFile("poke_dr.json")
-                ,jsonAnimLoader.loadFile("poke_dl.json")
+                jsonAnimLoader.AnimFromJson("poke_dl.json")
+                ,jsonAnimLoader.AnimFromJson("poke_dr.json")
+                ,jsonAnimLoader.AnimFromJson("poke_dr.json")
+                ,jsonAnimLoader.AnimFromJson("poke_dl.json")
 
         )
 
         val hit=arrayOf(
-                jsonAnimLoader.loadFile("hit_dl2.json").apply{UNREPEAT=true}
-                ,jsonAnimLoader.loadFile("hit_dr2.json").apply{UNREPEAT=true}
-                ,jsonAnimLoader.loadFile("hit_ur2.json").apply{UNREPEAT=true}
-                ,jsonAnimLoader.loadFile("hit_ul2.json").apply{UNREPEAT=true}
+                jsonAnimLoader.AnimFromJson("hit_dl2.json").apply{UNREPEAT=true}
+                ,jsonAnimLoader.AnimFromJson("hit_dr2.json").apply{UNREPEAT=true}
+                ,jsonAnimLoader.AnimFromJson("hit_ur2.json").apply{UNREPEAT=true}
+                ,jsonAnimLoader.AnimFromJson("hit_ul2.json").apply{UNREPEAT=true}
 
         )
         val dead=arrayOf(
-                jsonAnimLoader.loadFile("dead_dl.json").apply{UNREPEAT=true}
-                ,jsonAnimLoader.loadFile("dead_dr.json").apply{UNREPEAT=true}
-                ,jsonAnimLoader.loadFile("dead_dr.json").apply{UNREPEAT=true}
-                ,jsonAnimLoader.loadFile("dead_dl.json").apply{UNREPEAT=true}
+                jsonAnimLoader.AnimFromJson("dead_dl.json").apply{UNREPEAT=true}
+                ,jsonAnimLoader.AnimFromJson("dead_dr.json").apply{UNREPEAT=true}
+                ,jsonAnimLoader.AnimFromJson("dead_dr.json").apply{UNREPEAT=true}
+                ,jsonAnimLoader.AnimFromJson("dead_dl.json").apply{UNREPEAT=true}
 
         )
 
@@ -178,7 +177,7 @@ open class CharActor : ViewActor ,IsoTest.Subject {
 
     }
     fun jumpToAction (xx: Int, yy:Int,zz:Int) : Action {
-        return  execute{this.setAnim("IDLE")} parallelTo
+        return  execute{this.setAnim("IDLE")} WITH
                 jumpTo(ViewController.toX(xx, yy)
                 , ViewController.toY(xx, yy)
                 , zz * 8f,

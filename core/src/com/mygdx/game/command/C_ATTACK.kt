@@ -9,6 +9,7 @@ class C_ATTACK(): Command(){
                if (nearObj==target
                    && (target.pos.zz-nearObj.pos.zz) in -1..1
                        ) {
+                   println ("${target.pos.zz} , ${nearObj.pos.zz} , ${target.pos.zz-nearObj.pos.zz}")
                    addSC(
                            SC_DIR(obj, obj.pos dirTo nearObj.pos)
                            , SC_ANIM(obj, "ATTACK")

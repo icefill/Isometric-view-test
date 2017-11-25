@@ -58,7 +58,7 @@ class ViewController constructor() {
     internal var currentCommand: Command?=null
     internal var stage :Stage=Stage(StretchViewport(320f, 240f))
     internal var ui_stage :Stage=Stage(StretchViewport(320f, 240f))
-    internal var skin=Skin(Gdx.files.internal("uiskin.json"))
+    //internal var skin=Skin(Gdx.files.internal("uiskin.json"))
     internal var status_change_label:Label
     internal var status_change_label2:Label
 
@@ -122,8 +122,8 @@ class ViewController constructor() {
     init {
 
         viewArray= com.badlogic.gdx.utils.Array<ViewActor>()
-        val atlas= TextureAtlas("basic.atlas")
-        val atlas2= TextureAtlas("weapons.atlas")
+       // val atlas= TextureAtlas("basic.atlas")
+       // val atlas2= TextureAtlas("weapons.atlas")
 
         wholeViewUnits= arrayOf(
                 ViewUnit(16f,8f,8f,atlas.findRegion("head"),atlas.findRegion("feet_ur"))

@@ -14,7 +14,6 @@ open class ObjActor : ViewActor ,IsoTest.Subject {
     lateinit internal var bdry_ru: IsoTest.AnchoredTextureRegion
     internal var is_bdry_lu = false
     internal var is_bdry_ru = false
-    internal var wave: Texture = Texture(Gdx.files.internal("wave.png"))
 
         //lateinit internal var model: Model
 
