@@ -23,6 +23,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.badlogic.gdx.utils.ObjectMap
 import com.badlogic.gdx.utils.viewport.StretchViewport
+import com.mygdx.game.Assets
 import com.mygdx.game.anim.ViewUnit
 import com.mygdx.game.IsoTest
 
@@ -30,16 +31,16 @@ import com.mygdx.game.basics.Dir
 import com.mygdx.game.command.*
 import com.mygdx.game.model.ModelController
 import com.mygdx.game.model.Model
+import com.mygdx.game.screen.GameScreen
 import java.util.Comparator
 
-class ViewController constructor() {
+class ViewController constructor(assets: Assets) {
     companion object {
         const internal val TILE_HEIGHT = 16
         const internal val TILE_WIDTH = 32
         const internal val INITIAL_X=160
         const internal val INITIAL_Y=64
         const internal val TILE_Z = 8
-
         // move to viewController
         fun toX(xx: Int, yy: Int): Float {
             return TILE_WIDTH * .5f * (xx - yy) + INITIAL_X
@@ -54,11 +55,13 @@ class ViewController constructor() {
             return Math.round((y- INITIAL_Y)/ TILE_HEIGHT -(x- INITIAL_X)/ TILE_WIDTH)
         }
     }
-
+    var assets=assets
     internal var currentCommand: Command?=null
     internal var stage :Stage=Stage(StretchViewport(320f, 240f))
     internal var ui_stage :Stage=Stage(StretchViewport(320f, 240f))
+    internal var skin=assets.getUISkin()
     //internal var skin=Skin(Gdx.files.internal("uiskin.json"))
+
     internal var status_change_label:Label
     internal var status_change_label2:Label
 
@@ -122,7 +125,10 @@ class ViewController constructor() {
     init {
 
         viewArray= com.badlogic.gdx.utils.Array<ViewActor>()
-       // val atlas= TextureAtlas("basic.atlas")
+        val atlas= assets.get("basic.atlas",TextureAtlas::class.java)
+        val atlas2= assets.get("weapons.atlas",TextureAtlas::class.java)
+
+        // val atlas= TextureAtlas("basic.atlas")
        // val atlas2= TextureAtlas("weapons.atlas")
 
         wholeViewUnits= arrayOf(
@@ -149,7 +155,7 @@ class ViewController constructor() {
         ui_stage.addActor(Indicator)
     }
 
-    fun constructViews(tile_textures_map : ObjectMap<Char, IsoTest.AnchoredTextureRegion>,modelController:ModelController=this.modelController) {
+    fun constructViews(tile_textures_map : ObjectMap<Char, AnchoredTextureRegion>, modelController:ModelController=this.modelController) {
         currentCommand=null
         stage.clear()
         //batch=SpriteBatch()
@@ -230,7 +236,7 @@ class ViewController constructor() {
                         }
 
                 'C' -> ObjActor(x, y, z
-                        , IsoTest.AnchoredTextureRegion(15f, 8f, 0f, 4f
+                        , AnchoredTextureRegion(15f, 8f, 0f, 4f
                         , TextureRegion(Texture(Gdx.files.internal("sword1.png"))))
                 )
                         .apply { compareType = 2

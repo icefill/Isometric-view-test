@@ -9,15 +9,15 @@ import com.mygdx.game.actions.ExtActions
 import com.mygdx.game.IsoTest
 
 open class ObjActor : ViewActor ,IsoTest.Subject {
-    lateinit internal var region: IsoTest.AnchoredTextureRegion
-    lateinit internal var bdry_lu: IsoTest.AnchoredTextureRegion
-    lateinit internal var bdry_ru: IsoTest.AnchoredTextureRegion
+    lateinit internal var region: AnchoredTextureRegion
+    lateinit internal var bdry_lu: AnchoredTextureRegion
+    lateinit internal var bdry_ru: AnchoredTextureRegion
     internal var is_bdry_lu = false
     internal var is_bdry_ru = false
 
         //lateinit internal var model: Model
 
-    constructor (x: Float, y: Float, z: Float, region: IsoTest.AnchoredTextureRegion):super() {
+    constructor (x: Float, y: Float, z: Float, region: AnchoredTextureRegion):super() {
         this.x = x
         this.y = y
         this.z = z
@@ -26,8 +26,8 @@ open class ObjActor : ViewActor ,IsoTest.Subject {
        // this.model = model
         this.region = region
         val atlas = TextureAtlas(Gdx.files.internal("tiles.atlas"))
-        bdry_lu = IsoTest.AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("bdry_lu"))
-        bdry_ru = IsoTest.AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("bdry_ru"))
+        bdry_lu = AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("bdry_lu"))
+        bdry_ru = AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("bdry_ru"))
         //fbo.colorBufferTexture.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest)
         setXX()
         setYY()

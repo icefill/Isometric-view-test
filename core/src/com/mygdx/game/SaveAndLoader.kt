@@ -8,6 +8,7 @@ import com.esotericsoftware.kryo.io.Output
 import com.mygdx.game.model.Model
 import com.mygdx.game.model.ModelController
 import com.mygdx.game.model.ModelNode
+import com.mygdx.game.screen.GameScreen
 import org.objenesis.strategy.StdInstantiatorStrategy
 import java.io.FileInputStream
 import java.io.FileNotFoundException
@@ -38,7 +39,7 @@ class SaveAndLoader {
     }
 
     @Throws(FileNotFoundException::class)
-    fun loadGame(game:IsoTest) {
+    fun loadGame(game: GameScreen) {
         val input = Input(FileInputStream("save.bin"))
         game.modelController=kryo.readObject<ModelController>(input, ModelController::class.java!!)
         input.close()
