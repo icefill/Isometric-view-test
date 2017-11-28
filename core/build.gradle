@@ -23,7 +23,7 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     compile 'com.esotericsoftware:kryo:4.0.0'
     compile group: 'io.github.libktx', name: 'ktx-actors', version: '1.9.6-b7'
 }

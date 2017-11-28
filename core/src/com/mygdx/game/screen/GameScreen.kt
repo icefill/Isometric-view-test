@@ -91,7 +91,7 @@ class GameScreen : Screen {
 
     override fun pause() {
         isPaused=true
-        saveState()
+        //saveState()
     }
 
     override fun resume() {

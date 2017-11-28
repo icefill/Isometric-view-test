@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_iso_test" default="compile.module.iso_test">
+  <dirname property="module.iso_test.basedir" file="${ant.file.module_iso_test}"/>
+  
+  <property name="module.jdk.home.iso_test" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.iso_test" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.iso_test" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.iso_test" value="-encoding UTF-8 -source 1.7 -target 1.7 ${compiler.args}"/>
+  
+  <property name="iso_test.output.dir" value="${module.iso_test.basedir}/classes/production/iso_test"/>
+  <property name="iso_test.testoutput.dir" value="${module.iso_test.basedir}/classes/test/iso_test"/>
+  
+  <path id="iso_test.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="iso_test.module.production.classpath">
+    <path refid="${module.jdk.classpath.iso_test}"/>
+  </path>
+  
+  <path id="iso_test.runtime.production.module.classpath">
+    <pathelement location="${iso_test.output.dir}"/>
+  </path>
+  
+  <path id="iso_test.module.classpath">
+    <path refid="${module.jdk.classpath.iso_test}"/>
+    <pathelement location="${iso_test.output.dir}"/>
+  </path>
+  
+  <path id="iso_test.runtime.module.classpath">
+    <pathelement location="${iso_test.testoutput.dir}"/>
+    <pathelement location="${iso_test.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.iso_test">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.iso_test">
+    <patternset refid="excluded.from.module.iso_test"/>
+  </patternset>
+  
+  
+  <target name="compile.module.iso_test" depends="compile.module.iso_test.production,compile.module.iso_test.tests" description="Compile module iso_test"/>
+  
+  <target name="compile.module.iso_test.production" depends="register.custom.compilers" description="Compile module iso_test; production classes"/>
+  
+  <target name="compile.module.iso_test.tests" depends="register.custom.compilers,compile.module.iso_test.production" description="compile module iso_test; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.iso_test" description="cleanup module">
+    <delete dir="${iso_test.output.dir}"/>
+    <delete dir="${iso_test.testoutput.dir}"/>
+  </target>
+</project>

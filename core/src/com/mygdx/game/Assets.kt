@@ -33,6 +33,7 @@ class Assets : AssetManager(){
         load("mask.png", Texture::class.java)
         load("basic.atlas", TextureAtlas::class.java)
         load("weapons.atlas", TextureAtlas::class.java)
+        /*
         load("idle_dl.json", Anim::class.java)
         load("idle_dr.json", Anim::class.java)
         load("idle_ur.json", Anim::class.java)
@@ -53,7 +54,7 @@ class Assets : AssetManager(){
         load("hit_ul2.json", Anim::class.java)
         load("dead_dl.json", Anim::class.java)
         load("dead_dr.json", Anim::class.java)
-
+*/
     }
 
     fun getUISkin(): Skin? {

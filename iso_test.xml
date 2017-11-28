@@ -35,10 +35,10 @@
     <include name="*.war"/>
     <include name="*.swc"/>
     <include name="*.zip"/>
-    <include name="*.ear"/>
     <include name="*.egg"/>
     <include name="*.ane"/>
     <include name="*.jar"/>
+    <include name="*.ear"/>
   </patternset>
   <patternset id="compiler.resources">
     <exclude name="**/?*.java"/>
@@ -54,7 +54,7 @@
   
   <!-- JDK definitions -->
   
-  <property name="jdk.bin.android_api_21_platform" value="${jdk.home.android_api_21_platform}/../../../Program Files/Java/jdk1.8.0_112/bin"/>
+  <property name="jdk.bin.android_api_21_platform" value="${jdk.home.android_api_21_platform}/../../../../../../Program Files/Java/jdk1.8.0_151/bin"/>
   <path id="jdk.classpath.android_api_21_platform">
     <fileset dir="${jdk.home.android_api_21_platform}">
       <include name="platforms/android-21/android.jar"/>
@@ -99,7 +99,11 @@
   <!-- Project Libraries -->
   
   <path id="library.annotations-13.0.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar"/>
+  </path>
+  
+  <path id="library.asm-5.0.4.classpath">
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm/5.0.4/da08b8cce7bbf903602a25a3a163ae252435795/asm-5.0.4.jar"/>
   </path>
   
   <path id="library.core.core-1.0.classpath">
@@ -111,103 +115,119 @@
   </path>
   
   <path id="library.gdx-1.9.6.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.6/47d1e9b890e364ec28f128e9bb3b9a12a94c164/gdx-1.9.6.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.9.6/47d1e9b890e364ec28f128e9bb3b9a12a94c164/gdx-1.9.6.jar"/>
   </path>
   
   <path id="library.gdx-backend-android-1.9.6.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-android/1.9.6/57c2831c870743712b808384187ea856e541878f/gdx-backend-android-1.9.6.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-android/1.9.6/57c2831c870743712b808384187ea856e541878f/gdx-backend-android-1.9.6.jar"/>
   </path>
   
   <path id="library.gdx-backend-headless-1.9.6.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-headless/1.9.6/d348af6c93c70dbbc23a56746051f0186334406f/gdx-backend-headless-1.9.6.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-headless/1.9.6/d348af6c93c70dbbc23a56746051f0186334406f/gdx-backend-headless-1.9.6.jar"/>
   </path>
   
   <path id="library.gdx-backend-lwjgl-1.9.6.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-lwjgl/1.9.6/ee7c23636ee4a942d329579daecc3ec5e517fe4c/gdx-backend-lwjgl-1.9.6.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-backend-lwjgl/1.9.6/ee7c23636ee4a942d329579daecc3ec5e517fe4c/gdx-backend-lwjgl-1.9.6.jar"/>
   </path>
   
   <path id="library.gdx-box2d-1.9.6.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.9.6/c249ef4060a4fada952f278455c8f7b9cba3c18a/gdx-box2d-1.9.6.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d/1.9.6/c249ef4060a4fada952f278455c8f7b9cba3c18a/gdx-box2d-1.9.6.jar"/>
   </path>
   
   <path id="library.gdx-box2d-platform-1.9.6-natives-desktop.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d-platform/1.9.6/d7b6168f5afd3948fd126c0b248f66c49b73ca35/gdx-box2d-platform-1.9.6-natives-desktop.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-box2d-platform/1.9.6/d7b6168f5afd3948fd126c0b248f66c49b73ca35/gdx-box2d-platform-1.9.6-natives-desktop.jar"/>
   </path>
   
   <path id="library.gdx-freetype-1.9.6.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-freetype/1.9.6/69187cc3c8062f191df435b43671b0e5ffcbf353/gdx-freetype-1.9.6.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-freetype/1.9.6/69187cc3c8062f191df435b43671b0e5ffcbf353/gdx-freetype-1.9.6.jar"/>
   </path>
   
   <path id="library.gdx-freetype-platform-1.9.6-natives-desktop.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-freetype-platform/1.9.6/4c24b0349ba9756a29e84a77dcb2f17e47bbcef3/gdx-freetype-platform-1.9.6-natives-desktop.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-freetype-platform/1.9.6/4c24b0349ba9756a29e84a77dcb2f17e47bbcef3/gdx-freetype-platform-1.9.6-natives-desktop.jar"/>
   </path>
   
   <path id="library.gdx-platform-1.9.6-natives-desktop.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-platform/1.9.6/6f84dd7a18dc68e4ec492dfbb0594f930babcf63/gdx-platform-1.9.6-natives-desktop.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-platform/1.9.6/6f84dd7a18dc68e4ec492dfbb0594f930babcf63/gdx-platform-1.9.6-natives-desktop.jar"/>
   </path>
   
   <path id="library.gdx-tools-1.9.6.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-tools/1.9.6/c666f1f58fcd461a023529991f463f3a9e3c5fec/gdx-tools-1.9.6.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx-tools/1.9.6/c666f1f58fcd461a023529991f463f3a9e3c5fec/gdx-tools-1.9.6.jar"/>
   </path>
   
   <path id="library.jinput-2.0.5.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/net.java.jinput/jinput/2.0.5/39c7796b469a600f72380316f6b1f11db6c2c7c4/jinput-2.0.5.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/net.java.jinput/jinput/2.0.5/39c7796b469a600f72380316f6b1f11db6c2c7c4/jinput-2.0.5.jar"/>
   </path>
   
   <path id="library.jinput-platform-2.0.5-natives-linux.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/net.java.jinput/jinput-platform/2.0.5/7ff832a6eb9ab6a767f1ade2b548092d0fa64795/jinput-platform-2.0.5-natives-linux.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/net.java.jinput/jinput-platform/2.0.5/7ff832a6eb9ab6a767f1ade2b548092d0fa64795/jinput-platform-2.0.5-natives-linux.jar"/>
   </path>
   
   <path id="library.jinput-platform-2.0.5-natives-osx.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/net.java.jinput/jinput-platform/2.0.5/53f9c919f34d2ca9de8c51fc4e1e8282029a9232/jinput-platform-2.0.5-natives-osx.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/net.java.jinput/jinput-platform/2.0.5/53f9c919f34d2ca9de8c51fc4e1e8282029a9232/jinput-platform-2.0.5-natives-osx.jar"/>
   </path>
   
   <path id="library.jinput-platform-2.0.5-natives-windows.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/net.java.jinput/jinput-platform/2.0.5/385ee093e01f587f30ee1c8a2ee7d408fd732e16/jinput-platform-2.0.5-natives-windows.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/net.java.jinput/jinput-platform/2.0.5/385ee093e01f587f30ee1c8a2ee7d408fd732e16/jinput-platform-2.0.5-natives-windows.jar"/>
   </path>
   
   <path id="library.jlayer-1.0.1-gdx.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/com.badlogicgames.jlayer/jlayer/1.0.1-gdx/7cca83cec5c1b2f011362f4d85aabd71a73b049d/jlayer-1.0.1-gdx.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/com.badlogicgames.jlayer/jlayer/1.0.1-gdx/7cca83cec5c1b2f011362f4d85aabd71a73b049d/jlayer-1.0.1-gdx.jar"/>
   </path>
   
   <path id="library.jorbis-0.0.17.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/org.jcraft/jorbis/0.0.17/8872d22b293e8f5d7d56ff92be966e6dc28ebdc6/jorbis-0.0.17.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/org.jcraft/jorbis/0.0.17/8872d22b293e8f5d7d56ff92be966e6dc28ebdc6/jorbis-0.0.17.jar"/>
   </path>
   
   <path id="library.jutils-1.0.0.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/net.java.jutils/jutils/1.0.0/e12fe1fda814bd348c1579329c86943d2cd3c6a6/jutils-1.0.0.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/net.java.jutils/jutils/1.0.0/e12fe1fda814bd348c1579329c86943d2cd3c6a6/jutils-1.0.0.jar"/>
   </path>
   
-  <path id="library.kotlin-stdlib-1.1.2-4.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.1.2-4/3f5f1498bdbb9611cb1413f794b3a3a5a6edef34/kotlin-stdlib-1.1.2-4.jar"/>
+  <path id="library.kotlin-stdlib-1.1.3.classpath">
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.1.3/e51ebc59da5103a2052859e89682c7f9c3456298/kotlin-stdlib-1.1.3.jar"/>
   </path>
   
-  <path id="library.kotlin-stdlib-jre7-1.1.2-4.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jre7/1.1.2-4/e6a7403299b8f3126e3a1576c02e3f07ae5af6fa/kotlin-stdlib-jre7-1.1.2-4.jar"/>
+  <path id="library.kotlin-stdlib-jre7-1.1.3.classpath">
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jre7/1.1.3/ca54720041043baefa0946f7ab2326934cfefd7f/kotlin-stdlib-jre7-1.1.3.jar"/>
   </path>
   
-  <path id="library.kotlin-stdlib-jre8-1.1.2-4.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-jre8/1.1.2-4/40378584918fd0a7f58f423ac9b8cb0ee5ad6ddd/kotlin-stdlib-jre8-1.1.2-4.jar"/>
+  <path id="library.kryo-4.0.0.classpath">
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/com.esotericsoftware/kryo/4.0.0/9f5c64c1315ec79bee0f56bb88e4ae94b65048ce/kryo-4.0.0.jar"/>
+  </path>
+  
+  <path id="library.ktx-actors-1.9.6-b7.classpath">
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/io.github.libktx/ktx-actors/1.9.6-b7/1c76f26bddf172b25aab6e49140f41b93ce358f5/ktx-actors-1.9.6-b7.jar"/>
   </path>
   
   <path id="library.lwjgl-2.9.2.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl/2.9.2/a9d80fe5935c7a9149f6584d9777cfd471f65489/lwjgl-2.9.2.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl/2.9.2/a9d80fe5935c7a9149f6584d9777cfd471f65489/lwjgl-2.9.2.jar"/>
   </path>
   
   <path id="library.lwjgl-platform-2.9.2-natives-linux.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl-platform/2.9.2/d276cdf61fe2b516c7b7f4aa1b8dea91dbdc8d56/lwjgl-platform-2.9.2-natives-linux.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl-platform/2.9.2/d276cdf61fe2b516c7b7f4aa1b8dea91dbdc8d56/lwjgl-platform-2.9.2-natives-linux.jar"/>
   </path>
   
   <path id="library.lwjgl-platform-2.9.2-natives-osx.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl-platform/2.9.2/d55b46b40b40249d627a83a7f7f22649709d70c3/lwjgl-platform-2.9.2-natives-osx.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl-platform/2.9.2/d55b46b40b40249d627a83a7f7f22649709d70c3/lwjgl-platform-2.9.2-natives-osx.jar"/>
   </path>
   
   <path id="library.lwjgl-platform-2.9.2-natives-windows.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl-platform/2.9.2/510c7d317f5e9e700b9cfaac5fd38bdebf0702e0/lwjgl-platform-2.9.2-natives-windows.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl-platform/2.9.2/510c7d317f5e9e700b9cfaac5fd38bdebf0702e0/lwjgl-platform-2.9.2-natives-windows.jar"/>
   </path>
   
   <path id="library.lwjgl_util-2.9.2.classpath">
-    <pathelement location="${basedir}/../../../Users/Byungpil/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl_util/2.9.2/4b9e37300a87799856e0bd15ed81663cdb6b0947/lwjgl_util-2.9.2.jar"/>
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/org.lwjgl.lwjgl/lwjgl_util/2.9.2/4b9e37300a87799856e0bd15ed81663cdb6b0947/lwjgl_util-2.9.2.jar"/>
+  </path>
+  
+  <path id="library.minlog-1.3.0.classpath">
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/com.esotericsoftware/minlog/1.3.0/ff07b5f1b01d2f92bb00a337f9a94873712f0827/minlog-1.3.0.jar"/>
+  </path>
+  
+  <path id="library.objenesis-2.2.classpath">
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/org.objenesis/objenesis/2.2/3fb533efdaa50a768c394aa4624144cf8df17845/objenesis-2.2.jar"/>
+  </path>
+  
+  <path id="library.reflectasm-1.11.3.classpath">
+    <pathelement location="${basedir}/../../../Users/icefill/.gradle/caches/modules-2/files-2.1/com.esotericsoftware/reflectasm/1.11.3/8b102eed2f12412b254946811111ea48bc03a266/reflectasm-1.11.3.jar"/>
   </path>
   <!-- Register Custom Compiler Taskdefs -->
   <property name="javac2.home" value="${idea.home}/lib"/>
@@ -226,7 +246,7 @@
   
   <import file="${basedir}/core/module_core.xml"/>
   
-  <import file="${basedir}/.idea/modules/module_iso_test.xml"/>
+  <import file="${basedir}/module_iso_test.xml"/>
   
   <import file="${basedir}/android/module_android.xml"/>
   
@@ -240,5 +260,31 @@
   
   <target name="build.modules" depends="init, clean, compile.module.core, compile.module.iso_test, compile.module.android, compile.module.desktop" description="build all modules"/>
   
-  <target name="all" depends="build.modules" description="build all"/>
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.android" value="${basedir}/../../git"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.android.apk" value="${artifacts.temp.dir}/android.apk"/>
+  </target>
+  
+  <target name="artifact.android" depends="init.artifacts, compile.module.android" description="Build &#39;android&#39; artifact">
+    <property name="artifact.temp.output.android" value="${artifacts.temp.dir}/android"/>
+    <mkdir dir="${artifact.temp.output.android}"/>
+    <zip destfile="${temp.jar.path.android.apk}">
+      <zipfileset src="C:/files/git/iso_test/android/build/outputs/apk/android-debug.afp.apk!/"/>
+    </zip>
+    <copy file="${temp.jar.path.android.apk}" tofile="${artifact.temp.output.android}/android.apk"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.android" description="Build all artifacts">
+    <mkdir dir="${artifact.output.android}"/>
+    <copy todir="${artifact.output.android}">
+      <fileset dir="${artifact.temp.output.android}"/>
+    </copy>
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
 </project>
