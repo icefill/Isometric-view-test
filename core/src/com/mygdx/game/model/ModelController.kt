@@ -14,7 +14,6 @@ class ModelController () {
     internal var thinking=false
 
     internal var modelMap = Array<Array<Array<Model>>>()
-    //lateinit internal var player_array : Array<Array<Model>>
     internal var players = HashMap<Int,Model>()
         get() = field
     internal var currentPlayer: Model? =null

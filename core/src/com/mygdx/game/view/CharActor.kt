@@ -33,10 +33,15 @@ open class CharActor : ViewActor ,IsoTest.Subject {
     var reserveViewUnit:ViewUnit?=null
 
     companion object{
+        /*
         var mask_shader : ShaderProgram
         internal var fboBatch= SpriteBatch()
         internal var mask: Texture = Texture(Gdx.files.internal("mask.png"))
+        */
+
         val jsonAnimLoader= JsonAnimLoader()
+
+        /*
         val fbo = FrameBuffer(Pixmap.Format.RGBA4444, 40, 60, false)
 
         init {
@@ -100,7 +105,7 @@ open class CharActor : ViewActor ,IsoTest.Subject {
             fboBatch.projectionMatrix=projectionMatrix
 
         }
-
+*/
 
     }
 
@@ -214,7 +219,8 @@ open class CharActor : ViewActor ,IsoTest.Subject {
         d=xx+yy
     }
     override fun draw(batch: Batch, parentAlpha: Float) {
-
+        current_anim?.get(dir.v)?.draw(batch,x,y+z,deltaTime,viewUnits)
+/*
         if (is_on_water) {
             batch.setColor(1f, 1f, 1f, .7f)
             batch.draw(wave, x - 15f, y + z - 12f, 30f, 30f)
@@ -242,7 +248,7 @@ open class CharActor : ViewActor ,IsoTest.Subject {
             batch.draw(fboTexture, x - 20, y + z - 12)
         }
         batch.shader=null
-
+*/
           //  fbo.dispose()
     }
 

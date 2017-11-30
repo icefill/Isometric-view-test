@@ -26,4 +26,6 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     compile 'com.esotericsoftware:kryo:4.0.0'
     compile group: 'io.github.libktx', name: 'ktx-actors', version: '1.9.6-b7'
+    compile group: 'io.github.libktx', name: 'ktx-scene2d', version: '1.9.6-b7'
+
 }

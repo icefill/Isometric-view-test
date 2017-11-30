@@ -57,11 +57,9 @@ class Assets : AssetManager(){
 */
     }
 
-    fun getUISkin(): Skin? {
-        if (skin == null) {
-            skin = Skin(Gdx.files.internal("uiskin.json"), get("uiskin.atlas", TextureAtlas::class.java))
-        }
-        return skin
+    fun getUISkin(): Skin {
+        skin?.let{return it}
+        return Skin(Gdx.files.internal("uiskin.json"), get("uiskin.atlas", TextureAtlas::class.java)).apply{skin=this}
     }
 }
 

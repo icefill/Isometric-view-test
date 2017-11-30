@@ -7,7 +7,7 @@ class JsonAnimLoader {
     val json = Json()
 
     fun AnimFromJson(fileName: String): Anim {
-        return json.fromJson(Anim::class.java, Gdx.files.local(fileName)) ?: Anim()
+        return json.fromJson(Anim::class.java, Gdx.files.internal(fileName)) ?: Anim()
 
     }
 

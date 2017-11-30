@@ -1,5 +1,6 @@
 package com.mygdx.game
 
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.utils.Array
 import com.badlogic.gdx.utils.SnapshotArray
 import com.esotericsoftware.kryo.Kryo
@@ -21,18 +22,19 @@ class SaveAndLoader {
         kryo.register(ModelController::class.java)
         kryo.register(Model::class.java)
         kryo.register(ModelNode::class.java)
+        kryo.register(GdxArray::class.java)
         //kryo.register(Dir::class.java)
 
         //kryo.register(TextureRegion.class,new TextureRegionSerializer());
-        kryo.instantiatorStrategy = StdInstantiatorStrategy()
+        //kryo.instantiatorStrategy = StdInstantiatorStrategy()
+        (kryo.instantiatorStrategy as Kryo.DefaultInstantiatorStrategy).fallbackInstantiatorStrategy = StdInstantiatorStrategy()
 
         //kryo.register(LinkedList<E>.class, new JavaSerializer());
     }
 
     @Throws(FileNotFoundException::class)
     fun saveGame(mc:ModelController): Boolean {
-
-        val output = Output(FileOutputStream("save.bin"))
+        val output = Output(FileOutputStream("${Gdx.files.localStoragePath}save1.sav"))
         kryo.writeObject(output, mc)
         output.close()
         return true
@@ -40,11 +42,17 @@ class SaveAndLoader {
 
     @Throws(FileNotFoundException::class)
     fun loadGame(game: GameScreen) {
-        val input = Input(FileInputStream("save.bin"))
-        game.modelController=kryo.readObject<ModelController>(input, ModelController::class.java!!)
-        input.close()
-        game.viewController.modelController=game.modelController
-        game.viewController.constructViews(game.tile_textures_map)
+        val input:Input
+        if (Gdx.files.isLocalStorageAvailable) {
+            input = Input(FileInputStream("${Gdx.files.localStoragePath}save1.sav"))
+            game.modelController = kryo.readObject<ModelController>(input, ModelController::class.java!!)
+            input.close()
+            game.viewController.modelController = game.modelController
+            game.viewController.constructViews(game.tile_textures_map)
+        }
+        else {
+            game.viewController.showBigMessage("Local storage unavailable!")
+        }
     }
 
 }

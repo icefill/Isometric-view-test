@@ -13,6 +13,7 @@ import com.badlogic.gdx.graphics.glutils.FrameBuffer
 import com.badlogic.gdx.scenes.scene2d.Actor
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.actions.*
+import ktx.scene2d.*
 import com.mygdx.game.actions.*
 import com.mygdx.game.actions.ExtActions.*
 import com.mygdx.game.anim.JsonAnimLoader
@@ -24,6 +25,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.badlogic.gdx.utils.ObjectMap
 import com.badlogic.gdx.utils.viewport.StretchViewport
 import com.mygdx.game.Assets
+import com.mygdx.game.GdxArray
 import com.mygdx.game.anim.ViewUnit
 import com.mygdx.game.IsoTest
 
@@ -33,6 +35,13 @@ import com.mygdx.game.model.ModelController
 import com.mygdx.game.model.Model
 import com.mygdx.game.screen.GameScreen
 import java.util.Comparator
+
+
+import com.badlogic.gdx.InputMultiplexer
+import com.badlogic.gdx.InputProcessor
+import com.badlogic.gdx.scenes.scene2d.InputEvent
+import com.badlogic.gdx.scenes.scene2d.ui.TextButton
+import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 
 class ViewController constructor(assets: Assets) {
     companion object {
@@ -79,9 +88,19 @@ class ViewController constructor(assets: Assets) {
     internal var lastIndex=0
 
     lateinit internal var modelController: ModelController
+
+    lateinit var inputMultiplexer:InputMultiplexer
     val obj_comparator = ObjComparator()
 
-    //internal var mv_pair_array: Array<Pair<Model, ObjActor>> =Array()
+    lateinit var lu_button: TextButton
+    lateinit var ru_button: TextButton
+    lateinit var ld_button: TextButton
+    lateinit var rd_button: TextButton
+    lateinit var o_button: TextButton
+    lateinit var s_button: TextButton
+    lateinit var l_button: TextButton
+
+    var is_button_pressed=true
 
     init {
         fbo.colorBufferTexture.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest)
@@ -124,7 +143,7 @@ class ViewController constructor(assets: Assets) {
     }
     init {
 
-        viewArray= com.badlogic.gdx.utils.Array<ViewActor>()
+        viewArray= GdxArray<ViewActor>()
         val atlas= assets.get("basic.atlas",TextureAtlas::class.java)
         val atlas2= assets.get("weapons.atlas",TextureAtlas::class.java)
 
@@ -153,6 +172,32 @@ class ViewController constructor(assets: Assets) {
         )
         Indicator.indicator=ViewUnit(12f,6f,6f,atlas2.findRegion("inidicator"))
         ui_stage.addActor(Indicator)
+        Scene2DSkin.defaultSkin =assets.getUISkin()
+        val listener=object: ClickListener(){
+            override fun clicked(e: InputEvent, x:Float, y:Float)
+            {is_button_pressed=true
+            }}
+        table {
+           table {
+                textButton("LU").apply{lu_button=this}.pad(10f).addListener(listener)
+               textButton("RU").apply{ru_button=this}.pad(10f).addListener(listener)
+               textButton("SA").apply{s_button=this}.pad(10f).addListener(listener)
+               textButton("O").apply{o_button=this}.pad(10f).addListener(listener)
+               row()
+               textButton("LD").apply{ld_button=this}.pad(10f).addListener(listener)
+               textButton("RD").apply{rd_button=this}.pad(10f).addListener(listener)
+               textButton("LO").apply{l_button=this}.pad(10f).addListener(listener)
+
+           }
+            left().bottom()
+        }.let{ui_stage+it
+            it.setFillParent(true)
+        }
+
+        Gdx.input.setInputProcessor(ui_stage);
+
+
+
     }
 
     fun constructViews(tile_textures_map : ObjectMap<Char, AnchoredTextureRegion>, modelController:ModelController=this.modelController) {
@@ -261,11 +306,12 @@ class ViewController constructor(assets: Assets) {
     }
     fun processInput() :Int{
         when {
-            Gdx.input.isKeyJustPressed(Input.Keys.UP) -> return Input.Keys.UP
-            Gdx.input.isKeyJustPressed(Input.Keys.DOWN) -> return Input.Keys.DOWN
-            Gdx.input.isKeyJustPressed(Input.Keys.LEFT) -> return Input.Keys.LEFT
-            Gdx.input.isKeyJustPressed(Input.Keys.RIGHT) -> return Input.Keys.RIGHT
-            Gdx.input.isKeyJustPressed(Input.Keys.SPACE) -> {
+            Gdx.input.isKeyJustPressed(Input.Keys.UP) or (lu_button.isPressed and  is_button_pressed)->{is_button_pressed=false;return Input.Keys.UP}
+            Gdx.input.isKeyJustPressed(Input.Keys.DOWN) or (rd_button.isPressed and  is_button_pressed)->{is_button_pressed=false;return Input.Keys.DOWN}
+            Gdx.input.isKeyJustPressed(Input.Keys.LEFT) or (ld_button.isPressed and  is_button_pressed)->{is_button_pressed=false;return Input.Keys.LEFT}
+            Gdx.input.isKeyJustPressed(Input.Keys.RIGHT) or (ru_button.isPressed and  is_button_pressed)->{is_button_pressed=false;return Input.Keys.RIGHT}
+            Gdx.input.isKeyJustPressed(Input.Keys.SPACE)  or (o_button.isPressed and  is_button_pressed)-> {
+                is_button_pressed=false
                 showBigMessage("MOVE")
                 return Input.Keys.SPACE
             }
@@ -277,11 +323,13 @@ class ViewController constructor(assets: Assets) {
                 showBigMessage("REDO")
                 return Input.Keys.R
             }
-            Gdx.input.isKeyJustPressed(Input.Keys.S) -> {
+            Gdx.input.isKeyJustPressed(Input.Keys.S) or (s_button.isPressed and  is_button_pressed)->{
                 showBigMessage("SAVE")
                 return Input.Keys.S
             }
-            Gdx.input.isKeyJustPressed(Input.Keys.L) -> return Input.Keys.L
+            Gdx.input.isKeyJustPressed(Input.Keys.L) or (l_button.isPressed and  is_button_pressed)-> {
+                return Input.Keys.L
+            }
             Gdx.input.isKeyJustPressed(Input.Keys.ENTER) -> {
                 showBigMessage("ATTACK")
                 return Input.Keys.ENTER

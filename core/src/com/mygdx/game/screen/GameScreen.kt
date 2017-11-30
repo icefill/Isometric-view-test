@@ -12,6 +12,7 @@ import com.mygdx.game.model.Model
 import com.mygdx.game.model.ModelController
 import com.mygdx.game.view.AnchoredTextureRegion
 import com.mygdx.game.view.ViewController
+import java.io.FileNotFoundException
 
 class GameScreen : Screen {
     lateinit var viewController: ViewController
@@ -69,7 +70,7 @@ class GameScreen : Screen {
     }
 
     override fun render(delta: Float) {
-        // If modelctrler is not acting,
+         // If modelctrler is not acting,
         // set a subcommand if has command
         // else get input
         // model controller act
@@ -91,7 +92,7 @@ class GameScreen : Screen {
 
     override fun pause() {
         isPaused=true
-        //saveState()
+        saveState()
     }
 
     override fun resume() {
@@ -110,7 +111,7 @@ class GameScreen : Screen {
         } catch(e:Exception) {
             viewController.showBigMessage(("SAVE FAILED !!"))
         } finally {
-            viewController.showBigMessage("STATE SAVED.")
+            viewController.showBigMessage("STATE SAVED AT ${Gdx.files.localStoragePath}sav1.sav")
         }
         //val fileHandle =Gdx.files.local("save.json")
         //json.toJson(modelController,fileHandle)
@@ -119,7 +120,7 @@ class GameScreen : Screen {
     fun loadState() {
         try {
             saveAndLoader.loadGame(this)
-        } catch(e:Exception) {
+        } catch(e: FileNotFoundException) {
             viewController.showBigMessage("LOAD FAILED !!")
         } finally {
             viewController.showBigMessage("STATE LOADED.")

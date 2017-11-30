@@ -25,7 +25,7 @@ class LoadingScreen: Screen {
         if (assets.update()) {
             this.game.gameScreen.isPaused=false
             this.game.gameScreen.initialize()
-            //game.gameScreen.loadState()
+            game.gameScreen.loadState()
             this.game.setScreen(game.gameScreen)
 
         }
