@@ -24,6 +24,7 @@ class Model()  {
     internal var subCommand: SubCommand?=null
     internal var dir= Dir.DL
     internal var height=1
+    internal var isAlive=true
 
     constructor(xx: Int, yy: Int, zz: Int, type: Char):this(){
         this.pos.xx = xx
@@ -83,9 +84,11 @@ class Model()  {
     }
     fun kill(mc:ModelController){
         mc.players.remove(this.pos.xx*10+this.pos.yy)
+        isAlive=false
     }
     fun revive(mc:ModelController){
         mc.players.put(this.pos.xx*10+this.pos.yy,this)
+        isAlive=true
     }
 }
 

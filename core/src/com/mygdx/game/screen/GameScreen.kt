@@ -29,6 +29,7 @@ class GameScreen : Screen {
      }
 
     fun initialize(){
+        println("init")
        val atlas = TextureAtlas(Gdx.files.internal("tiles.atlas"))
         val bdry_lu= AnchoredTextureRegion(16f, 24f, 8f, 0f, atlas.findRegion("bdry_lu"))
         val bdry_ru= AnchoredTextureRegion(16f, 24f, 8f, 0f, atlas.findRegion("bdry_ru"))
@@ -57,17 +58,16 @@ class GameScreen : Screen {
         modelController = ModelController(map_data)
         Model.mc=modelController
         viewController = ViewController(assets)
-        viewController.modelController=modelController
-        viewController.constructViews(tile_textures_map)
+        viewController.constructViews(tile_textures_map,modelController)
 
     }
     override fun hide() {
+        println("hide")
        }
 
     override fun show() {
-        if (isPaused)
-            this.game.setScreen(game.loadingScreen)
-    }
+        println("show")
+   }
 
     override fun render(delta: Float) {
          // If modelctrler is not acting,
@@ -79,6 +79,7 @@ class GameScreen : Screen {
             when (key) {
                 Input.Keys.S -> saveState()
                 Input.Keys.L -> loadState()
+                Input.Keys.M -> showMinimap()
                 else -> {
                     modelController.receiveInput(key)
                     viewController.receiveCommand(modelController.act())
@@ -91,12 +92,14 @@ class GameScreen : Screen {
     }
 
     override fun pause() {
-        isPaused=true
+        println("pause")
         saveState()
     }
 
     override fun resume() {
+        println("resume")
             this.game.setScreen(game.loadingScreen)
+
     }
 
     override fun resize(width: Int, height: Int) {
@@ -128,6 +131,15 @@ class GameScreen : Screen {
         //modelController=json.fromJson(ModelController::class.java, Gdx.files.local("save.json"))
         //viewController.modelController=modelController
         //viewController.constructViews(tile_textures_map)
+    }
+    fun showMinimap() {
+        var minimap=""
+        val minimapArray=modelController.getMinimap()
+        for (i in minimapArray.indices) {
+            minimap+=minimapArray[i]
+            if ((i+1) % 10 ==0) minimap+="\n"
+        }
+        viewController.showBigMessage(minimap)
     }
 
 }

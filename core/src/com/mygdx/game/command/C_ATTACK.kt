@@ -7,7 +7,7 @@ class C_ATTACK(): Command(){
         obj.doToNearTops { nearModel ->
             (Model OBJ_ABOVE nearModel)?.let{ nearObj ->
                if (nearObj==target
-                   && (target.pos.zz-nearObj.pos.zz) in -1..1
+                   //&& (target.pos.zz-nearObj.pos.zz) in -1..1
                        ) {
                    println ("${target.pos.zz} , ${nearObj.pos.zz} , ${target.pos.zz-nearObj.pos.zz}")
                    addSC(

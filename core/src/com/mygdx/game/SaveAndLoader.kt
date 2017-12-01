@@ -47,11 +47,12 @@ class SaveAndLoader {
             input = Input(FileInputStream("${Gdx.files.localStoragePath}save1.sav"))
             game.modelController = kryo.readObject<ModelController>(input, ModelController::class.java!!)
             input.close()
-            game.viewController.modelController = game.modelController
-            game.viewController.constructViews(game.tile_textures_map)
+            Model.mc=game.modelController
+            game.viewController.constructViews(game.tile_textures_map,game.modelController)
+
         }
         else {
-            game.viewController.showBigMessage("Local storage unavailable!")
+            game.viewController.showBigMessage("Local storage unavailable! Load failed.")
         }
     }
 

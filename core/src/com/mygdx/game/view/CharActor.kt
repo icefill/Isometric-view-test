@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.glutils.FrameBuffer
 import com.badlogic.gdx.graphics.glutils.ShaderProgram
 import com.badlogic.gdx.math.Matrix4
 import com.badlogic.gdx.scenes.scene2d.Action
+import com.mygdx.game.Assets
 import com.mygdx.game.anim.Anim
 import com.mygdx.game.basics.Dir
 import com.mygdx.game.anim.ViewUnit
@@ -111,7 +112,7 @@ open class CharActor : ViewActor ,IsoTest.Subject {
 
     //lateinit internal var model: Model
 
-    constructor (x: Float, y: Float, z: Float):super() {
+    constructor (x: Float, y: Float, z: Float,assets: Assets):super() {
         this.x = x
         this.y = y
         this.z = z
@@ -121,7 +122,8 @@ open class CharActor : ViewActor ,IsoTest.Subject {
         setYY()
         d=xx+yy
         val idle= arrayOf(
-                jsonAnimLoader.AnimFromJson("idle_dl.json")
+                assets.get("idle_dl.json",Anim::class.java)
+                //jsonAnimLoader.AnimFromJson("idle_dl.json")
                 ,jsonAnimLoader.AnimFromJson("idle_dr.json")
                 ,jsonAnimLoader.AnimFromJson("idle_ur.json")
                 ,jsonAnimLoader.AnimFromJson("idle_ul.json")

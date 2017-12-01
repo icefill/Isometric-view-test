@@ -1,3 +1,4 @@
+/*
 package com.mygdx.game;
 
 
@@ -40,4 +41,4 @@ public class AnimLoader extends AsynchronousAssetLoader<Anim, AnimLoader.AnimPar
 
     static public class AnimParameter extends AssetLoaderParameters<Anim> {
     }
-}
+}*/

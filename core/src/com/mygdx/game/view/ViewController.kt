@@ -89,7 +89,7 @@ class ViewController constructor(assets: Assets) {
 
     lateinit internal var modelController: ModelController
 
-    lateinit var inputMultiplexer:InputMultiplexer
+    //lateinit var inputMultiplexer:InputMultiplexer
     val obj_comparator = ObjComparator()
 
     lateinit var lu_button: TextButton
@@ -195,12 +195,10 @@ class ViewController constructor(assets: Assets) {
         }
 
         Gdx.input.setInputProcessor(ui_stage);
-
-
-
     }
 
-    fun constructViews(tile_textures_map : ObjectMap<Char, AnchoredTextureRegion>, modelController:ModelController=this.modelController) {
+    fun constructViews(tile_textures_map : ObjectMap<Char, AnchoredTextureRegion>, modelController:ModelController) {
+        this.modelController=modelController
         currentCommand=null
         stage.clear()
         //batch=SpriteBatch()
@@ -212,7 +210,7 @@ class ViewController constructor(assets: Assets) {
             val y= toY(model.pos.xx, model.pos.yy)
             val z=(model.pos.zz * TILE_Z).toFloat()
             when (model.type) {
-                'E' -> CharActor(x, y, z)
+                'E' -> CharActor(x, y, z,assets)
                         .apply { compareType = 2
                             viewUnits[0]=wholeViewUnits[0]
                             viewUnits[1]=wholeViewUnits[1]
@@ -223,11 +221,12 @@ class ViewController constructor(assets: Assets) {
                             viewUnits[5]=wholeViewUnits[9]
 
                             dir=model.dir
+                            if(!model.isAlive) {current_anim=anims["DEAD"]}
                             when (modelController.getAdjacentModel(model, Dir.BL)?.type){
                                 'W','w'-> is_on_water=true
                             }
                         }
-                'P' -> CharActor(x, y, z)
+                'P' -> CharActor(x, y, z,assets)
                         .apply { compareType = 2
                             viewUnits[0]=wholeViewUnits[0]
                             viewUnits[1]=wholeViewUnits[1]
@@ -238,11 +237,12 @@ class ViewController constructor(assets: Assets) {
                             viewUnits[5]=wholeViewUnits[10]
 
                             dir=model.dir
+                            if(!model.isAlive) {current_anim=anims["DEAD"]}
                             when (modelController.getAdjacentModel(model, Dir.BL)?.type){
                                 'W','w'-> is_on_water=true
                             }
                         }
-                'F' -> CharActor(x, y, z)
+                'F' -> CharActor(x, y, z,assets)
                         .apply { compareType = 2
                             viewUnits[0]=wholeViewUnits[0]
                             viewUnits[1]=wholeViewUnits[15]
@@ -253,12 +253,13 @@ class ViewController constructor(assets: Assets) {
                             viewUnits[5]=wholeViewUnits[16]
 
                             dir=model.dir
+                            if(!model.isAlive) {current_anim=anims["DEAD"]}
                             when (modelController.getAdjacentModel(model, Dir.BL)?.type){
                                 'W','w'-> is_on_water=true
                             }
                         }
 
-                's' ->CharActor(x, y, z)
+                's' ->CharActor(x, y, z,assets)
                         .apply { compareType = 2
                             viewUnits[0]=wholeViewUnits[11]
                             viewUnits[1]=wholeViewUnits[12]
@@ -275,6 +276,7 @@ class ViewController constructor(assets: Assets) {
                                 3-> Dir.UL
                                 else-> Dir.UR
                             }*/
+                            if(!model.isAlive) {current_anim=anims["DEAD"]}
                             when (modelController.getAdjacentModel(model, Dir.BL)?.type){
                                 'W','w'-> is_on_water=true
                             }
@@ -333,6 +335,9 @@ class ViewController constructor(assets: Assets) {
             Gdx.input.isKeyJustPressed(Input.Keys.ENTER) -> {
                 showBigMessage("ATTACK")
                 return Input.Keys.ENTER
+            }
+            Gdx.input.isKeyJustPressed(Input.Keys.M) -> {
+                return Input.Keys.M
             }
         }
        return -1

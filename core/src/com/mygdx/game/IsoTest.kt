@@ -26,7 +26,7 @@ class IsoTest : Game(){
         gameScreen=GameScreen(this,assets)
 
         Gdx.app.logLevel= Application.LOG_DEBUG
-        this.setScreen(gameScreen)
+        this.setScreen(loadingScreen)
     }
 
 

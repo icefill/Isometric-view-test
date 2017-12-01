@@ -9,6 +9,7 @@ class LoadingScreen: Screen {
 
     var assets:Assets
     var game: IsoTest
+    var onStartup=true
     constructor(game: IsoTest,assets: Assets) {
         this.assets=assets
         this.game=game
@@ -23,10 +24,14 @@ class LoadingScreen: Screen {
 
     override fun render(delta: Float) {
         if (assets.update()) {
-            this.game.gameScreen.isPaused=false
             this.game.gameScreen.initialize()
-            game.gameScreen.loadState()
-            this.game.setScreen(game.gameScreen)
+             this.game.setScreen(game.gameScreen)
+            if (onStartup) {
+                onStartup=false
+            }
+            else {
+                this.game.gameScreen.loadState()
+            }
 
         }
            }

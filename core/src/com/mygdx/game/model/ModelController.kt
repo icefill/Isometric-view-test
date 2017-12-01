@@ -7,18 +7,22 @@ import com.mygdx.game.command.*
 import com.mygdx.game.command.CommandQueue
 
 class ModelController () {
-    internal var modelArray= Array<Model>()
-    internal var cursorModel= Model(0, 0, 1, 'C')
+    lateinit internal var modelArray:Array<Model>
+    lateinit internal var cursorModel:Model
     internal var lastIndex=0
-    internal var commandQueue= CommandQueue()
+    lateinit internal var commandQueue:CommandQueue
     internal var thinking=false
 
     internal var modelMap = Array<Array<Array<Model>>>()
     internal var players = HashMap<Int,Model>()
         get() = field
     internal var currentPlayer: Model? =null
+    internal var minimapArray=CharArray(70)
 
     constructor (map_info :String):this(){
+        modelArray= Array<Model>()
+        cursorModel= Model(0, 0, 1, 'C')
+        commandQueue= CommandQueue()
         addModel(cursorModel)
         var lines = map_info
                 .trimStart().trimEnd()
@@ -150,7 +154,7 @@ class ModelController () {
                     }
                     else {
                         currentPlayer?.let {
-                            println("space received")
+                            println("Space received ${cursorModel.pos}")
                             Thread {
                                 thinking=true
                                 val command=C_WALK_TO(it, cursorModel.pos.xx, cursorModel.pos.yy, this).apply {
@@ -165,7 +169,7 @@ class ModelController () {
                 }
                 Input.Keys.ENTER -> {
                     currentPlayer?.let{
-                        println("rt received")
+                        println("rt received ${cursorModel.pos}")
                         it.command= C_ATTACK(it,getObj(cursorModel),this)
                         it.command?.let{
                             it.undoing=false
@@ -189,5 +193,13 @@ class ModelController () {
                 }
             }
     }
-
+    fun getMinimap() :CharArray{
+        for (i in minimapArray.indices) {
+            minimapArray[i]='O'
+        }
+        for (temp in players) {
+            minimapArray[temp.key]=temp.value.type
+        }
+        return minimapArray
+    }
 }

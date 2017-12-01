@@ -12,9 +12,10 @@ import com.badlogic.gdx.utils.Json
 import com.mygdx.game.anim.Anim
 import com.badlogic.gdx.graphics.Pixmap
 import com.badlogic.gdx.files.FileHandle
-import com.badlogic.gdx.assets.AssetDescriptor
 import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver
 import com.badlogic.gdx.net.HttpRequestBuilder.json
+import com.badlogic.gdx.assets.AssetDescriptor
+import com.badlogic.gdx.assets.loaders.resolvers.LocalFileHandleResolver
 
 
 typealias GdxArray<T> = com.badlogic.gdx.utils.Array<T>
@@ -23,8 +24,7 @@ class Assets : AssetManager(){
     var skin:Skin?=null
 
     init{
-        val resolver= InternalFileHandleResolver()
-        this.setLoader(Anim::class.java,AnimLoader(resolver))
+        setLoader(Anim::class.java,AnimLoader(InternalFileHandleResolver()))
     }
 
     fun QueueingAssets() {
@@ -33,8 +33,8 @@ class Assets : AssetManager(){
         load("mask.png", Texture::class.java)
         load("basic.atlas", TextureAtlas::class.java)
         load("weapons.atlas", TextureAtlas::class.java)
-        /*
         load("idle_dl.json", Anim::class.java)
+        /*
         load("idle_dr.json", Anim::class.java)
         load("idle_ur.json", Anim::class.java)
         load("idle_ul.json", Anim::class.java)
@@ -63,30 +63,31 @@ class Assets : AssetManager(){
     }
 }
 
-/*
+
 class AnimLoader(resolver: FileHandleResolver) : AsynchronousAssetLoader<Anim, AnimLoader.Companion.AnimParameter>(resolver) {
 
     internal var anim: Anim? = null
 
     companion object {
-        val json=Json()
-        class AnimParameter : AssetLoaderParameters<Anim>()
+        @JvmField var json=Json()
+        object AnimParameter : AssetLoaderParameters<Anim>()
     }
-    override fun loadAsync(manager: AssetManager, fileName: String, file: FileHandle, parameter: AnimParameter) {
+    override fun loadAsync(manager: AssetManager, fileName: String, file: FileHandle, parameter: AnimParameter?) {
         anim = null
         anim= json.fromJson(Anim::class.java,Gdx.files.local(fileName))
     }
 
-    override fun loadSync(manager: AssetManager, fileName: String, file: FileHandle, parameter: AnimParameter): Anim? {
-        val anim = this.anim
+    override fun loadSync(manager: AssetManager, fileName: String, file: FileHandle, parameter: AnimParameter?): Anim? {
+        var anim = this.anim
         this.anim = null
         return anim
     }
 
-    override fun getDependencies(fileName: String, file: FileHandle, parameter: AnimParameter): GdxArray<AssetDescriptor<*>>? {
-        return null
+    override fun getDependencies(fileName: String, file: FileHandle, parameter: AnimParameter?): GdxArray<AssetDescriptor<*>?>? {
+        return  null
+
     }
 
 
 }
-*/
+
