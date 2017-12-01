@@ -13,8 +13,8 @@ public class MoveTo extends MoveToAction {
 	protected float endY;
 
 	protected void begin(){
-		startX=((com.mygdx.game.view.ViewActor)target).getX();
-		startY=((com.mygdx.game.view.ViewActor)target).getY();
+		startX= target.getX();
+		startY= target.getY();
 		startZ=((com.mygdx.game.view.ViewActor)target).getZ();
 		super.begin();
 	}

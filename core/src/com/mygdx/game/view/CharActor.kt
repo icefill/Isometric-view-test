@@ -1,15 +1,8 @@
 package com.mygdx.game.view
 
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.graphics.GL20
-import com.badlogic.gdx.graphics.Pixmap
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Batch
-import com.badlogic.gdx.graphics.g2d.SpriteBatch
-import com.badlogic.gdx.graphics.g2d.TextureRegion
-import com.badlogic.gdx.graphics.glutils.FrameBuffer
-import com.badlogic.gdx.graphics.glutils.ShaderProgram
-import com.badlogic.gdx.math.Matrix4
 import com.badlogic.gdx.scenes.scene2d.Action
 import com.mygdx.game.Assets
 import com.mygdx.game.anim.Anim
@@ -21,14 +14,14 @@ import com.mygdx.game.actions.ExtActions.*
 import com.mygdx.game.anim.JsonAnimLoader
 
 open class CharActor : ViewActor ,IsoTest.Subject {
-    internal var wave: Texture = Texture(Gdx.files.internal("wave.png"))
+    lateinit internal var wave: Texture
     internal var is_on_water = false
     internal var offsetX=0
     internal var offsetY=4
     internal var actions= ExtActions()
 
     lateinit internal var anims:MutableMap<String,Array<Anim>>
-    internal var current_anim:Array<Anim>?=null
+    internal var currentAnim:Array<Anim>?=null
     lateinit internal var viewUnits:Array<ViewUnit?>
     internal var dir= Dir.DL
     var reserveViewUnit:ViewUnit?=null
@@ -117,55 +110,54 @@ open class CharActor : ViewActor ,IsoTest.Subject {
         this.y = y
         this.z = z
 
+        wave= assets.get("wave.png",Texture::class.java)
+
         viewUnits= arrayOfNulls<ViewUnit?>(15)
         setXX()
         setYY()
         d=xx+yy
         val idle= arrayOf(
                 assets.get("idle_dl.json",Anim::class.java)
-                //jsonAnimLoader.AnimFromJson("idle_dl.json")
-                ,jsonAnimLoader.AnimFromJson("idle_dr.json")
-                ,jsonAnimLoader.AnimFromJson("idle_ur.json")
-                ,jsonAnimLoader.AnimFromJson("idle_ul.json")
+                ,assets.get("idle_dr.json",Anim::class.java)
+                ,assets.get("idle_ur.json",Anim::class.java)
+                ,assets.get("idle_ul.json",Anim::class.java)
         )
         val walk= arrayOf(
-                jsonAnimLoader.AnimFromJson("walk_dl.json")
-                ,jsonAnimLoader.AnimFromJson("walk_dr.json")
-                ,jsonAnimLoader.AnimFromJson("walk_ur.json")
-                ,jsonAnimLoader.AnimFromJson("walk_ul.json")
+                assets.get("walk_dl.json",Anim::class.java)
+                ,assets.get("walk_dr.json",Anim::class.java)
+                ,assets.get("walk_ur.json",Anim::class.java)
+                ,assets.get("walk_ul.json",Anim::class.java)
         )
         val attack=arrayOf(
-                jsonAnimLoader.AnimFromJson("slash_dl.json").apply{UNREPEAT=true}
-                ,jsonAnimLoader.AnimFromJson("slash_dr.json").apply{UNREPEAT=true}
-                ,jsonAnimLoader.AnimFromJson("slash_ur.json").apply{UNREPEAT=true}
-                ,jsonAnimLoader.AnimFromJson("slash_ul.json").apply{UNREPEAT=true}
-
+                assets.get("slash_dl.json",Anim::class.java).apply{UNREPEAT=true}
+                ,assets.get("slash_dr.json",Anim::class.java).apply{UNREPEAT=true}
+                ,assets.get("slash_ur.json",Anim::class.java).apply{UNREPEAT=true}
+                ,assets.get("slash_ul.json",Anim::class.java).apply{UNREPEAT=true}
         )
-        val poke=arrayOf(
-                jsonAnimLoader.AnimFromJson("poke_dl.json")
-                ,jsonAnimLoader.AnimFromJson("poke_dr.json")
-                ,jsonAnimLoader.AnimFromJson("poke_dr.json")
-                ,jsonAnimLoader.AnimFromJson("poke_dl.json")
 
+        val poke=arrayOf(
+                assets.get("poke_dl.json",Anim::class.java)
+                ,assets.get("poke_dr.json",Anim::class.java)
+                ,assets.get("poke_dr.json",Anim::class.java)
+                ,assets.get("poke_dl.json",Anim::class.java)
         )
 
         val hit=arrayOf(
-                jsonAnimLoader.AnimFromJson("hit_dl2.json").apply{UNREPEAT=true}
-                ,jsonAnimLoader.AnimFromJson("hit_dr2.json").apply{UNREPEAT=true}
-                ,jsonAnimLoader.AnimFromJson("hit_ur2.json").apply{UNREPEAT=true}
-                ,jsonAnimLoader.AnimFromJson("hit_ul2.json").apply{UNREPEAT=true}
-
+                assets.get("hit_dl2.json",Anim::class.java).apply{UNREPEAT=true}
+                ,assets.get("hit_dr2.json",Anim::class.java).apply{UNREPEAT=true}
+                ,assets.get("hit_ur2.json",Anim::class.java).apply{UNREPEAT=true}
+                ,assets.get("hit_ul2.json",Anim::class.java).apply{UNREPEAT=true}
         )
         val dead=arrayOf(
-                jsonAnimLoader.AnimFromJson("dead_dl.json").apply{UNREPEAT=true}
-                ,jsonAnimLoader.AnimFromJson("dead_dr.json").apply{UNREPEAT=true}
-                ,jsonAnimLoader.AnimFromJson("dead_dr.json").apply{UNREPEAT=true}
-                ,jsonAnimLoader.AnimFromJson("dead_dl.json").apply{UNREPEAT=true}
+                assets.get("dead_dl.json",Anim::class.java).apply{UNREPEAT=true}
+                ,assets.get("dead_dr.json",Anim::class.java).apply{UNREPEAT=true}
+                ,assets.get("dead_dr.json",Anim::class.java).apply{UNREPEAT=true}
+                ,assets.get("dead_dl.json",Anim::class.java).apply{UNREPEAT=true}
 
         )
 
         anims=mutableMapOf("WALK" to walk, "IDLE" to idle,"ATTACK" to attack, "HIT" to hit, "DEAD" to dead)
-        current_anim=anims["IDLE"]
+        currentAnim =anims["IDLE"]
     }
     override fun setXX() {
         xx = ViewController.toXX(x+offsetX, y-offsetY )
@@ -175,7 +167,7 @@ open class CharActor : ViewActor ,IsoTest.Subject {
         yy = ViewController.toYY(x+offsetX , y-offsetY)
     }
     fun setAnim(animName: String) {
-        this.current_anim=anims[animName]?:current_anim
+        this.currentAnim =anims[animName]?: currentAnim
     }
     fun walkToAction (xx: Int, yy:Int,zz:Int) : Action {
         return execute{this.setAnim("WALK")} WITH
@@ -221,7 +213,7 @@ open class CharActor : ViewActor ,IsoTest.Subject {
         d=xx+yy
     }
     override fun draw(batch: Batch, parentAlpha: Float) {
-        current_anim?.get(dir.v)?.draw(batch,x,y+z,deltaTime,viewUnits)
+        currentAnim?.get(dir.v)?.draw(batch,x,y+z,deltaTime,viewUnits)
 /*
         if (is_on_water) {
             batch.setColor(1f, 1f, 1f, .7f)
@@ -235,7 +227,7 @@ open class CharActor : ViewActor ,IsoTest.Subject {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
         fboBatch.begin()
-            current_anim?.get(dir.v)?.draw(fboBatch,20f,12f,deltaTime,viewUnits)
+            currentAnim?.get(dir.v)?.draw(fboBatch,20f,12f,deltaTime,viewUnits)
             fboBatch.end()
             fbo.end()
 

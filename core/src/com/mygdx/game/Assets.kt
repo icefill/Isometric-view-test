@@ -10,31 +10,32 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.badlogic.gdx.utils.Json
 import com.mygdx.game.anim.Anim
-import com.badlogic.gdx.graphics.Pixmap
 import com.badlogic.gdx.files.FileHandle
-import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver
-import com.badlogic.gdx.net.HttpRequestBuilder.json
 import com.badlogic.gdx.assets.AssetDescriptor
-import com.badlogic.gdx.assets.loaders.resolvers.LocalFileHandleResolver
+import com.badlogic.gdx.utils.ObjectMap
+import com.mygdx.game.view.AnchoredTextureRegion
 
 
 typealias GdxArray<T> = com.badlogic.gdx.utils.Array<T>
 
 class Assets : AssetManager(){
     var skin:Skin?=null
+    var tile_textures_map : ObjectMap<Char, AnchoredTextureRegion>?=null
 
     init{
-        setLoader(Anim::class.java,AnimLoader(InternalFileHandleResolver()))
+        setLoader(Anim::class.java,AnimLoader(this.fileHandleResolver))
     }
 
     fun QueueingAssets() {
         load("uiskin.atlas",TextureAtlas::class.java)
+        load("tiles.atlas", TextureAtlas::class.java)
+
+
         load("wave.png", Texture::class.java)
         load("mask.png", Texture::class.java)
         load("basic.atlas", TextureAtlas::class.java)
         load("weapons.atlas", TextureAtlas::class.java)
         load("idle_dl.json", Anim::class.java)
-        /*
         load("idle_dr.json", Anim::class.java)
         load("idle_ur.json", Anim::class.java)
         load("idle_ul.json", Anim::class.java)
@@ -54,12 +55,30 @@ class Assets : AssetManager(){
         load("hit_ul2.json", Anim::class.java)
         load("dead_dl.json", Anim::class.java)
         load("dead_dr.json", Anim::class.java)
-*/
+        load("wave.png",Texture::class.java)
     }
 
     fun getUISkin(): Skin {
         skin?.let{return it}
         return Skin(Gdx.files.internal("uiskin.json"), get("uiskin.atlas", TextureAtlas::class.java)).apply{skin=this}
+    }
+    fun getTileTextureMap():ObjectMap<Char, AnchoredTextureRegion> {
+        tile_textures_map?.let{return it}
+        return ObjectMap<Char, AnchoredTextureRegion>().apply{
+            val atlas=get("tiles.atlas",TextureAtlas::class.java)
+            put('S', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("stone")))
+            put('D', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("dirt")))
+            put('I', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("ice")))
+            put('L', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("lava_d")))
+            put('l', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("lava_s")))
+            put('W', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("water_d")))
+            put('w', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("water_s")))
+            put('1', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("wall_ru")))
+            put('2', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("wall_lu")))
+            put('m', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("wall_m")))
+
+        }
+
     }
 }
 
@@ -74,7 +93,7 @@ class AnimLoader(resolver: FileHandleResolver) : AsynchronousAssetLoader<Anim, A
     }
     override fun loadAsync(manager: AssetManager, fileName: String, file: FileHandle, parameter: AnimParameter?) {
         anim = null
-        anim= json.fromJson(Anim::class.java,Gdx.files.local(fileName))
+        anim= json.fromJson(Anim::class.java,Gdx.files.internal(fileName))
     }
 
     override fun loadSync(manager: AssetManager, fileName: String, file: FileHandle, parameter: AnimParameter?): Anim? {
@@ -90,4 +109,5 @@ class AnimLoader(resolver: FileHandleResolver) : AsynchronousAssetLoader<Anim, A
 
 
 }
+
 

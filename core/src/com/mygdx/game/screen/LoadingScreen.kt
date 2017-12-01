@@ -30,7 +30,7 @@ class LoadingScreen: Screen {
                 onStartup=false
             }
             else {
-                this.game.gameScreen.loadState()
+                this.game.gameScreen.loadState("temp.sav")
             }
 
         }

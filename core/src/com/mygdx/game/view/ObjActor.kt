@@ -17,6 +17,7 @@ open class ObjActor : ViewActor ,IsoTest.Subject {
 
         //lateinit internal var model: Model
 
+
     constructor (x: Float, y: Float, z: Float, region: AnchoredTextureRegion):super() {
         this.x = x
         this.y = y

@@ -23,32 +23,27 @@ class SaveAndLoader {
         kryo.register(Model::class.java)
         kryo.register(ModelNode::class.java)
         kryo.register(GdxArray::class.java)
-        //kryo.register(Dir::class.java)
+          (kryo.instantiatorStrategy as Kryo.DefaultInstantiatorStrategy).fallbackInstantiatorStrategy = StdInstantiatorStrategy()
 
-        //kryo.register(TextureRegion.class,new TextureRegionSerializer());
-        //kryo.instantiatorStrategy = StdInstantiatorStrategy()
-        (kryo.instantiatorStrategy as Kryo.DefaultInstantiatorStrategy).fallbackInstantiatorStrategy = StdInstantiatorStrategy()
-
-        //kryo.register(LinkedList<E>.class, new JavaSerializer());
     }
 
     @Throws(FileNotFoundException::class)
-    fun saveGame(mc:ModelController): Boolean {
-        val output = Output(FileOutputStream("${Gdx.files.localStoragePath}save1.sav"))
+    fun saveGame(mc:ModelController,name:String): Boolean {
+        val output = Output(FileOutputStream("${Gdx.files.localStoragePath}$name"))
         kryo.writeObject(output, mc)
         output.close()
         return true
     }
 
     @Throws(FileNotFoundException::class)
-    fun loadGame(game: GameScreen) {
+    fun loadGame(game: GameScreen,name:String) {
         val input:Input
         if (Gdx.files.isLocalStorageAvailable) {
-            input = Input(FileInputStream("${Gdx.files.localStoragePath}save1.sav"))
+            input = Input(FileInputStream("${Gdx.files.localStoragePath}$name"))
             game.modelController = kryo.readObject<ModelController>(input, ModelController::class.java!!)
             input.close()
             Model.mc=game.modelController
-            game.viewController.constructViews(game.tile_textures_map,game.modelController)
+            game.viewController.constructViews(game.modelController)
 
         }
         else {

@@ -16,29 +16,21 @@ import com.badlogic.gdx.scenes.scene2d.actions.*
 import ktx.scene2d.*
 import com.mygdx.game.actions.*
 import com.mygdx.game.actions.ExtActions.*
-import com.mygdx.game.anim.JsonAnimLoader
 import ktx.actors.*
 
-import com.badlogic.gdx.scenes.scene2d.actions.Actions.*
 import com.badlogic.gdx.scenes.scene2d.ui.Label
-import com.badlogic.gdx.scenes.scene2d.ui.Skin
-import com.badlogic.gdx.utils.ObjectMap
 import com.badlogic.gdx.utils.viewport.StretchViewport
 import com.mygdx.game.Assets
 import com.mygdx.game.GdxArray
 import com.mygdx.game.anim.ViewUnit
-import com.mygdx.game.IsoTest
 
 import com.mygdx.game.basics.Dir
 import com.mygdx.game.command.*
 import com.mygdx.game.model.ModelController
 import com.mygdx.game.model.Model
-import com.mygdx.game.screen.GameScreen
 import java.util.Comparator
 
 
-import com.badlogic.gdx.InputMultiplexer
-import com.badlogic.gdx.InputProcessor
 import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
@@ -147,9 +139,6 @@ class ViewController constructor(assets: Assets) {
         val atlas= assets.get("basic.atlas",TextureAtlas::class.java)
         val atlas2= assets.get("weapons.atlas",TextureAtlas::class.java)
 
-        // val atlas= TextureAtlas("basic.atlas")
-       // val atlas2= TextureAtlas("weapons.atlas")
-
         wholeViewUnits= arrayOf(
                 ViewUnit(16f,8f,8f,atlas.findRegion("head"),atlas.findRegion("feet_ur"))
                 , ViewUnit(16f,8f,8f,atlas2.findRegion("armor1"),atlas2.findRegion("armor1"))
@@ -177,9 +166,10 @@ class ViewController constructor(assets: Assets) {
             override fun clicked(e: InputEvent, x:Float, y:Float)
             {is_button_pressed=true
             }}
+
         table {
            table {
-                textButton("LU").apply{lu_button=this}.pad(10f).addListener(listener)
+               textButton("LU").apply{lu_button=this}.pad(10f).addListener(listener)
                textButton("RU").apply{ru_button=this}.pad(10f).addListener(listener)
                textButton("SA").apply{s_button=this}.pad(10f).addListener(listener)
                textButton("O").apply{o_button=this}.pad(10f).addListener(listener)
@@ -197,7 +187,7 @@ class ViewController constructor(assets: Assets) {
         Gdx.input.setInputProcessor(ui_stage);
     }
 
-    fun constructViews(tile_textures_map : ObjectMap<Char, AnchoredTextureRegion>, modelController:ModelController) {
+    fun constructViews(modelController:ModelController) {
         this.modelController=modelController
         currentCommand=null
         stage.clear()
@@ -221,7 +211,8 @@ class ViewController constructor(assets: Assets) {
                             viewUnits[5]=wholeViewUnits[9]
 
                             dir=model.dir
-                            if(!model.isAlive) {current_anim=anims["DEAD"]}
+                            if(!model.isAlive) {
+                                currentAnim =anims["DEAD"]}
                             when (modelController.getAdjacentModel(model, Dir.BL)?.type){
                                 'W','w'-> is_on_water=true
                             }
@@ -237,7 +228,8 @@ class ViewController constructor(assets: Assets) {
                             viewUnits[5]=wholeViewUnits[10]
 
                             dir=model.dir
-                            if(!model.isAlive) {current_anim=anims["DEAD"]}
+                            if(!model.isAlive) {
+                                currentAnim =anims["DEAD"]}
                             when (modelController.getAdjacentModel(model, Dir.BL)?.type){
                                 'W','w'-> is_on_water=true
                             }
@@ -253,7 +245,8 @@ class ViewController constructor(assets: Assets) {
                             viewUnits[5]=wholeViewUnits[16]
 
                             dir=model.dir
-                            if(!model.isAlive) {current_anim=anims["DEAD"]}
+                            if(!model.isAlive) {
+                                currentAnim =anims["DEAD"]}
                             when (modelController.getAdjacentModel(model, Dir.BL)?.type){
                                 'W','w'-> is_on_water=true
                             }
@@ -276,7 +269,8 @@ class ViewController constructor(assets: Assets) {
                                 3-> Dir.UL
                                 else-> Dir.UR
                             }*/
-                            if(!model.isAlive) {current_anim=anims["DEAD"]}
+                            if(!model.isAlive) {
+                                currentAnim =anims["DEAD"]}
                             when (modelController.getAdjacentModel(model, Dir.BL)?.type){
                                 'W','w'-> is_on_water=true
                             }
@@ -290,7 +284,7 @@ class ViewController constructor(assets: Assets) {
                                 cursorActor=this
                         }
 
-                else -> ObjActor(x, y, z, tile_textures_map[model.type])
+                else -> ObjActor(x, y, z, assets.getTileTextureMap()[model.type])
                         ?.apply {
                             compareType = 1
                             if (modelController.getAdjacentModel(model, Dir.UL) == null) is_bdry_lu = true
@@ -375,12 +369,12 @@ class ViewController constructor(assets: Assets) {
         subCommandActing=true
         val playerView = viewArray[command.model.id] as CharActor
         playerView.deltaTime=0f
-        val animReserve=playerView.current_anim
-        playerView.current_anim=playerView.anims[command.animName]
+        val animReserve=playerView.currentAnim
+        playerView.currentAnim =playerView.anims[command.animName]
         playerView + (
-                delay(playerView?.current_anim?.get(playerView.dir.v ?:0)?.animationDuration ?:0f) then
+                delay(playerView?.currentAnim?.get(playerView.dir.v ?:0)?.animationDuration ?:0f) then
                 execute{
-                    if (command.restore) playerView.current_anim=animReserve
+                    if (command.restore) playerView.currentAnim =animReserve
                     subCommandActing=false
                 }
         )

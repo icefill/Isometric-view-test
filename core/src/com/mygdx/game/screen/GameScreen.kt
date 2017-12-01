@@ -30,21 +30,6 @@ class GameScreen : Screen {
 
     fun initialize(){
         println("init")
-       val atlas = TextureAtlas(Gdx.files.internal("tiles.atlas"))
-        val bdry_lu= AnchoredTextureRegion(16f, 24f, 8f, 0f, atlas.findRegion("bdry_lu"))
-        val bdry_ru= AnchoredTextureRegion(16f, 24f, 8f, 0f, atlas.findRegion("bdry_ru"))
-
-        tile_textures_map.put('S', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("stone")))
-        tile_textures_map.put('D', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("dirt")))
-        tile_textures_map.put('I', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("ice")))
-        tile_textures_map.put('L', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("lava_d")))
-        tile_textures_map.put('l', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("lava_s")))
-        tile_textures_map.put('W', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("water_d")))
-        tile_textures_map.put('w', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("water_s")))
-        tile_textures_map.put('1', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("wall_ru")))
-        tile_textures_map.put('2', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("wall_lu")))
-        tile_textures_map.put('m', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("wall_m")))
-
 
         var map_data =
                 """S1  S2  S2  S1  S1  S1P S4  S3
@@ -58,7 +43,7 @@ class GameScreen : Screen {
         modelController = ModelController(map_data)
         Model.mc=modelController
         viewController = ViewController(assets)
-        viewController.constructViews(tile_textures_map,modelController)
+        viewController.constructViews(modelController)
 
     }
     override fun hide() {
@@ -77,8 +62,8 @@ class GameScreen : Screen {
           if (!viewController.subCommandAct()) {
             val key=viewController.processInput()
             when (key) {
-                Input.Keys.S -> saveState()
-                Input.Keys.L -> loadState()
+                Input.Keys.S -> saveState("save.sav")
+                Input.Keys.L -> loadState("save.sav")
                 Input.Keys.M -> showMinimap()
                 else -> {
                     modelController.receiveInput(key)
@@ -93,7 +78,7 @@ class GameScreen : Screen {
 
     override fun pause() {
         println("pause")
-        saveState()
+        saveState("temp.sav")
     }
 
     override fun resume() {
@@ -108,21 +93,21 @@ class GameScreen : Screen {
         viewController.dispose()
 
     }
-    fun saveState() {
+    fun saveState(name:String) {
         try {
-            saveAndLoader.saveGame(modelController)
+            saveAndLoader.saveGame(modelController,name)
         } catch(e:Exception) {
             viewController.showBigMessage(("SAVE FAILED !!"))
         } finally {
-            viewController.showBigMessage("STATE SAVED AT ${Gdx.files.localStoragePath}sav1.sav")
+            viewController.showBigMessage("STATE SAVED AT ${Gdx.files.localStoragePath}$name")
         }
         //val fileHandle =Gdx.files.local("save.json")
         //json.toJson(modelController,fileHandle)
     }
 
-    fun loadState() {
+    fun loadState(name:String) {
         try {
-            saveAndLoader.loadGame(this)
+            saveAndLoader.loadGame(this,name)
         } catch(e: FileNotFoundException) {
             viewController.showBigMessage("LOAD FAILED !!")
         } finally {

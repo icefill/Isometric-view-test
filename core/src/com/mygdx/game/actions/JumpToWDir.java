@@ -15,9 +15,7 @@ public class JumpToWDir extends JumpTo {
 		direction= new Vector2();
 		direction_start= new Vector2(endX-startX,endY-startY+z_modifier);
 		direction_end= new Vector2(endX-startX,endY-startY-z_modifier);
-		((com.mygdx.game.view.ViewActor)target).setRotation(direction_start.angle());
-		
-		//v0=(float)((endZ-startZ)/this.getDuration()+g*0.5*this.getDuration());
+		target.setRotation(direction_start.angle());
 
 	}
 	protected void update (float percent) {
@@ -26,10 +24,8 @@ public class JumpToWDir extends JumpTo {
 		direction.sub(direction_start);
 		direction.scl(percent);
 		direction.add(direction_start);
-		((ViewActor)target).setRotation(direction.angle());
-		
-		//float time=this.getDuration()*percent;
-		//((BasicActor)target).setZ((float)(startZ+v0*time-0.5*g*time*time));
+		target.setRotation(direction.angle());
+
 	}
 	
 	
