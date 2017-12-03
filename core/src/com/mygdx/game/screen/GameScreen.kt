@@ -13,6 +13,9 @@ import com.mygdx.game.model.ModelController
 import com.mygdx.game.view.AnchoredTextureRegion
 import com.mygdx.game.view.ViewController
 import java.io.FileNotFoundException
+import com.badlogic.gdx.Application.ApplicationType
+
+
 
 class GameScreen : Screen {
     lateinit var viewController: ViewController
@@ -62,9 +65,8 @@ class GameScreen : Screen {
           if (!viewController.subCommandAct()) {
             val key=viewController.processInput()
             when (key) {
-                Input.Keys.S -> saveState("save.sav")
-                Input.Keys.L -> loadState("save.sav")
-                Input.Keys.M -> showMinimap()
+                ViewController.ButtonType.S -> saveState("save.sav")
+                ViewController.ButtonType.L -> loadState("save.sav")
                 else -> {
                     modelController.receiveInput(key)
                     viewController.receiveCommand(modelController.act())
@@ -78,13 +80,13 @@ class GameScreen : Screen {
 
     override fun pause() {
         println("pause")
-        saveState("temp.sav")
+        if (Gdx.app.type==ApplicationType.Android) saveState("temp.sav")
+
     }
 
     override fun resume() {
         println("resume")
-            this.game.setScreen(game.loadingScreen)
-
+        if (Gdx.app.type==ApplicationType.Android) this.game.setScreen(game.loadingScreen)
     }
 
     override fun resize(width: Int, height: Int) {

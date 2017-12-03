@@ -5,6 +5,7 @@ import com.badlogic.gdx.utils.Array
 import com.mygdx.game.basics.Dir
 import com.mygdx.game.command.*
 import com.mygdx.game.command.CommandQueue
+import com.mygdx.game.view.ViewController
 
 class ModelController () {
     lateinit internal var modelArray:Array<Model>
@@ -15,7 +16,6 @@ class ModelController () {
 
     internal var modelMap = Array<Array<Array<Model>>>()
     internal var players = HashMap<Int,Model>()
-        get() = field
     internal var currentPlayer: Model? =null
     internal var minimapArray=CharArray(70)
 
@@ -131,24 +131,27 @@ class ModelController () {
         }
         return tempSubCommand
     }
-    fun inputKeysToIntPair(dir :Int) :Pair<Int,Int>{
+    fun inputKeysToIntPair(dir :ViewController.ButtonType) :Pair<Int,Int>{
         return when (dir ) {
-            Input.Keys.UP -> {return Pair(0,1)}
-            Input.Keys.DOWN -> {return Pair(0,-1)}
-            Input.Keys.LEFT -> {return Pair(-1,0)}
-            Input.Keys.RIGHT ->{return Pair(1,0) }
+            ViewController.ButtonType.LU-> {return Pair(0,1)}
+            ViewController.ButtonType.RD-> {return Pair(0,-1)}
+            ViewController.ButtonType.LD-> {return Pair(-1,0)}
+            ViewController.ButtonType.RU ->{return Pair(1,0) }
             else -> return Pair(0,0)
         }
     }
-    fun receiveInput(dir:Int) {
-            when (dir){
-                Input.Keys.UP , Input.Keys.DOWN , Input.Keys.LEFT , Input.Keys.RIGHT -> {
-                    val (dxx, dyy) = inputKeysToIntPair(dir)
+    fun receiveInput(buttonType: ViewController.ButtonType) {
+            when (buttonType){
+                ViewController.ButtonType.LU,
+                ViewController.ButtonType.RU,
+                ViewController.ButtonType.LD,
+                ViewController.ButtonType.RD-> {
+                    val (dxx, dyy) = inputKeysToIntPair(buttonType)
                     cursorModel.let {
                         it.subCommand = SC_MOVE(it, it.pos.xx + dxx, it.pos.yy + dyy)
                     }
                 }
-                Input.Keys.SPACE -> {
+                ViewController.ButtonType.O -> {
                     if (this.getObj(cursorModel)!=null) {
                         currentPlayer=getObj(cursorModel)
                     }
@@ -167,7 +170,7 @@ class ModelController () {
                         }
                     }
                 }
-                Input.Keys.ENTER -> {
+                ViewController.ButtonType.AT -> {
                     currentPlayer?.let{
                         println("rt received ${cursorModel.pos}")
                         it.command= C_ATTACK(it,getObj(cursorModel),this)
@@ -177,14 +180,14 @@ class ModelController () {
                         }
                     }
                 }
-                Input.Keys.U -> {
+                ViewController.ButtonType.U -> {
                     currentPlayer?.let{
                         println("u received")
                         it.command=commandQueue.getPreviousCommand()
                         it.command?.undoing=true
                     }
                 }
-                Input.Keys.R -> {
+                ViewController.ButtonType.R-> {
                     currentPlayer?.let{
                         println("r received")
                         it.command=commandQueue.getNextCommand()
