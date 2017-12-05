@@ -7,6 +7,14 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.scenes.scene2d.Action
 import com.mygdx.game.actions.ExtActions
 import com.mygdx.game.IsoTest
+import com.badlogic.gdx.scenes.scene2d.Touchable
+import com.badlogic.gdx.scenes.scene2d.Actor
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer
+
+
+
+
 
 open class ObjActor : ViewActor ,IsoTest.Subject {
     lateinit internal var region: AnchoredTextureRegion
@@ -14,6 +22,12 @@ open class ObjActor : ViewActor ,IsoTest.Subject {
     lateinit internal var bdry_ru: AnchoredTextureRegion
     internal var is_bdry_lu = false
     internal var is_bdry_ru = false
+    internal var dCenterX=0f
+    internal var dCenterY=8f
+
+
+    //internal var anchorX=16f
+    //internal var anchorY=16f
 
         //lateinit internal var model: Model
 
@@ -83,6 +97,7 @@ open class ObjActor : ViewActor ,IsoTest.Subject {
         d=xx+yy
     }
     override fun draw(batch: Batch, parentAlpha: Float) {
+        super.draw(batch,parentAlpha)
         batch.draw(region, x - region.anchor_x, y - region.anchor_y + z)
 
         if (is_bdry_lu){
@@ -94,13 +109,30 @@ open class ObjActor : ViewActor ,IsoTest.Subject {
 
     }
 
-
-
-    override fun setBounds(left_most: Float, down_most: Float, width: Float, height: Float) {
-        TODO()
+    override fun hit(x: Float, y: Float, touchable: Boolean): Actor? {
+        if (touchable && this.touchable != Touchable.enabled) return null
+        return if (x >= dCenterX-width*.5f && x < dCenterX+width*.5&& y >= dCenterY-height*.5f && y < dCenterY+height*.5f) this else null
     }
 
-    constructor()
+    fun setBoundsP(dCenterX:Float,dCenterY:Float,width: Float, height: Float) {
+    if (this.dCenterX != dCenterX || this.dCenterY != dCenterY) {
+        this.dCenterX = dCenterX
+        this.dCenterY = dCenterY
+    }
+        if (this.width != width || this.height != height) {
+            this.width = width
+            this.height = height
+            sizeChanged()
+        }
+    }
+
+    override fun drawDebugBounds(shapes: ShapeRenderer) {
+        if (!debug) return
+        shapes.set(ShapeType.Line)
+        shapes.color = stage.debugColor
+        shapes.rect(x+dCenterX-width*.5f, y+dCenterY-height*.5f, originX, originY, width, height, scaleX, scaleY, rotation)
+    }
+
 
 
 }

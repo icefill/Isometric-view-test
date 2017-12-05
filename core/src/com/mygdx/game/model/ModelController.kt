@@ -1,6 +1,5 @@
 package com.mygdx.game.model
 
-import com.badlogic.gdx.Input
 import com.badlogic.gdx.utils.Array
 import com.mygdx.game.basics.Dir
 import com.mygdx.game.command.*
@@ -18,6 +17,8 @@ class ModelController () {
     internal var players = HashMap<Int,Model>()
     internal var currentPlayer: Model? =null
     internal var minimapArray=CharArray(70)
+    var touchedPos= ModelPosition()
+
 
     constructor (map_info :String):this(){
         modelArray= Array<Model>()
@@ -192,6 +193,31 @@ class ModelController () {
                         println("r received")
                         it.command=commandQueue.getNextCommand()
                         it.command?.undoing=false
+                    }
+                }
+                ViewController.ButtonType.CLK -> {
+                    cursorModel.let {
+                        it.subCommand = SC_MOVE(it, touchedPos.xx, touchedPos.yy)
+                    }
+                    currentPlayer?.let {
+                        println("Click received ")
+                        Thread {
+                            thinking=true
+                            val modelTouched:Model?=getObj(touchedPos.xx,touchedPos.yy)
+                            var command:Command?
+                            if (modelTouched==null) {
+                                command = C_WALK_TO(it, touchedPos.xx, touchedPos.yy, this)?.apply {
+                                    undoing = false
+                                    commandQueue.enQueue(this)
+                                }
+                            }
+                            else {
+                                command=null
+                                currentPlayer=modelTouched
+                            }
+                            it.command=command
+                            thinking=false
+                        }.start()
                     }
                 }
             }

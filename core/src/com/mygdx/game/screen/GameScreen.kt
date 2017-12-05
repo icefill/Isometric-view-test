@@ -74,7 +74,7 @@ class GameScreen : Screen {
             }
         }
         viewController.receiveCursorCommand(modelController.cursorAct())
-        viewController.act(modelController)
+        viewController.act(modelController,delta)
 
     }
 
@@ -90,11 +90,15 @@ class GameScreen : Screen {
     }
 
     override fun resize(width: Int, height: Int) {
+        viewController.stage.getViewport().update(width, height, true)
+        viewController.ui_stage.getViewport().update(width, height, true)
+
     }
     override fun dispose() {
         viewController.dispose()
 
     }
+
     fun saveState(name:String) {
         try {
             saveAndLoader.saveGame(modelController,name)
@@ -103,8 +107,6 @@ class GameScreen : Screen {
         } finally {
             viewController.showBigMessage("STATE SAVED AT ${Gdx.files.localStoragePath}$name")
         }
-        //val fileHandle =Gdx.files.local("save.json")
-        //json.toJson(modelController,fileHandle)
     }
 
     fun loadState(name:String) {
@@ -115,9 +117,6 @@ class GameScreen : Screen {
         } finally {
             viewController.showBigMessage("STATE LOADED.")
         }
-        //modelController=json.fromJson(ModelController::class.java, Gdx.files.local("save.json"))
-        //viewController.modelController=modelController
-        //viewController.constructViews(tile_textures_map)
     }
     fun showMinimap() {
         var minimap=""

@@ -1,8 +1,14 @@
 package com.mygdx.game.view
 
 import com.badlogic.gdx.Gdx
+import com.badlogic.gdx.graphics.GL20
+import com.badlogic.gdx.graphics.Pixmap
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Batch
+import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.badlogic.gdx.graphics.glutils.FrameBuffer
+import com.badlogic.gdx.graphics.glutils.ShaderProgram
+import com.badlogic.gdx.math.Matrix4
 import com.badlogic.gdx.scenes.scene2d.Action
 import com.mygdx.game.Assets
 import com.mygdx.game.anim.Anim
@@ -25,20 +31,22 @@ open class CharActor : ViewActor ,IsoTest.Subject {
     lateinit internal var viewUnits:Array<ViewUnit?>
     internal var dir= Dir.DL
     var reserveViewUnit:ViewUnit?=null
+    val USE_SHADER=true
 
-    companion object{
-        /*
-        var mask_shader : ShaderProgram
-        internal var fboBatch= SpriteBatch()
+
+    companion object {
+        lateinit var mask_shader: ShaderProgram
+        internal var fboBatch = SpriteBatch()
         internal var mask: Texture = Texture(Gdx.files.internal("mask.png"))
-        */
 
-        val jsonAnimLoader= JsonAnimLoader()
 
-        /*
+        //val jsonAnimLoader= JsonAnimLoader()
+
+
         val fbo = FrameBuffer(Pixmap.Format.RGBA4444, 40, 60, false)
 
         init {
+            /*
             fbo.colorBufferTexture.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest)
             val vert = """
             attribute vec4 ${ShaderProgram.POSITION_ATTRIBUTE};
@@ -68,9 +76,7 @@ open class CharActor : ViewActor ,IsoTest.Subject {
             uniform sampler2D u_mask;
             void main(void) {
                 vec4 texColor0=texture2D(u_texture,vTexCoord);
-                //vec4 texColor1=texture2D(u_mask,vTexCoord);
                 float mask=texture2D(u_mask,vTexCoord).a;
-                //gl_FragColor=texColor1;
                 if (mask>0.5) {
                     gl_FragColor = texColor0;
                 }
@@ -95,11 +101,11 @@ open class CharActor : ViewActor ,IsoTest.Subject {
             mask.bind(1)
 
             Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0)
-            val projectionMatrix = Matrix4().setToOrtho2D(0f,0f,40f,60f)
+            val projectionMatrix = Matrix4().setToOrtho2D(0f,0f,40.0f,60.0f)
             fboBatch.projectionMatrix=projectionMatrix
-
-        }
 */
+        }
+
 
     }
 
@@ -246,13 +252,6 @@ open class CharActor : ViewActor ,IsoTest.Subject {
           //  fbo.dispose()
     }
 
-
-
-    override fun setBounds(left_most: Float, down_most: Float, width: Float, height: Float) {
-        TODO()
-    }
-
-    constructor()
 
 
 }

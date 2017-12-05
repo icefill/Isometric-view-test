@@ -2,6 +2,7 @@ package com.mygdx.game.view
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Input
+import com.badlogic.gdx.InputMultiplexer
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.Pixmap
 import com.badlogic.gdx.graphics.Texture
@@ -62,7 +63,6 @@ class ViewController constructor(assets: Assets) {
     internal var stage :Stage=Stage(StretchViewport(320f, 240f))
     internal var ui_stage :Stage=Stage(StretchViewport(320f, 240f))
     internal var skin=assets.getUISkin()
-    //internal var skin=Skin(Gdx.files.internal("uiskin.json"))
 
     internal var status_change_label:Label
     internal var status_change_label2:Label
@@ -98,12 +98,13 @@ class ViewController constructor(assets: Assets) {
         S,
         L,
         AT,
-        MV,
+        CLK,
         NONE
     }
     var key:ButtonType=ButtonType.NONE
 
     init {
+        //stage.setDebugAll(true)
         fbo.colorBufferTexture.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest)
         status_change_label = Label("", skin)
         status_change_label.setSize(300f, 60f)
@@ -190,8 +191,13 @@ class ViewController constructor(assets: Assets) {
         }.let{ui_stage+it
             it.setFillParent(true)
         }
+        val inputMultiplexer = InputMultiplexer()
+        inputMultiplexer.addProcessor(this.ui_stage)
+        inputMultiplexer.addProcessor(this.stage)
 
-        Gdx.input.setInputProcessor(ui_stage);
+        Gdx.input.setInputProcessor(inputMultiplexer)
+        //Gdx.input.setInputProcessor(ui_stage)
+
     }
 
     fun constructViews(modelController:ModelController) {
@@ -202,84 +208,86 @@ class ViewController constructor(assets: Assets) {
         viewArray.clear()
         lastIndex=0
         subCommandActing=false
-        modelController.modelArray.forEach{ model ->
-            val x= toX(model.pos.xx, model.pos.yy)
-            val y= toY(model.pos.xx, model.pos.yy)
-            val z=(model.pos.zz * TILE_Z).toFloat()
+        modelController.modelArray.forEach { model ->
+            val x = toX(model.pos.xx, model.pos.yy)
+            val y = toY(model.pos.xx, model.pos.yy)
+            val z = (model.pos.zz * TILE_Z).toFloat()
             when (model.type) {
-                'E' -> CharActor(x, y, z,assets)
-                        .apply { compareType = 2
-                            viewUnits[0]=wholeViewUnits[0]
-                            viewUnits[1]=wholeViewUnits[1]
-                            viewUnits[2]=wholeViewUnits[2]
-                            viewUnits[3]=wholeViewUnits[3]
-                            viewUnits[4]=wholeViewUnits[8]
+                'E' -> CharActor(x, y, z, assets)
+                        .apply {
+                            compareType = 2
+                            viewUnits[0] = wholeViewUnits[0]
+                            viewUnits[1] = wholeViewUnits[1]
+                            viewUnits[2] = wholeViewUnits[2]
+                            viewUnits[3] = wholeViewUnits[3]
+                            viewUnits[4] = wholeViewUnits[8]
                             //viewUnits[6]=wholeViewUnits[6]
-                            viewUnits[5]=wholeViewUnits[9]
+                            viewUnits[5] = wholeViewUnits[9]
 
-                            dir=model.dir
-                            if(!model.isAlive) {
-                                currentAnim =anims["DEAD"]}
-                            when (modelController.getAdjacentModel(model, Dir.BL)?.type){
-                                'W','w'-> is_on_water=true
+                            dir = model.dir
+                            if (!model.isAlive) {
+                                currentAnim = anims["DEAD"]
+                            }
+                            when (modelController.getAdjacentModel(model, Dir.BL)?.type) {
+                                'W', 'w' -> is_on_water = true
                             }
                         }
-                'P' -> CharActor(x, y, z,assets)
-                        .apply { compareType = 2
-                            viewUnits[0]=wholeViewUnits[0]
-                            viewUnits[1]=wholeViewUnits[1]
-                            viewUnits[2]=wholeViewUnits[2]
-                            viewUnits[3]=wholeViewUnits[3]
-                            viewUnits[4]=wholeViewUnits[4]
-                            viewUnits[6]=wholeViewUnits[6]
-                            viewUnits[5]=wholeViewUnits[10]
+                'P' -> CharActor(x, y, z, assets)
+                        .apply {
+                            compareType = 2
+                            viewUnits[0] = wholeViewUnits[0]
+                            viewUnits[1] = wholeViewUnits[1]
+                            viewUnits[2] = wholeViewUnits[2]
+                            viewUnits[3] = wholeViewUnits[3]
+                            viewUnits[4] = wholeViewUnits[4]
+                            viewUnits[6] = wholeViewUnits[6]
+                            viewUnits[5] = wholeViewUnits[10]
 
-                            dir=model.dir
-                            if(!model.isAlive) {
-                                currentAnim =anims["DEAD"]}
-                            when (modelController.getAdjacentModel(model, Dir.BL)?.type){
-                                'W','w'-> is_on_water=true
+                            dir = model.dir
+                            if (!model.isAlive) {
+                                currentAnim = anims["DEAD"]
+                            }
+                            when (modelController.getAdjacentModel(model, Dir.BL)?.type) {
+                                'W', 'w' -> is_on_water = true
                             }
                         }
-                'F' -> CharActor(x, y, z,assets)
-                        .apply { compareType = 2
-                            viewUnits[0]=wholeViewUnits[0]
-                            viewUnits[1]=wholeViewUnits[15]
-                            viewUnits[2]=wholeViewUnits[2]
-                            viewUnits[3]=wholeViewUnits[3]
-                            viewUnits[4]=wholeViewUnits[17]
+                'F' -> CharActor(x, y, z, assets)
+                        .apply {
+                            compareType = 2
+                            viewUnits[0] = wholeViewUnits[0]
+                            viewUnits[1] = wholeViewUnits[15]
+                            viewUnits[2] = wholeViewUnits[2]
+                            viewUnits[3] = wholeViewUnits[3]
+                            viewUnits[4] = wholeViewUnits[17]
                             //viewUnits[6]=wholeViewUnits[7]
-                            viewUnits[5]=wholeViewUnits[16]
+                            viewUnits[5] = wholeViewUnits[16]
 
-                            dir=model.dir
-                            if(!model.isAlive) {
-                                currentAnim =anims["DEAD"]}
-                            when (modelController.getAdjacentModel(model, Dir.BL)?.type){
-                                'W','w'-> is_on_water=true
+                            dir = model.dir
+                            if (!model.isAlive) {
+                                currentAnim = anims["DEAD"]
+                            }
+                            when (modelController.getAdjacentModel(model, Dir.BL)?.type) {
+                                'W', 'w' -> is_on_water = true
                             }
                         }
 
-                's' ->CharActor(x, y, z,assets)
-                        .apply { compareType = 2
-                            viewUnits[0]=wholeViewUnits[11]
-                            viewUnits[1]=wholeViewUnits[12]
-                            viewUnits[2]=wholeViewUnits[13]
-                            viewUnits[3]=wholeViewUnits[14]
-                            viewUnits[4]=wholeViewUnits[5]
-                            viewUnits[6]=wholeViewUnits[7]
+                's' -> CharActor(x, y, z, assets)
+                        .apply {
+                            compareType = 2
+                            viewUnits[0] = wholeViewUnits[11]
+                            viewUnits[1] = wholeViewUnits[12]
+                            viewUnits[2] = wholeViewUnits[13]
+                            viewUnits[3] = wholeViewUnits[14]
+                            viewUnits[4] = wholeViewUnits[5]
+                            viewUnits[6] = wholeViewUnits[7]
 
-                            dir=model.dir
-                            /*dir = when((Math.random()*4).toInt()) {
-                                0-> Dir.DL
-                                1-> Dir.DR
-                                2-> Dir.UR
-                                3-> Dir.UL
-                                else-> Dir.UR
-                            }*/
-                            if(!model.isAlive) {
-                                currentAnim =anims["DEAD"]}
-                            when (modelController.getAdjacentModel(model, Dir.BL)?.type){
-                                'W','w'-> is_on_water=true
+                            dir = model.dir
+
+                            if (!model.isAlive) {
+                                currentAnim = anims["DEAD"]
+                            }
+                            when (modelController.getAdjacentModel(model, Dir.BL)?.type) {
+                                'W', 'w' -> is_on_water = true
                             }
                         }
 
@@ -287,8 +295,9 @@ class ViewController constructor(assets: Assets) {
                         , AnchoredTextureRegion(15f, 8f, 0f, 4f
                         , TextureRegion(Texture(Gdx.files.internal("sword1.png"))))
                 )
-                        .apply { compareType = 2
-                                cursorActor=this
+                        .apply {
+                            compareType = 2
+                            cursorActor = this
                         }
 
                 else -> ObjActor(x, y, z, assets.getTileTextureMap()[model.type])
@@ -305,9 +314,33 @@ class ViewController constructor(assets: Assets) {
             }
         }
 
+        setTouchBounds()
 
     }
-    inline fun KWidget<*>.keyButton(keyAssigned:ButtonType, skin: Skin=  Scene2DSkin.defaultSkin, style:String=defaultStyle)=
+    fun setTouchBounds() {
+        modelController.modelMap.forEach{xx->
+            xx?.forEach{yy->
+                yy?.let{modelArray->
+                    if (modelArray.size>0 && (modelArray[modelArray.size-1].id in 0 until viewArray.size)) {
+                        val model=modelArray[modelArray.size-1]
+                        (viewArray[model.id] as ObjActor).apply{
+                            setBoundsP(0f,8f*(model.pos.zz+1),16f,8f)
+                            addListener(object: ClickListener(){
+                                override fun clicked(event: InputEvent?, x: Float, y: Float) {
+                                    modelController.touchedPos.xx=model.pos.xx
+                                    modelController.touchedPos.yy=model.pos.yy
+                                    println("${modelController.touchedPos.xx},${modelController.touchedPos.yy}")
+                                    key=ButtonType.CLK
+                                }
+                            })
+
+                        }
+                    }
+                }
+            }
+        }
+    }
+    inline fun KWidget<*>.keyButton(keyAssigned: ViewController.ButtonType, skin: Skin=  Scene2DSkin.defaultSkin, style:String=defaultStyle)=
             appendActor(
                     KTextButton(keyAssigned.toString(),skin,style).apply{
                 addListener(
@@ -347,9 +380,10 @@ class ViewController constructor(assets: Assets) {
                 showBigMessage("ATTACK")
                 return ButtonType.AT
             }
-            Gdx.input.isKeyJustPressed(Input.Keys.M) -> {
-                return ButtonType.MV
+            key==ButtonType.CLK ->{key=ButtonType.NONE
+                return ButtonType.CLK
             }
+
         }
        return ButtonType.NONE
     }
@@ -484,8 +518,8 @@ class ViewController constructor(assets: Assets) {
 
         return false
     }
-    fun act(mc:ModelController) {
-        stage.act()
+    fun act(mc:ModelController,delta:Float) {
+        stage.act(delta)
         sortObj()
        mc.currentPlayer?.let{
             val playerView = viewArray[mc.currentPlayer!!.id]

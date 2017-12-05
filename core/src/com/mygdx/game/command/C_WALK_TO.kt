@@ -23,7 +23,13 @@ class C_WALK_TO(): Command(){
         lookupSet.add(current.model.pos.xx*10+current.model.pos.yy)
         while (!queue.isEmpty()){
             current=queue.pollFirst()
-            if (current.model==dest) break
+            if (current.model==dest) {
+                current.reverse(null)
+                current=initialNode
+                constructCommand(obj,current)
+                addSC(EndSC(obj))
+                break
+            }
             current.model.doToNearTops { near->
                 if (near.pos.zz-current.model.pos.zz in -2..1
                         && !lookupSet.contains(near.pos.xx*10+near.pos.yy)
@@ -35,11 +41,6 @@ class C_WALK_TO(): Command(){
                 true
             }
         }
-        current.reverse(null)
-        current=initialNode
-
-        constructCommand(obj,current)
-        addSC(EndSC(obj))
     }
     private tailrec fun constructCommand(obj:Model, current:ModelNode) {
         val parent=current.parent

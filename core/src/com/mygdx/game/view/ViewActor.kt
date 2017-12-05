@@ -58,15 +58,9 @@ open class ViewActor : Actor, IsoTest.Subject {
         setYY()
         d=xx+yy
     }
-    override fun draw(batch: Batch, parentAlpha: Float) {
-
-    }
 
 
 
-    override fun setBounds(left_most: Float, down_most: Float, width: Float, height: Float) {
-        TODO()
-    }
 
     constructor()
 
