@@ -1,11 +1,15 @@
 package com.mygdx.game.view
 
+import com.badlogic.gdx.Application
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.GL20
+import com.badlogic.gdx.graphics.GL30
+import com.badlogic.gdx.graphics.GL30.*
 import com.badlogic.gdx.graphics.Pixmap
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.Batch
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.graphics.glutils.FrameBuffer
 import com.badlogic.gdx.graphics.glutils.ShaderProgram
 import com.badlogic.gdx.math.Matrix4
@@ -46,7 +50,7 @@ open class CharActor : ViewActor ,IsoTest.Subject {
         val fbo = FrameBuffer(Pixmap.Format.RGBA4444, 40, 60, false)
 
         init {
-            /*
+
             fbo.colorBufferTexture.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest)
             val vert = """
             attribute vec4 ${ShaderProgram.POSITION_ATTRIBUTE};
@@ -61,19 +65,17 @@ open class CharActor : ViewActor ,IsoTest.Subject {
                 vColor= ${ShaderProgram.COLOR_ATTRIBUTE};
                 vTexCoord=${ShaderProgram.TEXCOORD_ATTRIBUTE}0;
                 gl_Position= u_projTrans* ${ShaderProgram.POSITION_ATTRIBUTE};
-            };
+            }
         """
             val frag = """
             #ifdef GL_ES
-            #define LOWP lowp
-            #precision mediump float;
-            #else
-            #define LOWP
+                precision mediump float;
             #endif
-            varying LOWP vec4 Color;
+            varying vec4 v_color;
             varying vec2 vTexCoord;
             uniform sampler2D u_texture;
             uniform sampler2D u_mask;
+
             void main(void) {
                 vec4 texColor0=texture2D(u_texture,vTexCoord);
                 float mask=texture2D(u_mask,vTexCoord).a;
@@ -83,27 +85,27 @@ open class CharActor : ViewActor ,IsoTest.Subject {
                 else {
                     gl_FragColor= vec4(0.0,0.0,0.0,0.0);
                 }
-
-            };
-
+            }
         """
             ShaderProgram.pedantic = false
+
             mask_shader = ShaderProgram(vert, frag)
             if (!mask_shader.isCompiled()) {
-                System.err.println(mask_shader.getLog())
                 System.exit(0)
             }
+            Gdx.app.error("MyTag", "====================================================\n${mask_shader.getLog()}\n====================================================\n", Exception());
             if (mask_shader.getLog().length != 0)
                 println(mask_shader.getLog())
+
             mask_shader.begin()
             mask_shader.setUniformi("u_mask", 1)
             mask_shader.end()
             mask.bind(1)
 
-            Gdx.gl.glActiveTexture(GL20.GL_TEXTURE0)
+            Gdx.gl.glActiveTexture(GL_TEXTURE0)
             val projectionMatrix = Matrix4().setToOrtho2D(0f,0f,40.0f,60.0f)
             fboBatch.projectionMatrix=projectionMatrix
-*/
+
         }
 
 
@@ -219,8 +221,8 @@ open class CharActor : ViewActor ,IsoTest.Subject {
         d=xx+yy
     }
     override fun draw(batch: Batch, parentAlpha: Float) {
-        currentAnim?.get(dir.v)?.draw(batch,x,y+z,deltaTime,viewUnits)
-/*
+//        currentAnim?.get(dir.v)?.draw(batch,x,y+z,deltaTime,viewUnits)
+
         if (is_on_water) {
             batch.setColor(1f, 1f, 1f, .7f)
             batch.draw(wave, x - 15f, y + z - 12f, 30f, 30f)
@@ -248,7 +250,7 @@ open class CharActor : ViewActor ,IsoTest.Subject {
             batch.draw(fboTexture, x - 20, y + z - 12)
         }
         batch.shader=null
-*/
+
           //  fbo.dispose()
     }
 
