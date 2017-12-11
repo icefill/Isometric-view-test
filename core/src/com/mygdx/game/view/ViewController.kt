@@ -36,6 +36,7 @@ import com.badlogic.gdx.scenes.scene2d.InputEvent
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
+import com.mygdx.game.basics.InputType
 
 class ViewController constructor(assets: Assets) {
     companion object {
@@ -85,23 +86,7 @@ class ViewController constructor(assets: Assets) {
     //lateinit var inputMultiplexer:InputMultiplexer
     val obj_comparator = ObjComparator()
 
-    enum class ButtonType{
-        LU,
-        RU,
-        LD,
-        RD,
-        O,
-        SA,
-        LO,
-        U,
-        R,
-        S,
-        L,
-        AT,
-        CLK,
-        NONE
-    }
-    var key:ButtonType=ButtonType.NONE
+    var key: InputType = InputType.NONE
 
     init {
         //stage.setDebugAll(true)
@@ -178,14 +163,14 @@ class ViewController constructor(assets: Assets) {
          table {
            table {
                pad(10f)
-               keyButton(ButtonType.LU).pad(10f)
-               keyButton(ButtonType.RU).pad(10f)
-               keyButton(ButtonType.SA).pad(10f)
-               keyButton(ButtonType.O).pad(10f)
+               keyButton(InputType.LU).pad(10f)
+               keyButton(InputType.RU).pad(10f)
+               keyButton(InputType.SA).pad(10f)
+               keyButton(InputType.O).pad(10f)
                row()
-               keyButton(ButtonType.LD).pad(10f)
-               keyButton(ButtonType.RD).pad(10f)
-               keyButton(ButtonType.LO).pad(10f)
+               keyButton(InputType.LD).pad(10f)
+               keyButton(InputType.RD).pad(10f)
+               keyButton(InputType.LO).pad(10f)
            }
             left().bottom()
         }.let{ui_stage+it
@@ -330,7 +315,7 @@ class ViewController constructor(assets: Assets) {
                                     modelController.touchedPos.xx=model.pos.xx
                                     modelController.touchedPos.yy=model.pos.yy
                                     println("${modelController.touchedPos.xx},${modelController.touchedPos.yy}")
-                                    key=ButtonType.CLK
+                                    key= InputType.CLK
                                 }
                             })
 
@@ -340,7 +325,7 @@ class ViewController constructor(assets: Assets) {
             }
         }
     }
-    inline fun KWidget<*>.keyButton(keyAssigned: ViewController.ButtonType, skin: Skin=  Scene2DSkin.defaultSkin, style:String=defaultStyle)=
+    inline fun KWidget<*>.keyButton(keyAssigned: InputType, skin: Skin=  Scene2DSkin.defaultSkin, style:String=defaultStyle)=
             appendActor(
                     KTextButton(keyAssigned.toString(),skin,style).apply{
                 addListener(
@@ -351,41 +336,41 @@ class ViewController constructor(assets: Assets) {
                         }
                     })} as TextButton)
 
-    fun processInput() :ButtonType{
+    fun processInput() : InputType {
         when {
-            Gdx.input.isKeyJustPressed(Input.Keys.UP) or (key==ButtonType.LU)->{key=ButtonType.NONE;return ButtonType.LU}
-            Gdx.input.isKeyJustPressed(Input.Keys.DOWN) or (key==ButtonType.RD)->{key=ButtonType.NONE;return ButtonType.RD}
-            Gdx.input.isKeyJustPressed(Input.Keys.LEFT) or (key==ButtonType.LD)->{key=ButtonType.NONE;return ButtonType.LD}
-            Gdx.input.isKeyJustPressed(Input.Keys.RIGHT) or (key==ButtonType.RU)->{key=ButtonType.NONE;return ButtonType.RU}
-            Gdx.input.isKeyJustPressed(Input.Keys.SPACE)  or (key==ButtonType.O)->{key=ButtonType.NONE
+            Gdx.input.isKeyJustPressed(Input.Keys.UP) or (key== InputType.LU)->{key= InputType.NONE;return InputType.LU}
+            Gdx.input.isKeyJustPressed(Input.Keys.DOWN) or (key== InputType.RD)->{key= InputType.NONE;return InputType.RD}
+            Gdx.input.isKeyJustPressed(Input.Keys.LEFT) or (key== InputType.LD)->{key= InputType.NONE;return InputType.LD}
+            Gdx.input.isKeyJustPressed(Input.Keys.RIGHT) or (key== InputType.RU)->{key= InputType.NONE;return InputType.RU}
+            Gdx.input.isKeyJustPressed(Input.Keys.SPACE)  or (key== InputType.O)->{key= InputType.NONE
                 showBigMessage("MOVE")
-                return ButtonType.O
+                return InputType.O
             }
             Gdx.input.isKeyJustPressed(Input.Keys.U) ->{
                 showBigMessage("UNDO")
-                return ButtonType.U
+                return InputType.U
             }
             Gdx.input.isKeyJustPressed(Input.Keys.R) -> {
                 showBigMessage("REDO")
-                return ButtonType.R
+                return InputType.R
             }
-            Gdx.input.isKeyJustPressed(Input.Keys.S) or (key==ButtonType.SA)->{key=ButtonType.NONE
+            Gdx.input.isKeyJustPressed(Input.Keys.S) or (key== InputType.SA)->{key= InputType.NONE
                 showBigMessage("SAVE")
-                return ButtonType.S
+                return InputType.S
             }
-            Gdx.input.isKeyJustPressed(Input.Keys.L) or (key==ButtonType.LO)->{key=ButtonType.NONE
-                return ButtonType.L
+            Gdx.input.isKeyJustPressed(Input.Keys.L) or (key== InputType.LO)->{key= InputType.NONE
+                return InputType.L
             }
             Gdx.input.isKeyJustPressed(Input.Keys.ENTER) -> {
                 showBigMessage("ATTACK")
-                return ButtonType.AT
+                return InputType.AT
             }
-            key==ButtonType.CLK ->{key=ButtonType.NONE
-                return ButtonType.CLK
+            key== InputType.CLK ->{key= InputType.NONE
+                return InputType.CLK
             }
 
         }
-       return ButtonType.NONE
+       return InputType.NONE
     }
     fun cursorMoveCommand(command: SC_MOVE){
         cursorActor+cursorActor.walkToAction(command.to.xx, command.to.yy, command.to.zz)

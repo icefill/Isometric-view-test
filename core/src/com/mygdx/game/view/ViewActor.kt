@@ -14,25 +14,17 @@ open class ViewActor : Actor, IsoTest.Subject {
     internal var deltaTime=Math.random().toFloat()
     var z: Float = 0f
         get() = field
-    //internal var offset_x: Float = 0f
-    //internal var offset_y: Float = 0f
-    internal var order: Float = 0f
 
     companion object{
 
     }
 
-    //lateinit internal var model: Model
 
     constructor (x: Float, y: Float, z: Float) {
         Gdx.app.log("MYTAG","WALK COMMAND INITIATED")
         this.x = x
         this.y = y
         this.z = z
-        //this.left_most=left_most
-        //this.down_most=down_most
-       // this.model = model
-        //fbo.colorBufferTexture.setFilter(Texture.TextureFilter.Nearest, Texture.TextureFilter.Nearest)
         setXX()
         setYY()
         d=xx+yy

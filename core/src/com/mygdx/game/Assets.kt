@@ -20,7 +20,7 @@ typealias GdxArray<T> = com.badlogic.gdx.utils.Array<T>
 
 class Assets : AssetManager(){
     var skin:Skin?=null
-    var tile_textures_map : ObjectMap<Char, AnchoredTextureRegion>?=null
+    var tileTexturesMap: ObjectMap<Char, AnchoredTextureRegion>?=null
 
     init{
         setLoader(Anim::class.java,AnimLoader(this.fileHandleResolver))
@@ -29,7 +29,6 @@ class Assets : AssetManager(){
     fun QueueingAssets() {
         load("uiskin.atlas",TextureAtlas::class.java)
         load("tiles.atlas", TextureAtlas::class.java)
-
 
         load("wave.png", Texture::class.java)
         load("mask.png", Texture::class.java)
@@ -63,7 +62,7 @@ class Assets : AssetManager(){
         return Skin(Gdx.files.internal("uiskin.json"), get("uiskin.atlas", TextureAtlas::class.java)).apply{skin=this}
     }
     fun getTileTextureMap():ObjectMap<Char, AnchoredTextureRegion> {
-        tile_textures_map?.let{return it}
+        tileTexturesMap?.let{return it}
         return ObjectMap<Char, AnchoredTextureRegion>().apply{
             val atlas=get("tiles.atlas",TextureAtlas::class.java)
             put('S', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("stone")))

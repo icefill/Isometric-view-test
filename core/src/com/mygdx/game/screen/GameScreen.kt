@@ -1,9 +1,7 @@
 package com.mygdx.game.screen
 
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.Input
 import com.badlogic.gdx.Screen
-import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.utils.ObjectMap
 import com.mygdx.game.Assets
 import com.mygdx.game.IsoTest
@@ -14,7 +12,7 @@ import com.mygdx.game.view.AnchoredTextureRegion
 import com.mygdx.game.view.ViewController
 import java.io.FileNotFoundException
 import com.badlogic.gdx.Application.ApplicationType
-
+import com.mygdx.game.basics.InputType
 
 
 class GameScreen : Screen {
@@ -65,8 +63,8 @@ class GameScreen : Screen {
           if (!viewController.subCommandAct()) {
             val key=viewController.processInput()
             when (key) {
-                ViewController.ButtonType.S -> saveState("save.sav")
-                ViewController.ButtonType.L -> loadState("save.sav")
+                InputType.S -> saveState("save.sav")
+                InputType.L -> loadState("save.sav")
                 else -> {
                     modelController.receiveInput(key)
                     viewController.receiveCommand(modelController.act())

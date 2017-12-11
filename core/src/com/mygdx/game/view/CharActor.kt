@@ -93,7 +93,7 @@ open class CharActor : ViewActor ,IsoTest.Subject {
             if (!mask_shader.isCompiled()) {
                 System.exit(0)
             }
-            Gdx.app.error("MyTag", "====================================================\n${mask_shader.getLog()}\n====================================================\n", Exception());
+            Gdx.app.debug("MyTag", "====================================================\n${mask_shader.getLog()}\n====================================================\n", Exception());
             if (mask_shader.getLog().length != 0)
                 println(mask_shader.getLog())
 
@@ -210,15 +210,15 @@ open class CharActor : ViewActor ,IsoTest.Subject {
     override fun inform(dxx:Int, dyy:Int, dzz:Int) {
     }
     override fun positionChanged() {
-        //setXX()
-        //setYY()
-        //d=xx+yy
-    }
-    override fun act(delta:Float) {
-        super.act(delta)
         setXX()
         setYY()
         d=xx+yy
+    }
+    override fun act(delta:Float) {
+        super.act(delta)
+        //setXX()
+        //setYY()
+        //d=xx+yy
     }
     override fun draw(batch: Batch, parentAlpha: Float) {
 //        currentAnim?.get(dir.v)?.draw(batch,x,y+z,deltaTime,viewUnits)
