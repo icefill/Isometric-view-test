@@ -14,7 +14,7 @@ It is simple libGDX project with Kotlin made for reasons as follows
 
 Works on android and Desktop.
 
-#Control
+Control
   1.Arrow keys : move cursor(Sword image)
   2.Enter keys : attack
   3.Space bar  : selected person to cursor position
