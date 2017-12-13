@@ -15,10 +15,10 @@ It is simple libGDX project with Kotlin made for reasons as follows
 Works on android and Desktop.
 
 #Control
-  Arrow keys : move cursor(Sword image)
-  Enter keys : attack
-  Space bar  : selected person to cursor position
-  U          : Undo
-  R          : Redo
-  S          : Save
-  L          : Load 
+  1.Arrow keys : move cursor(Sword image)
+  2.Enter keys : attack
+  3.Space bar  : selected person to cursor position
+  4.U          : Undo
+  5.R          : Redo
+  6.S          : Save
+  7.L          : Load 
