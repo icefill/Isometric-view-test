@@ -1,0 +1,22 @@
+[
+  "idle_dl.json",
+  "idle_dr.json",
+  "idle_ur.json",
+  "idle_ul.json",
+  "walk_dl.json",
+  "walk_dr.json",
+  "walk_ur.json",
+  "walk_ul.json",
+  "slash_dl.json",
+  "slash_dr.json",
+  "slash_ur.json",
+  "slash_ul.json",
+  "poke_dl.json",
+  "poke_dr.json",
+  "hit_dl2.json",
+  "hit_dr2.json",
+  "hit_ur2.json",
+  "hit_ul2.json",
+  "dead_dl.json",
+  "dead_dr.json"
+]

@@ -125,42 +125,42 @@ open class CharActor : ViewActor ,IsoTest.Subject {
         setYY()
         d=xx+yy
         val idle= arrayOf(
-                assets.get("idle_dl.json",Anim::class.java)
-                ,assets.get("idle_dr.json",Anim::class.java)
-                ,assets.get("idle_ur.json",Anim::class.java)
-                ,assets.get("idle_ul.json",Anim::class.java)
+                assets.get(Assets.ANIM_PATH+"idle_dl.json",Anim::class.java)
+                ,assets.get(Assets.ANIM_PATH+"idle_dr.json",Anim::class.java)
+                ,assets.get(Assets.ANIM_PATH+"idle_ur.json",Anim::class.java)
+                ,assets.get(Assets.ANIM_PATH+"idle_ul.json",Anim::class.java)
         )
         val walk= arrayOf(
-                assets.get("walk_dl.json",Anim::class.java)
-                ,assets.get("walk_dr.json",Anim::class.java)
-                ,assets.get("walk_ur.json",Anim::class.java)
-                ,assets.get("walk_ul.json",Anim::class.java)
+                assets.get(Assets.ANIM_PATH+"walk_dl.json",Anim::class.java)
+                ,assets.get(Assets.ANIM_PATH+"walk_dr.json",Anim::class.java)
+                ,assets.get(Assets.ANIM_PATH+"walk_ur.json",Anim::class.java)
+                ,assets.get(Assets.ANIM_PATH+"walk_ul.json",Anim::class.java)
         )
         val attack=arrayOf(
-                assets.get("slash_dl.json",Anim::class.java).apply{UNREPEAT=true}
-                ,assets.get("slash_dr.json",Anim::class.java).apply{UNREPEAT=true}
-                ,assets.get("slash_ur.json",Anim::class.java).apply{UNREPEAT=true}
-                ,assets.get("slash_ul.json",Anim::class.java).apply{UNREPEAT=true}
+                assets.get(Assets.ANIM_PATH+"slash_dl.json",Anim::class.java).apply{UNREPEAT=true}
+                ,assets.get(Assets.ANIM_PATH+"slash_dr.json",Anim::class.java).apply{UNREPEAT=true}
+                ,assets.get(Assets.ANIM_PATH+"slash_ur.json",Anim::class.java).apply{UNREPEAT=true}
+                ,assets.get(Assets.ANIM_PATH+"slash_ul.json",Anim::class.java).apply{UNREPEAT=true}
         )
 
         val poke=arrayOf(
-                assets.get("poke_dl.json",Anim::class.java)
-                ,assets.get("poke_dr.json",Anim::class.java)
-                ,assets.get("poke_dr.json",Anim::class.java)
-                ,assets.get("poke_dl.json",Anim::class.java)
+                assets.get(Assets.ANIM_PATH+"poke_dl.json",Anim::class.java)
+                ,assets.get(Assets.ANIM_PATH+"poke_dr.json",Anim::class.java)
+                ,assets.get(Assets.ANIM_PATH+"poke_dr.json",Anim::class.java)
+                ,assets.get(Assets.ANIM_PATH+"poke_dl.json",Anim::class.java)
         )
 
         val hit=arrayOf(
-                assets.get("hit_dl2.json",Anim::class.java).apply{UNREPEAT=true}
-                ,assets.get("hit_dr2.json",Anim::class.java).apply{UNREPEAT=true}
-                ,assets.get("hit_ur2.json",Anim::class.java).apply{UNREPEAT=true}
-                ,assets.get("hit_ul2.json",Anim::class.java).apply{UNREPEAT=true}
+                assets.get(Assets.ANIM_PATH+"hit_dl2.json",Anim::class.java).apply{UNREPEAT=true}
+                ,assets.get(Assets.ANIM_PATH+"hit_dr2.json",Anim::class.java).apply{UNREPEAT=true}
+                ,assets.get(Assets.ANIM_PATH+"hit_ur2.json",Anim::class.java).apply{UNREPEAT=true}
+                ,assets.get(Assets.ANIM_PATH+"hit_ul2.json",Anim::class.java).apply{UNREPEAT=true}
         )
         val dead=arrayOf(
-                assets.get("dead_dl.json",Anim::class.java).apply{UNREPEAT=true}
-                ,assets.get("dead_dr.json",Anim::class.java).apply{UNREPEAT=true}
-                ,assets.get("dead_dr.json",Anim::class.java).apply{UNREPEAT=true}
-                ,assets.get("dead_dl.json",Anim::class.java).apply{UNREPEAT=true}
+                assets.get(Assets.ANIM_PATH+"dead_dl.json",Anim::class.java).apply{UNREPEAT=true}
+                ,assets.get(Assets.ANIM_PATH+"dead_dr.json",Anim::class.java).apply{UNREPEAT=true}
+                ,assets.get(Assets.ANIM_PATH+"dead_dr.json",Anim::class.java).apply{UNREPEAT=true}
+                ,assets.get(Assets.ANIM_PATH+"dead_dl.json",Anim::class.java).apply{UNREPEAT=true}
 
         )
 

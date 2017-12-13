@@ -12,6 +12,8 @@ import com.badlogic.gdx.utils.Json
 import com.mygdx.game.anim.Anim
 import com.badlogic.gdx.files.FileHandle
 import com.badlogic.gdx.assets.AssetDescriptor
+import com.badlogic.gdx.utils.JsonReader
+import com.badlogic.gdx.utils.JsonValue
 import com.badlogic.gdx.utils.ObjectMap
 import com.mygdx.game.view.AnchoredTextureRegion
 
@@ -20,40 +22,27 @@ typealias GdxArray<T> = com.badlogic.gdx.utils.Array<T>
 
 class Assets : AssetManager(){
     var skin:Skin?=null
+    val jsonReader= JsonReader()
+    val json=Json()
     var tileTexturesMap: ObjectMap<Char, AnchoredTextureRegion>?=null
 
     init{
         setLoader(Anim::class.java,AnimLoader(this.fileHandleResolver))
     }
-
+    companion object {
+        const val ANIM_PATH="anim/"
+    }
     fun QueueingAssets() {
         load("uiskin.atlas",TextureAtlas::class.java)
         load("tiles.atlas", TextureAtlas::class.java)
-
         load("wave.png", Texture::class.java)
         load("mask.png", Texture::class.java)
         load("basic.atlas", TextureAtlas::class.java)
         load("weapons.atlas", TextureAtlas::class.java)
-        load("idle_dl.json", Anim::class.java)
-        load("idle_dr.json", Anim::class.java)
-        load("idle_ur.json", Anim::class.java)
-        load("idle_ul.json", Anim::class.java)
-        load("walk_dl.json", Anim::class.java)
-        load("walk_dr.json", Anim::class.java)
-        load("walk_ur.json", Anim::class.java)
-        load("walk_ul.json", Anim::class.java)
-        load("slash_dl.json", Anim::class.java)
-        load("slash_dr.json", Anim::class.java)
-        load("slash_ur.json", Anim::class.java)
-        load("slash_ul.json", Anim::class.java)
-        load("poke_dl.json", Anim::class.java)
-        load("poke_dr.json", Anim::class.java)
-        load("hit_dl2.json", Anim::class.java)
-        load("hit_dr2.json", Anim::class.java)
-        load("hit_ur2.json", Anim::class.java)
-        load("hit_ul2.json", Anim::class.java)
-        load("dead_dl.json", Anim::class.java)
-        load("dead_dr.json", Anim::class.java)
+        val animNameArray=json.fromJson(Array<String>::class.java,Gdx.files.internal("animList.json"))
+        animNameArray.forEach{
+            load(ANIM_PATH+it,Anim::class.java)
+        }
         load("wave.png",Texture::class.java)
     }
 
@@ -65,16 +54,10 @@ class Assets : AssetManager(){
         tileTexturesMap?.let{return it}
         return ObjectMap<Char, AnchoredTextureRegion>().apply{
             val atlas=get("tiles.atlas",TextureAtlas::class.java)
-            put('S', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("stone")))
-            put('D', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("dirt")))
-            put('I', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("ice")))
-            put('L', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("lava_d")))
-            put('l', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("lava_s")))
-            put('W', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("water_d")))
-            put('w', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("water_s")))
-            put('1', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("wall_ru")))
-            put('2', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("wall_lu")))
-            put('m', AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("wall_m")))
+            val parsed= jsonReader.parse(Gdx.files.internal("tile_list.json"))
+            for (jv in parsed) {
+                put(jv["type"].asChar(),AnchoredTextureRegion(jv["anchorX"].asFloat(),jv["anchorY"].asFloat(),jv["offsetX"].asFloat(),jv["offsetY"].asFloat(),atlas.findRegion(jv["regionName"].asString())))
+            }
 
         }
 

@@ -1,0 +1,12 @@
+[
+   {"type":"S","anchorX":16.0,"anchorY":16.0,"offsetX":8.0,"offsetY":0,"regionName":"stone"}
+  ,{"type":"D","anchorX":16.0,"anchorY":16.0,"offsetX":8.0,"offsetY":0,"regionName":"dirt"}
+  ,{"type":"I","anchorX":16.0,"anchorY":16.0,"offsetX":8.0,"offsetY":0,"regionName":"ice"}
+  ,{"type":"L","anchorX":16.0,"anchorY":16.0,"offsetX":8.0,"offsetY":0,"regionName":"lava_d"}
+  ,{"type":"l","anchorX":16.0,"anchorY":16.0,"offsetX":8.0,"offsetY":0,"regionName":"lava_s"}
+  ,{"type":"W","anchorX":16.0,"anchorY":16.0,"offsetX":8.0,"offsetY":0,"regionName":"water_d"}
+  ,{"type":"w","anchorX":16.0,"anchorY":16.0,"offsetX":8.0,"offsetY":0,"regionName":"water_s"}
+  ,{"type":"1","anchorX":16.0,"anchorY":16.0,"offsetX":8.0,"offsetY":0,"regionName":"wall_ru"}
+  ,{"type":"2","anchorX":16.0,"anchorY":16.0,"offsetX":8.0,"offsetY":0,"regionName":"wall_lu"}
+  ,{"type":"m","anchorX":16.0,"anchorY":16.0,"offsetX":8.0,"offsetY":0,"regionName":"wall_m"}
+]
