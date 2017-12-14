@@ -24,8 +24,8 @@ class IsoTest : Game(){
     var assets= Assets()
 
     override fun create() {
-        Gdx.app.logLevel=LOG_NONE
-        //Gdx.app.logLevel= Application.LOG_DEBUG
+        //Gdx.app.logLevel=LOG_NONE
+        Gdx.app.logLevel= Application.LOG_DEBUG
 
         debug{"game create"}
         loadingScreen=LoadingScreen(this,assets)

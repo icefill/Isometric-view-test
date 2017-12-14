@@ -5,6 +5,7 @@ import com.mygdx.game.basics.Dir
 import com.mygdx.game.basics.InputType
 import com.mygdx.game.command.*
 import com.mygdx.game.command.CommandQueue
+import ktx.log.*
 
 class ModelController () {
     lateinit internal var modelArray:Array<Model>
@@ -158,7 +159,7 @@ class ModelController () {
                     }
                     else {
                         currentPlayer?.let {
-                            println("Space received ${cursorModel.pos}")
+                            debug{"Space received ${cursorModel.pos}"}
                             Thread {
                                 thinking=true
                                 val command=C_WALK_TO(it, cursorModel.pos.xx, cursorModel.pos.yy, this).apply {
@@ -173,7 +174,7 @@ class ModelController () {
                 }
                 InputType.AT -> {
                     currentPlayer?.let{
-                        println("rt received ${cursorModel.pos}")
+                        debug{"rt received ${cursorModel.pos}"}
                         it.command= C_ATTACK(it,getObj(cursorModel),this)
                         it.command?.let{
                             it.undoing=false
@@ -183,14 +184,14 @@ class ModelController () {
                 }
                 InputType.U -> {
                     currentPlayer?.let{
-                        println("u received")
+                        debug{"u received"}
                         it.command=commandQueue.getPreviousCommand()
                         it.command?.undoing=true
                     }
                 }
                 InputType.R-> {
                     currentPlayer?.let{
-                        println("r received")
+                        debug{"r received"}
                         it.command=commandQueue.getNextCommand()
                         it.command?.undoing=false
                     }
@@ -200,7 +201,7 @@ class ModelController () {
                         it.subCommand = SC_MOVE(it, touchedPos.xx, touchedPos.yy)
                     }
                     currentPlayer?.let {
-                        println("Click received ")
+                        debug{"Click received "}
                         Thread {
                             thinking=true
                             val modelTouched:Model?=getObj(touchedPos.xx,touchedPos.yy)

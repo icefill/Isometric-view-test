@@ -37,6 +37,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 import com.mygdx.game.basics.InputType
+import ktx.log.debug
 
 class ViewController constructor(assets: Assets) {
     companion object {
@@ -314,7 +315,7 @@ class ViewController constructor(assets: Assets) {
                                 override fun clicked(event: InputEvent?, x: Float, y: Float) {
                                     modelController.touchedPos.xx=model.pos.xx
                                     modelController.touchedPos.yy=model.pos.yy
-                                    println("${modelController.touchedPos.xx},${modelController.touchedPos.yy}")
+                                    debug{"Clicked position:${modelController.touchedPos.xx},${modelController.touchedPos.yy}"}
                                     key= InputType.CLK
                                 }
                             })
