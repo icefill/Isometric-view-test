@@ -22,6 +22,7 @@ import com.mygdx.game.IsoTest
 import com.mygdx.game.actions.*
 import com.mygdx.game.actions.ExtActions.*
 import com.mygdx.game.anim.JsonAnimLoader
+import ktx.log.debug
 
 open class CharActor : ViewActor ,IsoTest.Subject {
     lateinit internal var wave: Texture
@@ -93,9 +94,8 @@ open class CharActor : ViewActor ,IsoTest.Subject {
             if (!mask_shader.isCompiled()) {
                 System.exit(0)
             }
-            Gdx.app.debug("MyTag", "====================================================\n${mask_shader.getLog()}\n====================================================\n", Exception());
             if (mask_shader.getLog().length != 0)
-                println(mask_shader.getLog())
+                debug{mask_shader.getLog()}
 
             mask_shader.begin()
             mask_shader.setUniformi("u_mask", 1)

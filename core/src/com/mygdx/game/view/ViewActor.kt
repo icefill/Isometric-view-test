@@ -21,7 +21,6 @@ open class ViewActor : Actor, IsoTest.Subject {
 
 
     constructor (x: Float, y: Float, z: Float) {
-        Gdx.app.log("MYTAG","WALK COMMAND INITIATED")
         this.x = x
         this.y = y
         this.z = z

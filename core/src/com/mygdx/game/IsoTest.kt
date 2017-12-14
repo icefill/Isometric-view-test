@@ -1,6 +1,7 @@
 package com.mygdx.game
 
 import com.badlogic.gdx.*
+import com.badlogic.gdx.Application.LOG_NONE
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.badlogic.gdx.graphics.g2d.TextureRegion
 import com.badlogic.gdx.scenes.scene2d.Stage
@@ -14,6 +15,7 @@ import com.mygdx.game.model.ModelController
 import com.mygdx.game.screen.GameScreen
 import com.mygdx.game.screen.LoadingScreen
 import com.mygdx.game.view.ViewController
+import ktx.log.*
 
 class IsoTest : Game(){
 
@@ -22,10 +24,13 @@ class IsoTest : Game(){
     var assets= Assets()
 
     override fun create() {
+        Gdx.app.logLevel=LOG_NONE
+        //Gdx.app.logLevel= Application.LOG_DEBUG
+
+        debug{"game create"}
         loadingScreen=LoadingScreen(this,assets)
         gameScreen=GameScreen(this,assets)
 
-        Gdx.app.logLevel= Application.LOG_DEBUG
         this.setScreen(loadingScreen)
     }
 

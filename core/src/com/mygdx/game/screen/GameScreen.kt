@@ -13,7 +13,7 @@ import com.mygdx.game.view.ViewController
 import java.io.FileNotFoundException
 import com.badlogic.gdx.Application.ApplicationType
 import com.mygdx.game.basics.InputType
-
+import ktx.log.*
 
 class GameScreen : Screen {
     lateinit var viewController: ViewController
@@ -30,7 +30,7 @@ class GameScreen : Screen {
      }
 
     fun initialize(){
-        println("init")
+        debug{"Game screen init"}
 
         var map_data =
                 """S1  S2  S2  S1  S1  S1P S4  S3
@@ -48,11 +48,11 @@ class GameScreen : Screen {
 
     }
     override fun hide() {
-        println("hide")
+        debug{"Game screen hide"}
        }
 
     override fun show() {
-        println("show")
+        debug{"Game screen show"}
    }
 
     override fun render(delta: Float) {
@@ -77,13 +77,13 @@ class GameScreen : Screen {
     }
 
     override fun pause() {
-        println("pause")
+        debug{"Game screen pause"}
         if (Gdx.app.type==ApplicationType.Android) saveState("temp.sav")
 
     }
 
     override fun resume() {
-        println("resume")
+        debug{"Game screen resume"}
         if (Gdx.app.type==ApplicationType.Android) this.game.setScreen(game.loadingScreen)
     }
 
@@ -102,8 +102,10 @@ class GameScreen : Screen {
             saveAndLoader.saveGame(modelController,name)
         } catch(e:Exception) {
             viewController.showBigMessage(("SAVE FAILED !!"))
+            debug{"Save Failed"}
         } finally {
             viewController.showBigMessage("STATE SAVED AT ${Gdx.files.localStoragePath}$name")
+            debug{"STATE SAVED AT ${Gdx.files.localStoragePath}$name"}
         }
     }
 
@@ -112,8 +114,10 @@ class GameScreen : Screen {
             saveAndLoader.loadGame(this,name)
         } catch(e: FileNotFoundException) {
             viewController.showBigMessage("LOAD FAILED !!")
+            debug{"Load failed"}
         } finally {
             viewController.showBigMessage("STATE LOADED.")
+            debug{"State Loaded"}
         }
     }
     fun showMinimap() {
