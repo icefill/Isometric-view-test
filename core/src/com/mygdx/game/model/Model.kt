@@ -48,7 +48,7 @@ class Model()  {
 
         infix fun aheadOf(model: Model) =mc.getAdjacentModel(model,model.dir)
         infix fun behindOf(model:Model) =mc.getAdjacentModel(model,model.dir.opposite())
-        infix fun OBJ_ABOVE(model:Model)= mc.getObj(model)
+        infix fun aboveOf(model:Model)= mc.getObj(model)
 
         operator fun get(pos:ModelPosition) = mc.getModel(pos)
         operator fun get(xx:Int,yy:Int) = mc.getModel(xx,yy)

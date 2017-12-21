@@ -110,7 +110,7 @@ class ModelController () {
     fun act(): Command? {
         var tempCommand: Command?=null
         currentPlayer?.apply{
-            if (command?.undoing ?:false) {
+            if (command?.undoing == true) {
                 command?.undo(this@ModelController)
             }
             else {

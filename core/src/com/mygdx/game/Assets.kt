@@ -15,6 +15,7 @@ import com.badlogic.gdx.assets.AssetDescriptor
 import com.badlogic.gdx.utils.JsonReader
 import com.badlogic.gdx.utils.JsonValue
 import com.badlogic.gdx.utils.ObjectMap
+import com.mygdx.game.anim.ViewUnit
 import com.mygdx.game.view.AnchoredTextureRegion
 
 
@@ -28,11 +29,12 @@ class Assets : AssetManager(){
 
     init{
         setLoader(Anim::class.java,AnimLoader(this.fileHandleResolver))
+        setLoader(ViewUnit::class.java,ViewUnitsLoader(this.fileHandleResolver))
     }
     companion object {
         const val ANIM_PATH="anim/"
     }
-    fun QueueingAssets() {
+    fun QueueingFisrtAssets() {
         load("uiskin.atlas",TextureAtlas::class.java)
         load("tiles.atlas", TextureAtlas::class.java)
         load("wave.png", Texture::class.java)
@@ -44,6 +46,10 @@ class Assets : AssetManager(){
             load(ANIM_PATH+it,Anim::class.java)
         }
         load("wave.png",Texture::class.java)
+        load("head",ViewUnit::class.java,ViewUnitsLoader.ViewUnitParameter("basic.atlas",16f,8f,8f,"head_dl","head_ur"))
+    }
+    fun QueueingSecondAssets() {
+
     }
 
     fun getUISkin(): Skin {
@@ -92,4 +98,45 @@ class AnimLoader(resolver: FileHandleResolver) : AsynchronousAssetLoader<Anim, A
 
 }
 
+class ViewUnitsLoader(resolver: FileHandleResolver) : AsynchronousAssetLoader<ViewUnit, ViewUnitsLoader.ViewUnitParameter>(resolver) {
+
+    internal var viewUnit: ViewUnit? = null
+
+    companion object {
+      }
+    override fun loadAsync(manager: AssetManager, fileName: String, file: FileHandle, parameter: ViewUnitParameter?) {
+        parameter?.let{
+            viewUnit = null
+            val atlas= manager.get(parameter.atlasName,TextureAtlas::class.java)
+            parameter.apply {
+                viewUnit = ViewUnit(size,anchor_x,anchor_y,atlas.findRegion(dl),atlas.findRegion(ur),atlas.findRegion(dr),atlas.findRegion(ul))
+            }
+            //viewUnit= json.fromJson(Anim::class.java,Gdx.files.internal(fileName))
+        }?: throw Exception("viewUnit parameter required.")
+    }
+
+    override fun loadSync(manager: AssetManager, fileName: String, file: FileHandle, parameter: ViewUnitParameter?): ViewUnit? {
+        parameter?.apply {
+            val atlas= manager.get(parameter.atlasName,TextureAtlas::class.java)
+            val viewUnit = ViewUnit(size,anchor_x,anchor_y,atlas.findRegion(dl),atlas.findRegion(ur),atlas.findRegion(dr),atlas.findRegion(ul))
+            (this@ViewUnitsLoader).viewUnit=null
+            return viewUnit
+        }?: throw Exception("viewUnit parameter required.")
+        return null
+    }
+
+    override fun getDependencies(fileName: String, file: FileHandle, parameter: ViewUnitParameter?): GdxArray<AssetDescriptor<*>?>? {
+        val deps=GdxArray<AssetDescriptor<*>?>()
+        if (parameter!=null) {
+            deps.add(AssetDescriptor(parameter.atlasName, TextureAtlas::class.java))
+            return deps
+        }
+        else {
+            throw Exception("viewUnit parameter required.")
+        }
+    }
+    data class ViewUnitParameter(var atlasName:String, var size:Float, var anchor_x:Float, var anchor_y:Float=0f, var dl: String, var ur: String?=null, var dr: String?=null, var ul: String?=null) : AssetLoaderParameters<ViewUnit>()
+
+
+}
 

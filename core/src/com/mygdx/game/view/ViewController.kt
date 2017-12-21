@@ -103,7 +103,6 @@ class ViewController constructor(assets: Assets) {
 
     fun addView(obj : ViewActor) {
         viewArray.add(obj)
-        obj.id=lastIndex++
     }
 
     fun sortObj() {
@@ -139,7 +138,8 @@ class ViewController constructor(assets: Assets) {
         val atlas2= assets.get("weapons.atlas",TextureAtlas::class.java)
 
         wholeViewUnits= arrayOf(
-                ViewUnit(16f,8f,8f,atlas.findRegion("head"),atlas.findRegion("feet_ur"))
+                assets.get("head",ViewUnit::class.java)
+               // ViewUnit(16f,8f,8f,atlas.findRegion("head"),atlas.findRegion("feet_ur"))
                 , ViewUnit(16f,8f,8f,atlas2.findRegion("armor1"),atlas2.findRegion("armor1"))
                 , ViewUnit(8f,4f,4f,atlas.findRegion("hand"))
                 , ViewUnit(8f,4f,4f,atlas.findRegion("knight_feet"),atlas.findRegion("knight_feet_ur"))
@@ -150,7 +150,7 @@ class ViewController constructor(assets: Assets) {
                 , ViewUnit(48f,24f,12f,atlas2.findRegion("spear1"),atlas2.findRegion("spear1"))
                 , ViewUnit(16f,8f,8f,atlas2.findRegion("helm1'"),atlas2.findRegion("helm1'_ur"))
                 , ViewUnit(16f,8f,8f,atlas2.findRegion("helm2'"),atlas2.findRegion("helm2'_ur"))
-                ,ViewUnit(16f,8f,8f,atlas.findRegion("skeleton_head"),atlas.findRegion("skeleton_head_ur"))
+                , ViewUnit(16f,8f,8f,atlas.findRegion("skeleton_head"),atlas.findRegion("skeleton_head_ur"))
                 , ViewUnit(16f,8f,8f,atlas.findRegion("skeleton_body"),atlas.findRegion("skeleton_body_ur"))
                 , ViewUnit(8f,4f,4f,atlas.findRegion("skeleton_hand"))
                 , ViewUnit(8f,4f,4f,atlas.findRegion("skeleton_feet"),atlas.findRegion("skeleton_feet_ur"))
@@ -279,7 +279,7 @@ class ViewController constructor(assets: Assets) {
 
                 'C' -> ObjActor(x, y, z
                         , AnchoredTextureRegion(15f, 8f, 0f, 4f
-                        , TextureRegion(Texture(Gdx.files.internal("sword1.png"))))
+                        , TextureRegion((Texture(Gdx.files.internal("sword1.png")))).apply{flip(false,true)})
                 )
                         .apply {
                             compareType = 2
@@ -309,18 +309,27 @@ class ViewController constructor(assets: Assets) {
                 yy?.let{modelArray->
                     if (modelArray.size>0 && (modelArray[modelArray.size-1].id in 0 until viewArray.size)) {
                         val model=modelArray[modelArray.size-1]
-                        (viewArray[model.id] as ObjActor).apply{
-                            setBoundsP(0f,8f*(model.pos.zz+1),16f,8f)
-                            addListener(object: ClickListener(){
+                        val objActor=viewArray[model.id] as ObjActor
+                        objActor.setBoundsP(0f,8f*(model.pos.zz+1),16f,8f)
+                        objActor.addListener(object: ClickListener(){
                                 override fun clicked(event: InputEvent?, x: Float, y: Float) {
                                     modelController.touchedPos.xx=model.pos.xx
                                     modelController.touchedPos.yy=model.pos.yy
                                     debug{"Clicked position:${modelController.touchedPos.xx},${modelController.touchedPos.yy}"}
                                     key= InputType.CLK
                                 }
+
+                                override fun enter(event: InputEvent?, x: Float, y: Float, pointer: Int, fromActor: Actor?) {
+                                    super.enter(event, x, y, pointer, fromActor)
+                                    objActor.setColor(0f,0f,1f,1f)
+                                }
+
+                            override fun exit(event: InputEvent?, x: Float, y: Float, pointer: Int, toActor: Actor?) {
+                                super.exit(event, x, y, pointer, toActor)
+                                objActor.setColor(1f,1f,1f,1f)
+                            }
                             })
 
-                        }
                     }
                 }
             }
@@ -476,17 +485,16 @@ class ViewController constructor(assets: Assets) {
             return true
         }
         else {
-            val subCommand=currentCommand?.getNextSubCommand()
-            if (subCommand!=null){
+            currentCommand?.getNextSubCommand()?.let{subCommand->
                 if ((currentCommand?.undoing) ?:false) {
-                    when (subCommand.name ?: "") {
+                    when (subCommand.name) {
                         "MOVE" -> moveReverse(subCommand as SC_MOVE)
                         "CHANGE_DIR" -> changeDirReverse(subCommand as SC_DIR)
                         "DEAD" ->deadReverse((subCommand as SC_DEAD))
                         "END_ACTION" -> {/* Do nothing */}
                     }
                 } else {
-                    when (subCommand.name ?: "") {
+                    when (subCommand.name) {
                         "MOVE" -> moveCommand(subCommand as SC_MOVE)
                         "ANIM" -> animCommand(subCommand as SC_ANIM)
                         "CHANGE_DIR" -> changeDirCommand(subCommand as SC_DIR)
@@ -495,11 +503,7 @@ class ViewController constructor(assets: Assets) {
                     }
                 }
                 return true
-            }
-            else {
-
-                return false
-            }
+            }?: return false
         }
 
         return false

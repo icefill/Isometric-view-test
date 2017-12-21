@@ -17,7 +17,7 @@ class LoadingScreen: Screen {
       }
 
     override fun show() {
-        assets.QueueingAssets()
+        assets.QueueingFisrtAssets()
 
     }
 

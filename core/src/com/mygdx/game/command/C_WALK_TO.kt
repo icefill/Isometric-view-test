@@ -1,6 +1,5 @@
 package com.mygdx.game.command
 
-import com.badlogic.gdx.Gdx
 import com.mygdx.game.model.*
 import java.util.*
 
@@ -10,8 +9,7 @@ class C_WALK_TO(): Command(){
     val MAX_DIST=10
 
     constructor(obj: Model, toXX:Int, toYY:Int, modelController: ModelController):this(){
-        Gdx.app.log("LOG1","LOGLOG")
-        initialNode= ModelNode(Model BELOW_OF obj ?: obj)
+       initialNode= ModelNode(Model BELOW_OF obj ?: obj)
         initialModel=initialNode.model
 
         val lookupSet= TreeSet<Int>()
@@ -33,7 +31,7 @@ class C_WALK_TO(): Command(){
             current.model.doToNearTops { near->
                 if (near.pos.zz-current.model.pos.zz in -2..1
                         && !lookupSet.contains(near.pos.xx*10+near.pos.yy)
-                        && (Model OBJ_ABOVE near ==null)
+                        && (Model aboveOf near ==null)
                         ) {
                     queue.add(ModelNode(near, current))
                     lookupSet.add(near.pos.xx*10+near.pos.yy)

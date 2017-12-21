@@ -14,10 +14,5 @@ infix fun Action.WITH (other:Action) :Action {
     return (this as? ParallelAction)?.apply{addAction(other)}
             ?: Actions.parallel(this,other)
 }
-/*
-infix fun Action.plus(action:Action) : Actor {
-    this.addAction(action)
-    return this
-}
-*/
+
 typealias A= ExtActions

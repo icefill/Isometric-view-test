@@ -10,7 +10,6 @@ open class ViewActor : Actor, IsoTest.Subject {
     internal var yy=0
     internal var d=0
     internal var compareType=0
-    internal var id=0
     internal var deltaTime=Math.random().toFloat()
     var z: Float = 0f
         get() = field

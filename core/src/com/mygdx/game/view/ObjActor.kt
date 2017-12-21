@@ -39,6 +39,7 @@ open class ObjActor : ViewActor ,IsoTest.Subject {
         //this.left_most=left_most
         //this.down_most=down_most
        // this.model = model
+
         this.region = region
         val atlas = TextureAtlas(Gdx.files.internal("tiles.atlas"))
         bdry_lu = AnchoredTextureRegion(16f, 16f, 8f, 0f, atlas.findRegion("bdry_lu"))
@@ -98,6 +99,7 @@ open class ObjActor : ViewActor ,IsoTest.Subject {
     }
     override fun draw(batch: Batch, parentAlpha: Float) {
         super.draw(batch,parentAlpha)
+        batch.setColor(this.color)
         batch.draw(region, x - region.anchor_x, y - region.anchor_y + z)
 
         if (is_bdry_lu){
@@ -106,12 +108,14 @@ open class ObjActor : ViewActor ,IsoTest.Subject {
         if (is_bdry_ru){
             batch.draw(bdry_ru, x - bdry_ru.anchor_x, y - bdry_ru.anchor_y + z)
         }
+        batch.setColor(1f,1f,1f,1f)
 
     }
 
     override fun hit(x: Float, y: Float, touchable: Boolean): Actor? {
         if (touchable && this.touchable != Touchable.enabled) return null
-        return if (x >= dCenterX-width*.5f && x < dCenterX+width*.5&& y >= dCenterY-height*.5f && y < dCenterY+height*.5f) this else null
+        //return if (x >= dCenterX-width*.5f && x < dCenterX+width*.5&& y >= dCenterY-height*.5f && y < dCenterY+height*.5f) this else null
+        return if ((Math.abs(x-dCenterX)/width+Math.abs(y-dCenterY)/height)<=1f) this else null
     }
 
     fun setBoundsP(dCenterX:Float,dCenterY:Float,width: Float, height: Float) {

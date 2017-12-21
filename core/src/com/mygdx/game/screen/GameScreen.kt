@@ -56,10 +56,12 @@ class GameScreen : Screen {
    }
 
     override fun render(delta: Float) {
-         // If modelctrler is not acting,
-        // set a subcommand if has command
-        // else get input
-        // model controller act
+        /* Strart with no subCommand
+           modelController get command
+           modelController act and return command to viewController
+           then viewController act subcommands (return tru subCommandAct)
+        */
+
           if (!viewController.subCommandAct()) {
             val key=viewController.processInput()
             when (key) {
