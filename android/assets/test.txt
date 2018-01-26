@@ -1,0 +1,5 @@
+[
+    {intValue:1,stringValue:abc,gdxArray:[1,2,3] },
+    {floatValue:.9f }
+
+]

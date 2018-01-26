@@ -2,13 +2,11 @@ package com.mygdx.game.screen
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Screen
-import com.badlogic.gdx.utils.ObjectMap
 import com.mygdx.game.Assets
 import com.mygdx.game.IsoTest
 import com.mygdx.game.SaveAndLoader
 import com.mygdx.game.model.Model
 import com.mygdx.game.model.ModelController
-import com.mygdx.game.view.AnchoredTextureRegion
 import com.mygdx.game.view.ViewController
 import java.io.FileNotFoundException
 import com.badlogic.gdx.Application.ApplicationType
@@ -18,7 +16,6 @@ import ktx.log.*
 class GameScreen : Screen {
     lateinit var viewController: ViewController
     lateinit var modelController : ModelController
-    val tile_textures_map = ObjectMap<Char, AnchoredTextureRegion>()
     var assets:Assets
     var game: IsoTest
     var saveAndLoader= SaveAndLoader()
@@ -63,12 +60,12 @@ class GameScreen : Screen {
         */
 
           if (!viewController.subCommandAct()) {
-            val key=viewController.processInput()
+            val key=viewController.receiveInput()
             when (key) {
                 InputType.S -> saveState("save.sav")
                 InputType.L -> loadState("save.sav")
                 else -> {
-                    modelController.receiveInput(key)
+                    modelController.processInput(key)
                     viewController.receiveCommand(modelController.act())
                 }
             }

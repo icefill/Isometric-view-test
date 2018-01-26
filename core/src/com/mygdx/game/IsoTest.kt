@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions
 import com.badlogic.gdx.scenes.scene2d.ui.Label
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.badlogic.gdx.utils.Json
+import com.badlogic.gdx.utils.JsonValue
 import com.badlogic.gdx.utils.ObjectMap
 import com.mygdx.game.model.Model
 import com.mygdx.game.model.ModelController
@@ -16,6 +17,7 @@ import com.mygdx.game.screen.GameScreen
 import com.mygdx.game.screen.LoadingScreen
 import com.mygdx.game.view.ViewController
 import ktx.log.*
+import java.util.ArrayList
 
 class IsoTest : Game(){
 
@@ -27,7 +29,7 @@ class IsoTest : Game(){
         //Gdx.app.logLevel=LOG_NONE
         Gdx.app.logLevel= Application.LOG_DEBUG
 
-        debug{"game create"}
+    debug{"game create"}
         loadingScreen=LoadingScreen(this,assets)
         gameScreen=GameScreen(this,assets)
 
@@ -38,7 +40,6 @@ class IsoTest : Game(){
     interface Subject {
         fun inform(dxx: Int,dyy: Int,dzz: Int)
     }
-
 
 }
 

@@ -118,7 +118,7 @@ open class ObjActor : ViewActor ,IsoTest.Subject {
         return if ((Math.abs(x-dCenterX)/width+Math.abs(y-dCenterY)/height)<=1f) this else null
     }
 
-    fun setBoundsP(dCenterX:Float,dCenterY:Float,width: Float, height: Float) {
+    override fun setBounds(dCenterX:Float, dCenterY:Float, width: Float, height: Float) {
     if (this.dCenterX != dCenterX || this.dCenterY != dCenterY) {
         this.dCenterX = dCenterX
         this.dCenterY = dCenterY

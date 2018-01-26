@@ -10,7 +10,6 @@ import ktx.log.*
 class ModelController () {
     lateinit internal var modelArray:Array<Model>
     lateinit internal var cursorModel:Model
-    internal var lastIndex=0
     lateinit internal var commandQueue:CommandQueue
     internal var thinking=false
 
@@ -63,8 +62,8 @@ class ModelController () {
     }
 
     fun addModel(model: Model) {
+        model.id=modelArray.size
         modelArray.add(model)
-        model.id=lastIndex++
     }
     fun getSizeXX(): Int = modelMap.size
     fun getModelXs(xx: Int): Array<Array<Model>>? {
@@ -142,16 +141,14 @@ class ModelController () {
             else -> return Pair(0,0)
         }
     }
-    fun receiveInput(inputType: InputType) {
+    fun processInput(inputType: InputType) {
             when (inputType){
                 InputType.LU,
                 InputType.RU,
                 InputType.LD,
                 InputType.RD-> {
-                    val (dxx, dyy) = inputKeysToIntPair(inputType)
-                    cursorModel.let {
-                        it.subCommand = SC_MOVE(it, it.pos.xx + dxx, it.pos.yy + dyy)
-                    }
+                    val modelPosToMove= cursorModel.pos+ inputType.toDir()
+                    cursorModel.subCommand = SC_MOVE(cursorModel,modelPosToMove)
                 }
                 InputType.O -> {
                     if (this.getObj(cursorModel)!=null) {

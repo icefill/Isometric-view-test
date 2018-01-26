@@ -17,6 +17,7 @@ import com.badlogic.gdx.utils.JsonValue
 import com.badlogic.gdx.utils.ObjectMap
 import com.mygdx.game.anim.ViewUnit
 import com.mygdx.game.view.AnchoredTextureRegion
+import ktx.log.*
 
 
 typealias GdxArray<T> = com.badlogic.gdx.utils.Array<T>
@@ -26,6 +27,7 @@ class Assets : AssetManager(){
     val jsonReader= JsonReader()
     val json=Json()
     var tileTexturesMap: ObjectMap<Char, AnchoredTextureRegion>?=null
+
 
     init{
         setLoader(Anim::class.java,AnimLoader(this.fileHandleResolver))
@@ -139,4 +141,3 @@ class ViewUnitsLoader(resolver: FileHandleResolver) : AsynchronousAssetLoader<Vi
 
 
 }
-

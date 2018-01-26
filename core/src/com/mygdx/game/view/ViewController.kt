@@ -303,6 +303,7 @@ class ViewController constructor(assets: Assets) {
         setTouchBounds()
 
     }
+
     fun setTouchBounds() {
         modelController.modelMap.forEach{xx->
             xx?.forEach{yy->
@@ -310,7 +311,7 @@ class ViewController constructor(assets: Assets) {
                     if (modelArray.size>0 && (modelArray[modelArray.size-1].id in 0 until viewArray.size)) {
                         val model=modelArray[modelArray.size-1]
                         val objActor=viewArray[model.id] as ObjActor
-                        objActor.setBoundsP(0f,8f*(model.pos.zz+1),16f,8f)
+                        objActor.setBounds(0f,8f*(model.pos.zz+1),16f,8f)
                         objActor.addListener(object: ClickListener(){
                                 override fun clicked(event: InputEvent?, x: Float, y: Float) {
                                     modelController.touchedPos.xx=model.pos.xx
@@ -346,39 +347,53 @@ class ViewController constructor(assets: Assets) {
                         }
                     })} as TextButton)
 
-    fun processInput() : InputType {
-        when {
-            Gdx.input.isKeyJustPressed(Input.Keys.UP) or (key== InputType.LU)->{key= InputType.NONE;return InputType.LU}
-            Gdx.input.isKeyJustPressed(Input.Keys.DOWN) or (key== InputType.RD)->{key= InputType.NONE;return InputType.RD}
-            Gdx.input.isKeyJustPressed(Input.Keys.LEFT) or (key== InputType.LD)->{key= InputType.NONE;return InputType.LD}
-            Gdx.input.isKeyJustPressed(Input.Keys.RIGHT) or (key== InputType.RU)->{key= InputType.NONE;return InputType.RU}
-            Gdx.input.isKeyJustPressed(Input.Keys.SPACE)  or (key== InputType.O)->{key= InputType.NONE
-                showBigMessage("MOVE")
-                return InputType.O
-            }
-            Gdx.input.isKeyJustPressed(Input.Keys.U) ->{
-                showBigMessage("UNDO")
-                return InputType.U
-            }
-            Gdx.input.isKeyJustPressed(Input.Keys.R) -> {
-                showBigMessage("REDO")
-                return InputType.R
-            }
-            Gdx.input.isKeyJustPressed(Input.Keys.S) or (key== InputType.SA)->{key= InputType.NONE
-                showBigMessage("SAVE")
-                return InputType.S
-            }
-            Gdx.input.isKeyJustPressed(Input.Keys.L) or (key== InputType.LO)->{key= InputType.NONE
-                return InputType.L
-            }
-            Gdx.input.isKeyJustPressed(Input.Keys.ENTER) -> {
-                showBigMessage("ATTACK")
-                return InputType.AT
-            }
-            key== InputType.CLK ->{key= InputType.NONE
-                return InputType.CLK
-            }
+    fun receiveInput() : InputType {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ANY_KEY) || key!=InputType.NONE) {
+            when {
+                Gdx.input.isKeyJustPressed(Input.Keys.UP) or (key == InputType.LU) -> {
+                    key = InputType.NONE;return InputType.LU
+                }
+                Gdx.input.isKeyJustPressed(Input.Keys.DOWN) or (key == InputType.RD) -> {
+                    key = InputType.NONE;return InputType.RD
+                }
+                Gdx.input.isKeyJustPressed(Input.Keys.LEFT) or (key == InputType.LD) -> {
+                    key = InputType.NONE;return InputType.LD
+                }
+                Gdx.input.isKeyJustPressed(Input.Keys.RIGHT) or (key == InputType.RU) -> {
+                    key = InputType.NONE;return InputType.RU
+                }
+                Gdx.input.isKeyJustPressed(Input.Keys.SPACE) or (key == InputType.O) -> {
+                    key = InputType.NONE
+                    showBigMessage("MOVE")
+                    return InputType.O
+                }
+                Gdx.input.isKeyJustPressed(Input.Keys.U) -> {
+                    showBigMessage("UNDO")
+                    return InputType.U
+                }
+                Gdx.input.isKeyJustPressed(Input.Keys.R) -> {
+                    showBigMessage("REDO")
+                    return InputType.R
+                }
+                Gdx.input.isKeyJustPressed(Input.Keys.S) or (key == InputType.SA) -> {
+                    key = InputType.NONE
+                    showBigMessage("SAVE")
+                    return InputType.S
+                }
+                Gdx.input.isKeyJustPressed(Input.Keys.L) or (key == InputType.LO) -> {
+                    key = InputType.NONE
+                    return InputType.L
+                }
+                Gdx.input.isKeyJustPressed(Input.Keys.ENTER) -> {
+                    showBigMessage("ATTACK")
+                    return InputType.AT
+                }
+                key == InputType.CLK -> {
+                    key = InputType.NONE
+                    return InputType.CLK
+                }
 
+            }
         }
        return InputType.NONE
     }
@@ -480,7 +495,7 @@ class ViewController constructor(assets: Assets) {
             this.currentCommand = command
         }
     }
-    fun subCommandAct():Boolean{
+    fun subCommandAct():Boolean {
         if (subCommandActing) {
             return true
         }
